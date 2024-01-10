@@ -1,0 +1,19 @@
+# cmd: run resources/scripts/expInformation/CI_ER.txt
+
+set network 1
+set healthgroups component
+set pdvs "present.light.lamp 1" no
+set probes cost:50
+
+# to force computing of the diagnoses
+display diagnoses
+
+set informationfunction entropy_reversed
+set utilityfunction weighted_cost alpha:0
+set strategy meu
+
+# report settings
+set report displaydetail:0 display:true export:true exportdetail:3 path:"D:\Documenten\OU\Graduation\voorbeeldsysteem\Results\Experiment\information" filename:"CI_ER" suffix:count
+
+# run experiment
+compute probe-scenario confirm:false

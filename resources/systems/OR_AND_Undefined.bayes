@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Network version="9" name="OR_AND_Undefined" nodeCount="9" linkCount="9" variableCount="9">
+  <NetworkNodeGroups>
+    <NetworkNodeGroup name="Component">
+      <CustomProperties>
+        <CustomProperty name="12c0d606-59ee-4282-a56e-2aed2f57c495" value="#FFFFFF00" />
+      </CustomProperties>
+    </NetworkNodeGroup>
+    <NetworkNodeGroup name="Capability">
+      <CustomProperties>
+        <CustomProperty name="12c0d606-59ee-4282-a56e-2aed2f57c495" value="#FFBD00F0" />
+      </CustomProperties>
+    </NetworkNodeGroup>
+    <NetworkNodeGroup name="Connection">
+      <CustomProperties>
+        <CustomProperty name="12c0d606-59ee-4282-a56e-2aed2f57c495" value="#FFFFFF00" />
+      </CustomProperties>
+    </NetworkNodeGroup>
+    <NetworkNodeGroup name="Air">
+      <CustomProperties>
+        <CustomProperty name="12c0d606-59ee-4282-a56e-2aed2f57c495" value="#FF008080" />
+      </CustomProperties>
+    </NetworkNodeGroup>
+    <NetworkNodeGroup name="Mechanical">
+      <CustomProperties>
+        <CustomProperty name="12c0d606-59ee-4282-a56e-2aed2f57c495" value="#FFFF00FF" />
+      </CustomProperties>
+    </NetworkNodeGroup>
+    <NetworkNodeGroup name="Material">
+      <CustomProperties>
+        <CustomProperty name="12c0d606-59ee-4282-a56e-2aed2f57c495" value="#FFFF8000" />
+      </CustomProperties>
+    </NetworkNodeGroup>
+    <NetworkNodeGroup name="Electrical">
+      <CustomProperties>
+        <CustomProperty name="12c0d606-59ee-4282-a56e-2aed2f57c495" value="#FF00FF00" />
+      </CustomProperties>
+    </NetworkNodeGroup>
+    <NetworkNodeGroup name="ComputingResource">
+      <CustomProperties>
+        <CustomProperty name="12c0d606-59ee-4282-a56e-2aed2f57c495" value="#FF808080" />
+      </CustomProperties>
+    </NetworkNodeGroup>
+    <NetworkNodeGroup name="ErrorMessage">
+      <CustomProperties>
+        <CustomProperty name="12c0d606-59ee-4282-a56e-2aed2f57c495" value="#FFFFFFFF" />
+      </CustomProperties>
+    </NetworkNodeGroup>
+    <NetworkNodeGroup name="NotConnected">
+      <CustomProperties>
+        <CustomProperty name="12c0d606-59ee-4282-a56e-2aed2f57c495" value="#FFFF0000" />
+      </CustomProperties>
+    </NetworkNodeGroup>
+    <NetworkNodeGroup name="Radiation">
+      <CustomProperties>
+        <CustomProperty name="12c0d606-59ee-4282-a56e-2aed2f57c495" value="#FFFFAA00" />
+      </CustomProperties>
+    </NetworkNodeGroup>
+    <NetworkNodeGroup name="Water">
+      <CustomProperties>
+        <CustomProperty name="12c0d606-59ee-4282-a56e-2aed2f57c495" value="#FF0000FF" />
+      </CustomProperties>
+    </NetworkNodeGroup>
+    <NetworkNodeGroup name="Trigger">
+      <CustomProperties>
+        <CustomProperty name="12c0d606-59ee-4282-a56e-2aed2f57c495" value="#C5C35E" />
+      </CustomProperties>
+    </NetworkNodeGroup>
+    <NetworkNodeGroup name="Indicator">
+      <CustomProperties>
+        <CustomProperty name="12c0d606-59ee-4282-a56e-2aed2f57c495" value="#FFFFFFFF" />
+      </CustomProperties>
+    </NetworkNodeGroup>
+    <NetworkNodeGroup name="Fuel">
+      <CustomProperties>
+        <CustomProperty name="12c0d606-59ee-4282-a56e-2aed2f57c495" value="#FFA0522D" />
+      </CustomProperties>
+    </NetworkNodeGroup>
+  </NetworkNodeGroups>
+  <Nodes count="9">
+    <Node id="0" in="0" out="1" variableCount="1" name="I1" x="390" y="50" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Trigger" />
+        <NodeGroup name="NotConnected" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="0" name="I1" valueType="discrete" states="2">
+        <States count="2">
+          <State name="state_0" />
+          <State name="state_1" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="1" in="0" out="2" variableCount="1" name="I2" x="590" y="50" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Trigger" />
+        <NodeGroup name="NotConnected" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="1" name="I2" valueType="discrete" states="2">
+        <States count="2">
+          <State name="state_0" />
+          <State name="state_1" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="2" in="0" out="1" variableCount="1" name="I3" x="190" y="50" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Trigger" />
+        <NodeGroup name="NotConnected" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="2" name="I3" valueType="discrete" states="2">
+        <States count="2">
+          <State name="state_0" />
+          <State name="state_1" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="3" in="3" out="2" variableCount="1" name="OR1" x="390" y="230" width="160" height="90">
+      <NodeGroups>
+        <NodeGroup name="Connection" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="3" name="OR1" valueType="discrete" states="3">
+        <States count="3">
+          <State name="state_0" />
+          <State name="state_1" />
+          <State name="state_undefined" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="4" in="3" out="0" variableCount="1" name="OR2" x="250" y="422" width="160" height="92">
+      <NodeGroups>
+        <NodeGroup name="Connection" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="4" name="OR2" valueType="discrete" states="3">
+        <States count="3">
+          <State name="state_0" />
+          <State name="state_1" />
+          <State name="state_undefined" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="5" in="3" out="0" variableCount="1" name="AND" x="449" y="423" width="160" height="93">
+      <CustomProperties>
+        <CustomProperty name="A7732CF7-854B-4136-87D6-74BEB328533C" />
+      </CustomProperties>
+      <NodeGroups>
+        <NodeGroup name="Connection" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="5" name="AND" valueType="discrete" states="3">
+        <States count="3">
+          <State name="state_0" />
+          <State name="state_1" />
+          <State name="state_undefined" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="6" in="0" out="1" variableCount="1" name="Health_OR1" x="710" y="150" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Component" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="6" name="Health_OR1" valueType="discrete" states="2">
+        <States count="2">
+          <State name="ok" />
+          <State name="broken" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="7" in="0" out="1" variableCount="1" name="Health_OR2" x="100" y="300" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Component" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="7" name="Health_OR2" valueType="discrete" states="2">
+        <States count="2">
+          <State name="ok" />
+          <State name="broken" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="8" in="0" out="1" variableCount="1" name="Health_AND" x="710" y="300" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Component" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="8" name="Health_AND" valueType="discrete" states="2">
+        <States count="2">
+          <State name="ok" />
+          <State name="broken" />
+        </States>
+      </Variable>
+    </Node>
+  </Nodes>
+  <Links count="9">
+    <Link id="0" from="0" to="3" />
+    <Link id="1" from="1" to="3" />
+    <Link id="2" from="2" to="4" />
+    <Link id="3" from="3" to="5" />
+    <Link id="4" from="1" to="5" />
+    <Link id="5" from="3" to="4" />
+    <Link id="6" from="6" to="3" />
+    <Link id="7" from="7" to="4" />
+    <Link id="8" from="8" to="5" />
+  </Links>
+  <Distributions>
+    <Distribution nodeId="0" type="table">
+      <SortedVariables>
+        <VariableContext variableId="0" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.5 0.5</Table>
+    </Distribution>
+    <Distribution nodeId="1" type="table">
+      <SortedVariables>
+        <VariableContext variableId="1" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.5 0.5</Table>
+    </Distribution>
+    <Distribution nodeId="2" type="table">
+      <SortedVariables>
+        <VariableContext variableId="2" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.5 0.5</Table>
+    </Distribution>
+    <Distribution nodeId="3" type="table">
+      <SortedVariables>
+        <VariableContext variableId="0" headTail="tail" />
+        <VariableContext variableId="1" headTail="tail" />
+        <VariableContext variableId="3" headTail="head" />
+        <VariableContext variableId="6" headTail="tail" />
+      </SortedVariables>
+      <Table count="24">1 0 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1</Table>
+    </Distribution>
+    <Distribution nodeId="4" type="table">
+      <SortedVariables>
+        <VariableContext variableId="2" headTail="tail" />
+        <VariableContext variableId="3" headTail="tail" />
+        <VariableContext variableId="4" headTail="head" />
+        <VariableContext variableId="7" headTail="tail" />
+      </SortedVariables>
+      <Table count="36">1 0 0 0 0 1 0 0 1 0 0 1 0 0 0 0 1 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 0 1 1</Table>
+    </Distribution>
+    <Distribution nodeId="5" type="table">
+      <SortedVariables>
+        <VariableContext variableId="1" headTail="tail" />
+        <VariableContext variableId="3" headTail="tail" />
+        <VariableContext variableId="5" headTail="head" />
+        <VariableContext variableId="8" headTail="tail" />
+      </SortedVariables>
+      <Table count="36">1 0 0 0 0 1 1 0 0 0 0 1 0.33333333333333331 0.33333333333333331 0.33333333333333331 0.33333333333333331 0.33333333333333331 0.33333333333333331 1 0 0 0 0 1 0 0 1 0 0 1 0.33333333333333331 0.33333333333333331 0.33333333333333331 0.33333333333333331 0.33333333333333331 0.33333333333333331</Table>
+    </Distribution>
+    <Distribution nodeId="6" type="table">
+      <SortedVariables>
+        <VariableContext variableId="6" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.95 0.05</Table>
+    </Distribution>
+    <Distribution nodeId="7" type="table">
+      <SortedVariables>
+        <VariableContext variableId="7" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.95 0.05</Table>
+    </Distribution>
+    <Distribution nodeId="8" type="table">
+      <SortedVariables>
+        <VariableContext variableId="8" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.95 0.05</Table>
+    </Distribution>
+  </Distributions>
+  <QueryExpressions />
+</Network>

@@ -1,0 +1,56 @@
+# cmd: run resources/scripts/expPolar_LU/expPolar_LU_test.txt
+# Experiment ED, Linear utility, polar cost
+
+set network 0
+set healthgroups connection
+set pdvs light1 off
+set probes cost:50
+
+# to force computing of the diagnoses
+display diagnoses
+
+set informationfunction entropy_difference
+
+# set costvariance
+set costvariance scattered min:10 max:90
+
+# report settings
+set report displaydetail:0 display:true export:true exportdetail:3 path:"D:\Documenten\OU\Graduation\voorbeeldsysteem\Results\Experiment\expPolar_LU\sc_test2" filename:"LU_test" cvsname:"LU-test" suffix:time
+
+# run experiment
+set strategy cheapest
+compute probe-scenario confirm:false
+
+set strategy meu
+set utilityfunction linear_utility a:0.0  c:90
+compute probe-scenario confirm:false
+
+set utilityfunction linear_utility a:0.1  c:90
+compute probe-scenario confirm:false
+
+set utilityfunction linear_utility a:0.2  c:90
+compute probe-scenario confirm:false
+
+set utilityfunction linear_utility a:0.3  c:90
+compute probe-scenario confirm:false
+
+set utilityfunction linear_utility a:0.4  c:90
+compute probe-scenario confirm:false
+
+set utilityfunction linear_utility a:0.5  c:90
+compute probe-scenario confirm:false
+
+set utilityfunction linear_utility a:0.6  c:90
+compute probe-scenario confirm:false
+
+set utilityfunction linear_utility a:0.7  c:90
+compute probe-scenario confirm:false
+
+set utilityfunction linear_utility a:0.8  c:90
+compute probe-scenario confirm:false
+
+set utilityfunction linear_utility a:0.9  c:90
+compute probe-scenario confirm:false
+
+set utilityfunction linear_utility a:1  c:90
+compute probe-scenario confirm:false

@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Network version="9" name="WaterPipes" nodeCount="8" linkCount="9" variableCount="8">
+  <NetworkNodeGroups>
+    <NetworkNodeGroup name="Component">
+      <CustomProperties>
+        <CustomProperty name="12c0d606-59ee-4282-a56e-2aed2f57c495" value="#FFFFFF00" />
+      </CustomProperties>
+    </NetworkNodeGroup>
+  </NetworkNodeGroups>
+  <Nodes count="8">
+    <Node id="0" in="0" out="2" variableCount="1" name="Water" x="223" y="483" width="160" height="70">
+      <NodeDistributionOptions />
+      <Variable id="0" name="Water" valueType="discrete" states="2">
+        <States count="2">
+          <State name="yes" />
+          <State name="no" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="1" in="0" out="1" variableCount="1" name="Power" x="643" y="125" width="160" height="70">
+      <NodeDistributionOptions />
+      <Variable id="1" name="Power" valueType="discrete" states="2">
+        <States count="2">
+          <State name="yes" />
+          <State name="no" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="2" in="0" out="1" variableCount="1" name="Health heater" x="951" y="127" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Component" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="2" name="Health heater" valueType="discrete" states="2">
+        <States count="2">
+          <State name="OK" />
+          <State name="broken" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="3" in="2" out="1" variableCount="1" name="PipeColdToWarm" x="512" y="298" width="183" height="88">
+      <NodeDistributionOptions />
+      <Variable id="3" name="PipeColdToWarm" valueType="discrete" states="3">
+        <States count="3">
+          <State name="no water" />
+          <State name="cold water" />
+          <State name="hot water" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="4" in="0" out="2" variableCount="1" name="Setting" x="229" y="288" width="160" height="88">
+      <NodeDistributionOptions />
+      <Variable id="4" name="Setting" valueType="discrete" states="3">
+        <States count="3">
+          <State name="closed" />
+          <State name="hot" />
+          <State name="cold" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="5" in="3" out="1" variableCount="1" name="PipeWarm" x="807" y="298" width="182" height="88">
+      <NodeDistributionOptions />
+      <Variable id="5" name="PipeWarm" valueType="discrete" states="3">
+        <States count="3">
+          <State name="no water" />
+          <State name="cold water" />
+          <State name="hot water" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="6" in="2" out="1" variableCount="1" name="PipeCold" x="577" y="483" width="189" height="88">
+      <NodeDistributionOptions />
+      <Variable id="6" name="PipeCold" valueType="discrete" states="3">
+        <States count="3">
+          <State name="no water" />
+          <State name="cold water" />
+          <State name="hot water" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="7" in="2" out="0" variableCount="1" name="Outcome" x="1080" y="419" width="191" height="88">
+      <NodeDistributionOptions />
+      <Variable id="7" name="Outcome" valueType="discrete" states="3">
+        <States count="3">
+          <State name="no water" />
+          <State name="cold water" />
+          <State name="hot water" />
+        </States>
+      </Variable>
+    </Node>
+  </Nodes>
+  <Links count="9">
+    <Link id="0" from="4" to="3" />
+    <Link id="1" from="0" to="3" />
+    <Link id="2" from="4" to="6" />
+    <Link id="3" from="0" to="6" />
+    <Link id="4" from="1" to="5" />
+    <Link id="5" from="2" to="5" />
+    <Link id="6" from="3" to="5" />
+    <Link id="7" from="5" to="7" />
+    <Link id="8" from="6" to="7" />
+  </Links>
+  <Distributions>
+    <Distribution nodeId="0" type="table">
+      <SortedVariables>
+        <VariableContext variableId="0" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.9 0.1</Table>
+    </Distribution>
+    <Distribution nodeId="1" type="table">
+      <SortedVariables>
+        <VariableContext variableId="1" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.9 0.1</Table>
+    </Distribution>
+    <Distribution nodeId="2" type="table">
+      <SortedVariables>
+        <VariableContext variableId="2" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.8 0.2</Table>
+    </Distribution>
+    <Distribution nodeId="3" type="table">
+      <SortedVariables>
+        <VariableContext variableId="0" headTail="tail" />
+        <VariableContext variableId="3" headTail="head" />
+        <VariableContext variableId="4" headTail="tail" />
+      </SortedVariables>
+      <Table count="18">1 0 1 0 1 0 0 0 0 1 1 1 0 0 0 0 0 0</Table>
+    </Distribution>
+    <Distribution nodeId="4" type="table">
+      <SortedVariables>
+        <VariableContext variableId="4" headTail="head" />
+      </SortedVariables>
+      <Table count="3">0.33333333333333331 0.33333333333333331 0.33333333333333331</Table>
+    </Distribution>
+    <Distribution nodeId="5" type="table">
+      <SortedVariables>
+        <VariableContext variableId="1" headTail="tail" />
+        <VariableContext variableId="2" headTail="tail" />
+        <VariableContext variableId="3" headTail="tail" />
+        <VariableContext variableId="5" headTail="head" />
+      </SortedVariables>
+      <Table count="36">1 0 0 0 0 1 0 0 1 1 0 0 0 1 0 0 0 1 1 0 0 0 1 0 0 0 1 1 0 0 0 1 0 0 0 1</Table>
+    </Distribution>
+    <Distribution nodeId="6" type="table">
+      <SortedVariables>
+        <VariableContext variableId="0" headTail="tail" />
+        <VariableContext variableId="4" headTail="tail" />
+        <VariableContext variableId="6" headTail="head" />
+      </SortedVariables>
+      <Table count="18">1 0 0 1 0 0 0 1 0 1 0 0 1 0 0 1 0 0</Table>
+    </Distribution>
+    <Distribution nodeId="7" type="table">
+      <SortedVariables>
+        <VariableContext variableId="5" headTail="tail" />
+        <VariableContext variableId="6" headTail="tail" />
+        <VariableContext variableId="7" headTail="head" />
+      </SortedVariables>
+      <Table count="27">1 0 0 0 1 0 0 0 1 0 1 0 0 1 0 0 0.5 0.5 0 0 1 0 0.5 0.5 0 0 1</Table>
+    </Distribution>
+  </Distributions>
+  <QueryExpressions />
+</Network>

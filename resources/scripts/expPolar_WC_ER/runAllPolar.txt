@@ -1,0 +1,12 @@
+# cmd: run resources/scripts/expPolar_WC_ER/runAllPolar.txt
+set network 0
+set informationfunction entropy_reversed
+
+run resources/scripts/expPolar_WC_ER/exp_sc_cheapest.txt
+run resources/scripts/expPolar_WC_ER/exp_sc_information.txt
+run resources/scripts/expPolar_WC_ER/exp_sc_below.txt
+run resources/scripts/expPolar_WC_ER/exp_sc_above.txt
+run resources/scripts/expPolar_WC_ER/exp_sc_below_below.txt
+run resources/scripts/expPolar_WC_ER/exp_sc_below_above.txt
+run resources/scripts/expPolar_WC_ER/exp_sc_above_below.txt
+run resources/scripts/expPolar_WC_ER/exp_sc_above_above.txt

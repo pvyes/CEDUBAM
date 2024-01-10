@@ -1,0 +1,14 @@
+# cmd: run resources/scripts/debugging.txt
+
+set network 0
+set healthgroups connection
+set pdvs light1 off
+display diagnoses
+set probes cost:50
+set informationfunction entropy_difference
+set utilityfunction weighted_cost alpha:0
+set strategy meu
+display settings
+set costvariance polar min:10 battery trigger1 trigger2 max:90 plug1 plug2 light2
+set experiment infoprevalence:true infoprevalence:false
+compute probe-scenario confirm:false

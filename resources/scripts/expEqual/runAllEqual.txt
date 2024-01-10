@@ -1,0 +1,9 @@
+# cmd: run resources/scripts/expEqual/runAllEqual.txt
+
+run resources/scripts/expEqual/exp_eq_cheapest.txt
+run resources/scripts/expEqual/exp_eq_below.txt
+run resources/scripts/expEqual/exp_eq_above.txt
+run resources/scripts/expEqual/exp_eq_below_below.txt
+run resources/scripts/expEqual/exp_eq_below_above.txt
+run resources/scripts/expEqual/exp_eq_above_below.txt
+run resources/scripts/expEqual/exp_eq_above_above.txt

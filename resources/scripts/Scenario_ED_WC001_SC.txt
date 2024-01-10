@@ -1,0 +1,48 @@
+# cmd: run resources/scripts/Scenario_ED_WC001_SC.txt
+# Experiment ED, WC: 0.01, scattered cost
+
+set network 0
+set healthgroups connection
+set pdvs light1 off
+set probes cost:50
+
+# to force computing of the diagnoses
+display diagnoses
+
+set informationfunction entropy_difference
+set utilityfunction weighted_cost alpha:0.01
+set strategy meu
+
+# set costs
+set probe Battery cost:80
+set probe Trigger1 cost:70
+set probe Plug1 cost:60
+set probe Trigger2 cost:50
+set probe Plug2 cost:40
+set probe Light2 cost:30
+
+# report settings
+set report displaydetail:0 display:true export:true exportdetail:3 path:"D:\Documenten\OU\Graduation\voorbeeldsysteem\Results\Simplified\alpha settings info" filename:"testexport" suffix:count counter:0
+
+# compute meu
+
+set utilityfunction weighted_cost alpha:0.0
+# compute probe-scenario confirm:false
+
+set utilityfunction weighted_cost alpha:0.01
+compute probe-scenario confirm:false
+
+set utilityfunction weighted_cost alpha:0.019
+# compute probe-scenario confirm:false
+
+set utilityfunction weighted_cost alpha:0.02
+# compute probe-scenario confirm:false
+
+set utilityfunction weighted_cost alpha:0.021
+# compute probe-scenario confirm:false
+
+set utilityfunction weighted_cost alpha:0.057420715923563
+# compute probe-scenario confirm:false
+
+set utilityfunction weighted_cost alpha:0.057420715923564
+# compute probe-scenario confirm:false

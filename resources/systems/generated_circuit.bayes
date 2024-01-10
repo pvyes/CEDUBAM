@@ -1,0 +1,1198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Network version="9" name="circuit" nodeCount="54" linkCount="56" variableCount="54">
+  <NetworkNodeGroups>
+    <NetworkNodeGroup name="Component">
+      <CustomProperties>
+        <CustomProperty name="12c0d606-59ee-4282-a56e-2aed2f57c495" value="#FFFFFF00" />
+      </CustomProperties>
+    </NetworkNodeGroup>
+    <NetworkNodeGroup name="Capability">
+      <CustomProperties>
+        <CustomProperty name="12c0d606-59ee-4282-a56e-2aed2f57c495" value="#FFBD00F0" />
+      </CustomProperties>
+    </NetworkNodeGroup>
+    <NetworkNodeGroup name="Connection">
+      <CustomProperties>
+        <CustomProperty name="12c0d606-59ee-4282-a56e-2aed2f57c495" value="#FFFFFF00" />
+      </CustomProperties>
+    </NetworkNodeGroup>
+    <NetworkNodeGroup name="Air">
+      <CustomProperties>
+        <CustomProperty name="12c0d606-59ee-4282-a56e-2aed2f57c495" value="#FF008080" />
+      </CustomProperties>
+    </NetworkNodeGroup>
+    <NetworkNodeGroup name="Mechanical">
+      <CustomProperties>
+        <CustomProperty name="12c0d606-59ee-4282-a56e-2aed2f57c495" value="#FFFF00FF" />
+      </CustomProperties>
+    </NetworkNodeGroup>
+    <NetworkNodeGroup name="Material">
+      <CustomProperties>
+        <CustomProperty name="12c0d606-59ee-4282-a56e-2aed2f57c495" value="#FFFF8000" />
+      </CustomProperties>
+    </NetworkNodeGroup>
+    <NetworkNodeGroup name="Electrical">
+      <CustomProperties>
+        <CustomProperty name="12c0d606-59ee-4282-a56e-2aed2f57c495" value="#FF00FF00" />
+      </CustomProperties>
+    </NetworkNodeGroup>
+    <NetworkNodeGroup name="ComputingResource">
+      <CustomProperties>
+        <CustomProperty name="12c0d606-59ee-4282-a56e-2aed2f57c495" value="#FF808080" />
+      </CustomProperties>
+    </NetworkNodeGroup>
+    <NetworkNodeGroup name="ErrorMessage">
+      <CustomProperties>
+        <CustomProperty name="12c0d606-59ee-4282-a56e-2aed2f57c495" value="#FFFFFFFF" />
+      </CustomProperties>
+    </NetworkNodeGroup>
+    <NetworkNodeGroup name="NotConnected">
+      <CustomProperties>
+        <CustomProperty name="12c0d606-59ee-4282-a56e-2aed2f57c495" value="#FFFF0000" />
+      </CustomProperties>
+    </NetworkNodeGroup>
+    <NetworkNodeGroup name="Radiation">
+      <CustomProperties>
+        <CustomProperty name="12c0d606-59ee-4282-a56e-2aed2f57c495" value="#FFFFAA00" />
+      </CustomProperties>
+    </NetworkNodeGroup>
+    <NetworkNodeGroup name="Water">
+      <CustomProperties>
+        <CustomProperty name="12c0d606-59ee-4282-a56e-2aed2f57c495" value="#FF0000FF" />
+      </CustomProperties>
+    </NetworkNodeGroup>
+    <NetworkNodeGroup name="Trigger">
+      <CustomProperties>
+        <CustomProperty name="12c0d606-59ee-4282-a56e-2aed2f57c495" value="#C5C35E" />
+      </CustomProperties>
+    </NetworkNodeGroup>
+    <NetworkNodeGroup name="Indicator">
+      <CustomProperties>
+        <CustomProperty name="12c0d606-59ee-4282-a56e-2aed2f57c495" value="#FFFFFFFF" />
+      </CustomProperties>
+    </NetworkNodeGroup>
+    <NetworkNodeGroup name="Fuel">
+      <CustomProperties>
+        <CustomProperty name="12c0d606-59ee-4282-a56e-2aed2f57c495" value="#FFA0522D" />
+      </CustomProperties>
+    </NetworkNodeGroup>
+  </NetworkNodeGroups>
+  <Nodes count="54">
+    <Node id="0" in="0" out="1" variableCount="1" name="present.present.battery" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="NotConnected" />
+        <NodeGroup name="Trigger" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="0" name="present.present.battery" valueType="discrete" states="2">
+        <States count="2">
+          <State name="yes" />
+          <State name="no" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="1" in="2" out="1" variableCount="1" name="present.plug.battery" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Electrical" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="1" name="present.plug.battery" valueType="discrete" states="2">
+        <States count="2">
+          <State name="yes" />
+          <State name="no" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="2" in="0" out="1" variableCount="1" name="Health.battery" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Component" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="2" name="Health.battery" valueType="discrete" states="2">
+        <States count="2">
+          <State name="OK" />
+          <State name="empty" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="3" in="2" out="2" variableCount="1" name="present.input plug.joint 1" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Electrical" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="3" name="present.input plug.joint 1" valueType="discrete" states="2">
+        <States count="2">
+          <State name="yes" />
+          <State name="no" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="4" in="2" out="1" variableCount="1" name="present.output plug 1.joint 1" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Electrical" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="4" name="present.output plug 1.joint 1" valueType="discrete" states="2">
+        <States count="2">
+          <State name="yes" />
+          <State name="no" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="5" in="2" out="1" variableCount="1" name="present.output plug 2.joint 1" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Electrical" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="5" name="present.output plug 2.joint 1" valueType="discrete" states="2">
+        <States count="2">
+          <State name="yes" />
+          <State name="no" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="6" in="0" out="2" variableCount="1" name="Health.joint 1" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Component" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="6" name="Health.joint 1" valueType="discrete" states="2">
+        <States count="2">
+          <State name="OK" />
+          <State name="broken" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="7" in="2" out="2" variableCount="1" name="present.input plug.joint 2" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Electrical" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="7" name="present.input plug.joint 2" valueType="discrete" states="2">
+        <States count="2">
+          <State name="yes" />
+          <State name="no" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="8" in="2" out="1" variableCount="1" name="present.output plug 1.joint 2" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Electrical" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="8" name="present.output plug 1.joint 2" valueType="discrete" states="2">
+        <States count="2">
+          <State name="yes" />
+          <State name="no" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="9" in="2" out="1" variableCount="1" name="present.output plug 2.joint 2" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Electrical" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="9" name="present.output plug 2.joint 2" valueType="discrete" states="2">
+        <States count="2">
+          <State name="yes" />
+          <State name="no" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="10" in="0" out="2" variableCount="1" name="Health.joint 2" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Component" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="10" name="Health.joint 2" valueType="discrete" states="2">
+        <States count="2">
+          <State name="OK" />
+          <State name="broken" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="11" in="2" out="2" variableCount="1" name="present.input plug.joint 3" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Electrical" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="11" name="present.input plug.joint 3" valueType="discrete" states="2">
+        <States count="2">
+          <State name="yes" />
+          <State name="no" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="12" in="2" out="1" variableCount="1" name="present.output plug 1.joint 3" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Electrical" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="12" name="present.output plug 1.joint 3" valueType="discrete" states="2">
+        <States count="2">
+          <State name="yes" />
+          <State name="no" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="13" in="2" out="1" variableCount="1" name="present.output plug 2.joint 3" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Electrical" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="13" name="present.output plug 2.joint 3" valueType="discrete" states="2">
+        <States count="2">
+          <State name="yes" />
+          <State name="no" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="14" in="0" out="2" variableCount="1" name="Health.joint 3" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Component" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="14" name="Health.joint 3" valueType="discrete" states="2">
+        <States count="2">
+          <State name="OK" />
+          <State name="broken" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="15" in="2" out="1" variableCount="1" name="present.input plug.switch 1" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Electrical" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="15" name="present.input plug.switch 1" valueType="discrete" states="2">
+        <States count="2">
+          <State name="yes" />
+          <State name="no" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="16" in="3" out="1" variableCount="1" name="present.output plug.switch 1" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Electrical" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="16" name="present.output plug.switch 1" valueType="discrete" states="2">
+        <States count="2">
+          <State name="yes" />
+          <State name="no" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="17" in="0" out="1" variableCount="1" name="fired.button.switch 1" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="NotConnected" />
+        <NodeGroup name="Trigger" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="17" name="fired.button.switch 1" valueType="discrete" states="2">
+        <States count="2">
+          <State name="yes" />
+          <State name="no" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="18" in="0" out="1" variableCount="1" name="Health.switch 1" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Component" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="18" name="Health.switch 1" valueType="discrete" states="2">
+        <States count="2">
+          <State name="OK" />
+          <State name="broken" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="19" in="2" out="1" variableCount="1" name="present.input plug.switch 2" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Electrical" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="19" name="present.input plug.switch 2" valueType="discrete" states="2">
+        <States count="2">
+          <State name="yes" />
+          <State name="no" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="20" in="3" out="1" variableCount="1" name="present.output plug.switch 2" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Electrical" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="20" name="present.output plug.switch 2" valueType="discrete" states="2">
+        <States count="2">
+          <State name="yes" />
+          <State name="no" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="21" in="0" out="1" variableCount="1" name="fired.button.switch 2" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="NotConnected" />
+        <NodeGroup name="Trigger" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="21" name="fired.button.switch 2" valueType="discrete" states="2">
+        <States count="2">
+          <State name="yes" />
+          <State name="no" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="22" in="0" out="1" variableCount="1" name="Health.switch 2" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Component" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="22" name="Health.switch 2" valueType="discrete" states="2">
+        <States count="2">
+          <State name="OK" />
+          <State name="broken" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="23" in="2" out="1" variableCount="1" name="present.input plug.switch 3" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Electrical" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="23" name="present.input plug.switch 3" valueType="discrete" states="2">
+        <States count="2">
+          <State name="yes" />
+          <State name="no" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="24" in="3" out="1" variableCount="1" name="present.output plug.switch 3" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Electrical" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="24" name="present.output plug.switch 3" valueType="discrete" states="2">
+        <States count="2">
+          <State name="yes" />
+          <State name="no" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="25" in="0" out="1" variableCount="1" name="fired.button.switch 3" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="NotConnected" />
+        <NodeGroup name="Trigger" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="25" name="fired.button.switch 3" valueType="discrete" states="2">
+        <States count="2">
+          <State name="yes" />
+          <State name="no" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="26" in="0" out="1" variableCount="1" name="Health.switch 3" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Component" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="26" name="Health.switch 3" valueType="discrete" states="2">
+        <States count="2">
+          <State name="OK" />
+          <State name="broken" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="27" in="2" out="1" variableCount="1" name="present.input plug.switch 4" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Electrical" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="27" name="present.input plug.switch 4" valueType="discrete" states="2">
+        <States count="2">
+          <State name="yes" />
+          <State name="no" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="28" in="3" out="1" variableCount="1" name="present.output plug.switch 4" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Electrical" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="28" name="present.output plug.switch 4" valueType="discrete" states="2">
+        <States count="2">
+          <State name="yes" />
+          <State name="no" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="29" in="0" out="1" variableCount="1" name="fired.button.switch 4" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="NotConnected" />
+        <NodeGroup name="Trigger" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="29" name="fired.button.switch 4" valueType="discrete" states="2">
+        <States count="2">
+          <State name="yes" />
+          <State name="no" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="30" in="0" out="1" variableCount="1" name="Health.switch 4" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Component" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="30" name="Health.switch 4" valueType="discrete" states="2">
+        <States count="2">
+          <State name="OK" />
+          <State name="broken" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="31" in="2" out="1" variableCount="1" name="present.input plug.lamp 1" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Electrical" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="31" name="present.input plug.lamp 1" valueType="discrete" states="2">
+        <States count="2">
+          <State name="yes" />
+          <State name="no" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="32" in="2" out="0" variableCount="1" name="present.light.lamp 1" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Radiation" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="32" name="present.light.lamp 1" valueType="discrete" states="2">
+        <States count="2">
+          <State name="yes" />
+          <State name="no" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="33" in="0" out="1" variableCount="1" name="Health.lamp 1" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Component" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="33" name="Health.lamp 1" valueType="discrete" states="2">
+        <States count="2">
+          <State name="OK" />
+          <State name="broken" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="34" in="2" out="1" variableCount="1" name="present.input plug.lamp 2" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Electrical" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="34" name="present.input plug.lamp 2" valueType="discrete" states="2">
+        <States count="2">
+          <State name="yes" />
+          <State name="no" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="35" in="2" out="0" variableCount="1" name="present.light.lamp 2" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Radiation" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="35" name="present.light.lamp 2" valueType="discrete" states="2">
+        <States count="2">
+          <State name="yes" />
+          <State name="no" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="36" in="0" out="1" variableCount="1" name="Health.lamp 2" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Component" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="36" name="Health.lamp 2" valueType="discrete" states="2">
+        <States count="2">
+          <State name="OK" />
+          <State name="broken" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="37" in="2" out="1" variableCount="1" name="present.input plug.lamp 3" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Electrical" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="37" name="present.input plug.lamp 3" valueType="discrete" states="2">
+        <States count="2">
+          <State name="yes" />
+          <State name="no" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="38" in="2" out="0" variableCount="1" name="present.light.lamp 3" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Radiation" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="38" name="present.light.lamp 3" valueType="discrete" states="2">
+        <States count="2">
+          <State name="yes" />
+          <State name="no" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="39" in="0" out="1" variableCount="1" name="Health.lamp 3" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Component" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="39" name="Health.lamp 3" valueType="discrete" states="2">
+        <States count="2">
+          <State name="OK" />
+          <State name="broken" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="40" in="2" out="1" variableCount="1" name="present.input plug.lamp 4" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Electrical" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="40" name="present.input plug.lamp 4" valueType="discrete" states="2">
+        <States count="2">
+          <State name="yes" />
+          <State name="no" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="41" in="2" out="0" variableCount="1" name="present.light.lamp 4" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Radiation" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="41" name="present.light.lamp 4" valueType="discrete" states="2">
+        <States count="2">
+          <State name="yes" />
+          <State name="no" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="42" in="0" out="1" variableCount="1" name="Health.lamp 4" width="160" height="70">
+      <NodeGroups>
+        <NodeGroup name="Component" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="42" name="Health.lamp 4" valueType="discrete" states="2">
+        <States count="2">
+          <State name="OK" />
+          <State name="broken" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="43" in="0" out="1" variableCount="1" name="Health qwire connecting battery.plug ---&gt; joint 1.input plug" width="220" height="70">
+      <NodeGroups>
+        <NodeGroup name="Component" />
+        <NodeGroup name="Connection" />
+        <NodeGroup name="Electrical" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="43" name="Health qwire connecting battery.plug ---&gt; joint 1.input plug" valueType="discrete" states="2">
+        <States count="2">
+          <State name="OK" />
+          <State name="Disconnected" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="44" in="0" out="1" variableCount="1" name="Health qwire connecting joint 1.output plug 1 ---&gt; joint 2.input plug" width="220" height="70">
+      <NodeGroups>
+        <NodeGroup name="Component" />
+        <NodeGroup name="Connection" />
+        <NodeGroup name="Electrical" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="44" name="Health qwire connecting joint 1.output plug 1 ---&gt; joint 2.input plug" valueType="discrete" states="2">
+        <States count="2">
+          <State name="OK" />
+          <State name="Disconnected" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="45" in="0" out="1" variableCount="1" name="Health qwire connecting joint 1.output plug 2 ---&gt; joint 3.input plug" width="220" height="70">
+      <NodeGroups>
+        <NodeGroup name="Component" />
+        <NodeGroup name="Connection" />
+        <NodeGroup name="Electrical" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="45" name="Health qwire connecting joint 1.output plug 2 ---&gt; joint 3.input plug" valueType="discrete" states="2">
+        <States count="2">
+          <State name="OK" />
+          <State name="Disconnected" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="46" in="0" out="1" variableCount="1" name="Health qwire connecting joint 2.output plug 1 ---&gt; switch 1.input plug" width="220" height="70">
+      <NodeGroups>
+        <NodeGroup name="Component" />
+        <NodeGroup name="Connection" />
+        <NodeGroup name="Electrical" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="46" name="Health qwire connecting joint 2.output plug 1 ---&gt; switch 1.input plug" valueType="discrete" states="2">
+        <States count="2">
+          <State name="OK" />
+          <State name="Disconnected" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="47" in="0" out="1" variableCount="1" name="Health qwire connecting joint 2.output plug 2 ---&gt; switch 2.input plug" width="220" height="70">
+      <NodeGroups>
+        <NodeGroup name="Component" />
+        <NodeGroup name="Connection" />
+        <NodeGroup name="Electrical" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="47" name="Health qwire connecting joint 2.output plug 2 ---&gt; switch 2.input plug" valueType="discrete" states="2">
+        <States count="2">
+          <State name="OK" />
+          <State name="Disconnected" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="48" in="0" out="1" variableCount="1" name="Health qwire connecting joint 3.output plug 1 ---&gt; switch 3.input plug" width="220" height="70">
+      <NodeGroups>
+        <NodeGroup name="Component" />
+        <NodeGroup name="Connection" />
+        <NodeGroup name="Electrical" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="48" name="Health qwire connecting joint 3.output plug 1 ---&gt; switch 3.input plug" valueType="discrete" states="2">
+        <States count="2">
+          <State name="OK" />
+          <State name="Disconnected" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="49" in="0" out="1" variableCount="1" name="Health qwire connecting joint 3.output plug 2 ---&gt; switch 4.input plug" width="220" height="70">
+      <NodeGroups>
+        <NodeGroup name="Component" />
+        <NodeGroup name="Connection" />
+        <NodeGroup name="Electrical" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="49" name="Health qwire connecting joint 3.output plug 2 ---&gt; switch 4.input plug" valueType="discrete" states="2">
+        <States count="2">
+          <State name="OK" />
+          <State name="Disconnected" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="50" in="0" out="1" variableCount="1" name="Health qwire connecting switch 1.output plug ---&gt; lamp 1.input plug" width="220" height="70">
+      <NodeGroups>
+        <NodeGroup name="Component" />
+        <NodeGroup name="Connection" />
+        <NodeGroup name="Electrical" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="50" name="Health qwire connecting switch 1.output plug ---&gt; lamp 1.input plug" valueType="discrete" states="2">
+        <States count="2">
+          <State name="OK" />
+          <State name="Disconnected" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="51" in="0" out="1" variableCount="1" name="Health qwire connecting switch 2.output plug ---&gt; lamp 2.input plug" width="220" height="70">
+      <NodeGroups>
+        <NodeGroup name="Component" />
+        <NodeGroup name="Connection" />
+        <NodeGroup name="Electrical" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="51" name="Health qwire connecting switch 2.output plug ---&gt; lamp 2.input plug" valueType="discrete" states="2">
+        <States count="2">
+          <State name="OK" />
+          <State name="Disconnected" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="52" in="0" out="1" variableCount="1" name="Health qwire connecting switch 3.output plug ---&gt; lamp 3.input plug" width="220" height="70">
+      <NodeGroups>
+        <NodeGroup name="Component" />
+        <NodeGroup name="Connection" />
+        <NodeGroup name="Electrical" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="52" name="Health qwire connecting switch 3.output plug ---&gt; lamp 3.input plug" valueType="discrete" states="2">
+        <States count="2">
+          <State name="OK" />
+          <State name="Disconnected" />
+        </States>
+      </Variable>
+    </Node>
+    <Node id="53" in="0" out="1" variableCount="1" name="Health qwire connecting switch 4.output plug ---&gt; lamp 4.input plug" width="220" height="70">
+      <NodeGroups>
+        <NodeGroup name="Component" />
+        <NodeGroup name="Connection" />
+        <NodeGroup name="Electrical" />
+      </NodeGroups>
+      <NodeDistributionOptions />
+      <Variable id="53" name="Health qwire connecting switch 4.output plug ---&gt; lamp 4.input plug" valueType="discrete" states="2">
+        <States count="2">
+          <State name="OK" />
+          <State name="Disconnected" />
+        </States>
+      </Variable>
+    </Node>
+  </Nodes>
+  <Links count="56">
+    <Link id="0" from="0" to="1" />
+    <Link id="1" from="2" to="1" />
+    <Link id="2" from="3" to="4" />
+    <Link id="3" from="3" to="5" />
+    <Link id="4" from="6" to="4" />
+    <Link id="5" from="6" to="5" />
+    <Link id="6" from="7" to="8" />
+    <Link id="7" from="7" to="9" />
+    <Link id="8" from="10" to="8" />
+    <Link id="9" from="10" to="9" />
+    <Link id="10" from="11" to="12" />
+    <Link id="11" from="11" to="13" />
+    <Link id="12" from="14" to="12" />
+    <Link id="13" from="14" to="13" />
+    <Link id="14" from="15" to="16" />
+    <Link id="15" from="17" to="16" />
+    <Link id="16" from="18" to="16" />
+    <Link id="17" from="19" to="20" />
+    <Link id="18" from="21" to="20" />
+    <Link id="19" from="22" to="20" />
+    <Link id="20" from="23" to="24" />
+    <Link id="21" from="25" to="24" />
+    <Link id="22" from="26" to="24" />
+    <Link id="23" from="27" to="28" />
+    <Link id="24" from="29" to="28" />
+    <Link id="25" from="30" to="28" />
+    <Link id="26" from="31" to="32" />
+    <Link id="27" from="33" to="32" />
+    <Link id="28" from="34" to="35" />
+    <Link id="29" from="36" to="35" />
+    <Link id="30" from="37" to="38" />
+    <Link id="31" from="39" to="38" />
+    <Link id="32" from="40" to="41" />
+    <Link id="33" from="42" to="41" />
+    <Link id="34" from="43" to="3" />
+    <Link id="35" from="1" to="3" />
+    <Link id="36" from="44" to="7" />
+    <Link id="37" from="4" to="7" />
+    <Link id="38" from="45" to="11" />
+    <Link id="39" from="5" to="11" />
+    <Link id="40" from="46" to="15" />
+    <Link id="41" from="8" to="15" />
+    <Link id="42" from="47" to="19" />
+    <Link id="43" from="9" to="19" />
+    <Link id="44" from="48" to="23" />
+    <Link id="45" from="12" to="23" />
+    <Link id="46" from="49" to="27" />
+    <Link id="47" from="13" to="27" />
+    <Link id="48" from="50" to="31" />
+    <Link id="49" from="16" to="31" />
+    <Link id="50" from="51" to="34" />
+    <Link id="51" from="20" to="34" />
+    <Link id="52" from="52" to="37" />
+    <Link id="53" from="24" to="37" />
+    <Link id="54" from="53" to="40" />
+    <Link id="55" from="28" to="40" />
+  </Links>
+  <Distributions>
+    <Distribution nodeId="0" type="table">
+      <SortedVariables>
+        <VariableContext variableId="0" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.5 0.5</Table>
+    </Distribution>
+    <Distribution nodeId="1" type="table">
+      <SortedVariables>
+        <VariableContext variableId="0" headTail="tail" />
+        <VariableContext variableId="1" headTail="head" />
+        <VariableContext variableId="2" headTail="tail" />
+      </SortedVariables>
+      <Table count="8">1 0 0 1 0 0 1 1</Table>
+    </Distribution>
+    <Distribution nodeId="2" type="table">
+      <SortedVariables>
+        <VariableContext variableId="2" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.98 0.02</Table>
+    </Distribution>
+    <Distribution nodeId="3" type="table">
+      <SortedVariables>
+        <VariableContext variableId="1" headTail="tail" />
+        <VariableContext variableId="3" headTail="head" />
+        <VariableContext variableId="43" headTail="tail" />
+      </SortedVariables>
+      <Table count="8">1 0 0 1 0 0 1 1</Table>
+    </Distribution>
+    <Distribution nodeId="4" type="table">
+      <SortedVariables>
+        <VariableContext variableId="3" headTail="tail" />
+        <VariableContext variableId="4" headTail="head" />
+        <VariableContext variableId="6" headTail="tail" />
+      </SortedVariables>
+      <Table count="8">1 0 0 1 0 1 1 0</Table>
+    </Distribution>
+    <Distribution nodeId="5" type="table">
+      <SortedVariables>
+        <VariableContext variableId="3" headTail="tail" />
+        <VariableContext variableId="5" headTail="head" />
+        <VariableContext variableId="6" headTail="tail" />
+      </SortedVariables>
+      <Table count="8">1 0 0 1 0 1 1 0</Table>
+    </Distribution>
+    <Distribution nodeId="6" type="table">
+      <SortedVariables>
+        <VariableContext variableId="6" headTail="head" />
+      </SortedVariables>
+      <Table count="2">1 0</Table>
+    </Distribution>
+    <Distribution nodeId="7" type="table">
+      <SortedVariables>
+        <VariableContext variableId="4" headTail="tail" />
+        <VariableContext variableId="7" headTail="head" />
+        <VariableContext variableId="44" headTail="tail" />
+      </SortedVariables>
+      <Table count="8">1 0 0 1 0 0 1 1</Table>
+    </Distribution>
+    <Distribution nodeId="8" type="table">
+      <SortedVariables>
+        <VariableContext variableId="7" headTail="tail" />
+        <VariableContext variableId="8" headTail="head" />
+        <VariableContext variableId="10" headTail="tail" />
+      </SortedVariables>
+      <Table count="8">1 0 0 1 0 1 1 0</Table>
+    </Distribution>
+    <Distribution nodeId="9" type="table">
+      <SortedVariables>
+        <VariableContext variableId="7" headTail="tail" />
+        <VariableContext variableId="9" headTail="head" />
+        <VariableContext variableId="10" headTail="tail" />
+      </SortedVariables>
+      <Table count="8">1 0 0 1 0 1 1 0</Table>
+    </Distribution>
+    <Distribution nodeId="10" type="table">
+      <SortedVariables>
+        <VariableContext variableId="10" headTail="head" />
+      </SortedVariables>
+      <Table count="2">1 0</Table>
+    </Distribution>
+    <Distribution nodeId="11" type="table">
+      <SortedVariables>
+        <VariableContext variableId="5" headTail="tail" />
+        <VariableContext variableId="11" headTail="head" />
+        <VariableContext variableId="45" headTail="tail" />
+      </SortedVariables>
+      <Table count="8">1 0 0 1 0 0 1 1</Table>
+    </Distribution>
+    <Distribution nodeId="12" type="table">
+      <SortedVariables>
+        <VariableContext variableId="11" headTail="tail" />
+        <VariableContext variableId="12" headTail="head" />
+        <VariableContext variableId="14" headTail="tail" />
+      </SortedVariables>
+      <Table count="8">1 0 0 1 0 1 1 0</Table>
+    </Distribution>
+    <Distribution nodeId="13" type="table">
+      <SortedVariables>
+        <VariableContext variableId="11" headTail="tail" />
+        <VariableContext variableId="13" headTail="head" />
+        <VariableContext variableId="14" headTail="tail" />
+      </SortedVariables>
+      <Table count="8">1 0 0 1 0 1 1 0</Table>
+    </Distribution>
+    <Distribution nodeId="14" type="table">
+      <SortedVariables>
+        <VariableContext variableId="14" headTail="head" />
+      </SortedVariables>
+      <Table count="2">1 0</Table>
+    </Distribution>
+    <Distribution nodeId="15" type="table">
+      <SortedVariables>
+        <VariableContext variableId="8" headTail="tail" />
+        <VariableContext variableId="15" headTail="head" />
+        <VariableContext variableId="46" headTail="tail" />
+      </SortedVariables>
+      <Table count="8">1 0 0 1 0 0 1 1</Table>
+    </Distribution>
+    <Distribution nodeId="16" type="table">
+      <SortedVariables>
+        <VariableContext variableId="15" headTail="tail" />
+        <VariableContext variableId="16" headTail="head" />
+        <VariableContext variableId="17" headTail="tail" />
+        <VariableContext variableId="18" headTail="tail" />
+      </SortedVariables>
+      <Table count="16">1 0 0 0 0 1 1 1 0 0 0 0 1 1 1 1</Table>
+    </Distribution>
+    <Distribution nodeId="17" type="table">
+      <SortedVariables>
+        <VariableContext variableId="17" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.5 0.5</Table>
+    </Distribution>
+    <Distribution nodeId="18" type="table">
+      <SortedVariables>
+        <VariableContext variableId="18" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.99 0.01</Table>
+    </Distribution>
+    <Distribution nodeId="19" type="table">
+      <SortedVariables>
+        <VariableContext variableId="9" headTail="tail" />
+        <VariableContext variableId="19" headTail="head" />
+        <VariableContext variableId="47" headTail="tail" />
+      </SortedVariables>
+      <Table count="8">1 0 0 1 0 0 1 1</Table>
+    </Distribution>
+    <Distribution nodeId="20" type="table">
+      <SortedVariables>
+        <VariableContext variableId="19" headTail="tail" />
+        <VariableContext variableId="20" headTail="head" />
+        <VariableContext variableId="21" headTail="tail" />
+        <VariableContext variableId="22" headTail="tail" />
+      </SortedVariables>
+      <Table count="16">1 0 0 0 0 1 1 1 0 0 0 0 1 1 1 1</Table>
+    </Distribution>
+    <Distribution nodeId="21" type="table">
+      <SortedVariables>
+        <VariableContext variableId="21" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.5 0.5</Table>
+    </Distribution>
+    <Distribution nodeId="22" type="table">
+      <SortedVariables>
+        <VariableContext variableId="22" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.99 0.01</Table>
+    </Distribution>
+    <Distribution nodeId="23" type="table">
+      <SortedVariables>
+        <VariableContext variableId="12" headTail="tail" />
+        <VariableContext variableId="23" headTail="head" />
+        <VariableContext variableId="48" headTail="tail" />
+      </SortedVariables>
+      <Table count="8">1 0 0 1 0 0 1 1</Table>
+    </Distribution>
+    <Distribution nodeId="24" type="table">
+      <SortedVariables>
+        <VariableContext variableId="23" headTail="tail" />
+        <VariableContext variableId="24" headTail="head" />
+        <VariableContext variableId="25" headTail="tail" />
+        <VariableContext variableId="26" headTail="tail" />
+      </SortedVariables>
+      <Table count="16">1 0 0 0 0 1 1 1 0 0 0 0 1 1 1 1</Table>
+    </Distribution>
+    <Distribution nodeId="25" type="table">
+      <SortedVariables>
+        <VariableContext variableId="25" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.5 0.5</Table>
+    </Distribution>
+    <Distribution nodeId="26" type="table">
+      <SortedVariables>
+        <VariableContext variableId="26" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.99 0.01</Table>
+    </Distribution>
+    <Distribution nodeId="27" type="table">
+      <SortedVariables>
+        <VariableContext variableId="13" headTail="tail" />
+        <VariableContext variableId="27" headTail="head" />
+        <VariableContext variableId="49" headTail="tail" />
+      </SortedVariables>
+      <Table count="8">1 0 0 1 0 0 1 1</Table>
+    </Distribution>
+    <Distribution nodeId="28" type="table">
+      <SortedVariables>
+        <VariableContext variableId="27" headTail="tail" />
+        <VariableContext variableId="28" headTail="head" />
+        <VariableContext variableId="29" headTail="tail" />
+        <VariableContext variableId="30" headTail="tail" />
+      </SortedVariables>
+      <Table count="16">1 0 0 0 0 1 1 1 0 0 0 0 1 1 1 1</Table>
+    </Distribution>
+    <Distribution nodeId="29" type="table">
+      <SortedVariables>
+        <VariableContext variableId="29" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.5 0.5</Table>
+    </Distribution>
+    <Distribution nodeId="30" type="table">
+      <SortedVariables>
+        <VariableContext variableId="30" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.99 0.01</Table>
+    </Distribution>
+    <Distribution nodeId="31" type="table">
+      <SortedVariables>
+        <VariableContext variableId="16" headTail="tail" />
+        <VariableContext variableId="31" headTail="head" />
+        <VariableContext variableId="50" headTail="tail" />
+      </SortedVariables>
+      <Table count="8">1 0 0 1 0 0 1 1</Table>
+    </Distribution>
+    <Distribution nodeId="32" type="table">
+      <SortedVariables>
+        <VariableContext variableId="31" headTail="tail" />
+        <VariableContext variableId="32" headTail="head" />
+        <VariableContext variableId="33" headTail="tail" />
+      </SortedVariables>
+      <Table count="8">1 0 0 1 0 0 1 1</Table>
+    </Distribution>
+    <Distribution nodeId="33" type="table">
+      <SortedVariables>
+        <VariableContext variableId="33" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.97 0.03</Table>
+    </Distribution>
+    <Distribution nodeId="34" type="table">
+      <SortedVariables>
+        <VariableContext variableId="20" headTail="tail" />
+        <VariableContext variableId="34" headTail="head" />
+        <VariableContext variableId="51" headTail="tail" />
+      </SortedVariables>
+      <Table count="8">1 0 0 1 0 0 1 1</Table>
+    </Distribution>
+    <Distribution nodeId="35" type="table">
+      <SortedVariables>
+        <VariableContext variableId="34" headTail="tail" />
+        <VariableContext variableId="35" headTail="head" />
+        <VariableContext variableId="36" headTail="tail" />
+      </SortedVariables>
+      <Table count="8">1 0 0 1 0 0 1 1</Table>
+    </Distribution>
+    <Distribution nodeId="36" type="table">
+      <SortedVariables>
+        <VariableContext variableId="36" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.97 0.03</Table>
+    </Distribution>
+    <Distribution nodeId="37" type="table">
+      <SortedVariables>
+        <VariableContext variableId="24" headTail="tail" />
+        <VariableContext variableId="37" headTail="head" />
+        <VariableContext variableId="52" headTail="tail" />
+      </SortedVariables>
+      <Table count="8">1 0 0 1 0 0 1 1</Table>
+    </Distribution>
+    <Distribution nodeId="38" type="table">
+      <SortedVariables>
+        <VariableContext variableId="37" headTail="tail" />
+        <VariableContext variableId="38" headTail="head" />
+        <VariableContext variableId="39" headTail="tail" />
+      </SortedVariables>
+      <Table count="8">1 0 0 1 0 0 1 1</Table>
+    </Distribution>
+    <Distribution nodeId="39" type="table">
+      <SortedVariables>
+        <VariableContext variableId="39" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.97 0.03</Table>
+    </Distribution>
+    <Distribution nodeId="40" type="table">
+      <SortedVariables>
+        <VariableContext variableId="28" headTail="tail" />
+        <VariableContext variableId="40" headTail="head" />
+        <VariableContext variableId="53" headTail="tail" />
+      </SortedVariables>
+      <Table count="8">1 0 0 1 0 0 1 1</Table>
+    </Distribution>
+    <Distribution nodeId="41" type="table">
+      <SortedVariables>
+        <VariableContext variableId="40" headTail="tail" />
+        <VariableContext variableId="41" headTail="head" />
+        <VariableContext variableId="42" headTail="tail" />
+      </SortedVariables>
+      <Table count="8">1 0 0 1 0 0 1 1</Table>
+    </Distribution>
+    <Distribution nodeId="42" type="table">
+      <SortedVariables>
+        <VariableContext variableId="42" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.97 0.03</Table>
+    </Distribution>
+    <Distribution nodeId="43" type="table">
+      <SortedVariables>
+        <VariableContext variableId="43" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.999 0.001</Table>
+    </Distribution>
+    <Distribution nodeId="44" type="table">
+      <SortedVariables>
+        <VariableContext variableId="44" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.999 0.001</Table>
+    </Distribution>
+    <Distribution nodeId="45" type="table">
+      <SortedVariables>
+        <VariableContext variableId="45" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.999 0.001</Table>
+    </Distribution>
+    <Distribution nodeId="46" type="table">
+      <SortedVariables>
+        <VariableContext variableId="46" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.999 0.001</Table>
+    </Distribution>
+    <Distribution nodeId="47" type="table">
+      <SortedVariables>
+        <VariableContext variableId="47" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.999 0.001</Table>
+    </Distribution>
+    <Distribution nodeId="48" type="table">
+      <SortedVariables>
+        <VariableContext variableId="48" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.999 0.001</Table>
+    </Distribution>
+    <Distribution nodeId="49" type="table">
+      <SortedVariables>
+        <VariableContext variableId="49" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.999 0.001</Table>
+    </Distribution>
+    <Distribution nodeId="50" type="table">
+      <SortedVariables>
+        <VariableContext variableId="50" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.999 0.001</Table>
+    </Distribution>
+    <Distribution nodeId="51" type="table">
+      <SortedVariables>
+        <VariableContext variableId="51" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.999 0.001</Table>
+    </Distribution>
+    <Distribution nodeId="52" type="table">
+      <SortedVariables>
+        <VariableContext variableId="52" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.999 0.001</Table>
+    </Distribution>
+    <Distribution nodeId="53" type="table">
+      <SortedVariables>
+        <VariableContext variableId="53" headTail="head" />
+      </SortedVariables>
+      <Table count="2">0.999 0.001</Table>
+    </Distribution>
+  </Distributions>
+  <QueryExpressions />
+</Network>
