@@ -1,7 +1,9 @@
 domain\Probe.class
 domain\UtilityNames.class
 domain\ProbeSequencer.class
+domain\ConstantFinderWeightedCost.class
 domain\UtilityResult.class
+domain\ConstantFinder.class
 domain\UtilityInformationPerCost.class
 domain\InformationEntropyDifference.class
 console\ConsoleInOut$Messagetype.class
@@ -13,6 +15,7 @@ domain\UtilityWeightedCost.class
 domain\InformationFunctions.class
 domain\Strategies.class
 domain\NamedEvidence.class
+domain\Timer.class
 domain\InformationStateProbability.class
 domain\InformationEntropyReversed.class
 domain\ReportManager.class
@@ -38,9 +41,9 @@ domain\Experiment.class
 domain\QueryManager.class
 domain\SetCombinations.class
 domain\StrategyMeu.class
+domain\ConstantFinderLinear.class
 domain\CostVariance.class
 domain\InformationFunction.class
-domain\STimer.class
 console\ConsoleCompute.class
 domain\GraphFunctions.class
 domain\Networkfactory.class
