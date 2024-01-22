@@ -10,7 +10,7 @@ public class ProbeSequencer {
 	
 	private Diagnoser diagnoser;
 	private List<ProbeScenario> scenarios;
-	private STimer timer = new STimer();
+	private Timer timer = new Timer();
 	private boolean success = false;
 	private ProbeSequence currentProbeSequence;
 	

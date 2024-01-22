@@ -147,7 +147,7 @@ public class ReportManager {
 			if (csvkeys[i].equals("costvariance")) csvrow.add(i, null);
 			if (csvkeys[i].equals("strategy")) csvrow.add(i, diagnoser.getStrategy().getName().toString());
 			if (csvkeys[i].equals("information")) csvrow.add(i, diagnoser.getInformationfunction().getInformationtype().toString());
-			if (csvkeys[i].equals("utility")) csvrow.add(i, diagnoser.getUtilityfunction().getName());
+			if (csvkeys[i].equals("utility")) csvrow.add(i, diagnoser.getUtilityfunction().settingsToString());
 			if (csvkeys[i].equals("expectedcost")) csvrow.add(i, Double.toString(ps.getExpectedCost()));
 		}
 		return csvrow;

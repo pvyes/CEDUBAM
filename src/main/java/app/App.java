@@ -12,7 +12,7 @@ public class App  {
 	
 	public static void main(String[] args) {
 		boolean licensed = checklicense(args);
-		String startmessage = "CEDBAM started";
+		String startmessage = "CEDUBAM started";
 		if (licensed) {
 			startmessage += " with licensed Bayesserver version.";
 		} else {

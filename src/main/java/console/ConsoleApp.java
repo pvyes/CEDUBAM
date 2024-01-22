@@ -61,6 +61,8 @@ public class ConsoleApp implements ConsoleListener {
 				return remove.handleCommand(args, 1);
 			case "compute":
 				return compute.handleCommand(args, 1);
+			case "print":
+				return display.handleCommand(args, 0);
 			default:
 				ConsoleInOut.printErrormessage("Invalid command");
 		}

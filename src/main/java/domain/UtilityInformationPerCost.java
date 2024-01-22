@@ -12,6 +12,8 @@ import java.util.Map;
  *
  */
 public final class UtilityInformationPerCost implements UtilityFunction {
+	public static final String C = "c";
+	
 	private final Double DEFAULT_C = 1.0;
 	private UtilityNames type = UtilityNames.INFORMATION_PER_COST;
 	
@@ -22,7 +24,7 @@ public final class UtilityInformationPerCost implements UtilityFunction {
 		this.name = type.toString();
 		UtilityFunctions.addUtilityfunctions(this);
 		this.constants = new HashMap<String, Double>();
-		constants.put("c", DEFAULT_C);
+		constants.put(C, DEFAULT_C);
 	}
 	
 	@Override
@@ -47,7 +49,7 @@ public final class UtilityInformationPerCost implements UtilityFunction {
 	}
 	
 	public double getC() {
-		return constants.get("c");
+		return constants.get(C);
 	}
 
 	public void setC(double c) {
@@ -55,15 +57,23 @@ public final class UtilityInformationPerCost implements UtilityFunction {
 		if (name == type.toString() || name.equals(createName())) {
 			newname = true;
 		}
-		constants.put("c", c);
+		constants.put(C, c);
 		if (newname) {
 			name = createName();
 		}	
 	}
+	
+	public void setConstants(Map<String, Double> constants) {
+		this.constants = constants;
+	}
+
+	public Map<String, Double> getConstants() {
+		return constants;
+	}
 
 	private String createName() {
 		String temp = type.toString();
-		temp += "_c:" + constants.get("c");
+		temp += "_c:" + constants.get(C);
 		return temp;
 	}
 
@@ -71,7 +81,7 @@ public final class UtilityInformationPerCost implements UtilityFunction {
 		double cost = ir.getProbe().getCost();
 		double info = ir.getInformation();
 		if (cost != 0) {
-			return constants.get("c") *  info / cost;
+			return constants.get(C) *  info / cost;
 		} else {
 			throw new Exception("The cost cannot be 0, using utilityfunction " + this.name);
 		}
@@ -80,7 +90,7 @@ public final class UtilityInformationPerCost implements UtilityFunction {
 	public String settingsToString() {
 		String str = "";
 		str += "Name: " + name + ", ";
-		str += "c = " + constants.get("c") + "\n";
+		str += "c = " + constants.get(C) + "\n";
 		return str;
 	}
 	

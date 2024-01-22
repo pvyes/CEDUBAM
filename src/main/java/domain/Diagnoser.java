@@ -48,6 +48,7 @@ public class Diagnoser {
 	private ReportManager reportmanager;
 	private CostVariance costvariance;
 	private Experiment experiment;
+	private ConstantFinder constantfinder;
 	
 	private MEUResult meuresult;
 	
@@ -155,6 +156,23 @@ public class Diagnoser {
 	public Experiment getExperiment() {
 		return experiment;
 	}
+	
+	public ConstantFinder getConstantfinder() {
+		return constantfinder;
+	}
+
+	public void setConstantfinder(ConstantFinder constantfinder) {
+		this.constantfinder = constantfinder;
+	}
+	
+	public void setConstantfinder(UtilityFunction uf) {
+		if (uf.getType().equals(UtilityNames.LINEAR_UTILITY)) {
+			this.constantfinder = new ConstantFinderLinear(this);
+		}
+		if (uf.getType().equals(UtilityNames.WEIGHTED_COST)) {
+			this.constantfinder = new ConstantFinderWeightedCost(this);
+		}
+	}
 
 	/*
 	 * A variable is a health variable when it is a member of all healthgroups (AND-condition).
@@ -208,6 +226,7 @@ public class Diagnoser {
 
 	public void setUtilityfunction(UtilityFunction utilityfunction) {
 		this.utilityfunction = utilityfunction;
+		setConstantfinder(utilityfunction);
 	}
 
 	public Strategy getStrategy() {
@@ -217,7 +236,7 @@ public class Diagnoser {
 	public void setStrategy(Strategy sStrategy) {
 		this.strategy = sStrategy;
 	}
-		
+			
 	public ReportManager getReportManager() {
 		return reportmanager;
 	}
@@ -554,7 +573,7 @@ public class Diagnoser {
 	 **/
 	public MEUResult getMEUInfoPerProbe(Collection<Probe> probes2, Collection<Diagnosis> diagnoses) throws Exception {
 		Map<Probe, InformationResult> infos = getWeightedExpectedInformationPerProbe(probes2, diagnoses);
-		Collection<UtilityResult> results = new ArrayList<UtilityResult>();
+		List<UtilityResult> results = new ArrayList<UtilityResult>();
 		if (utilityfunction.getType() == UtilityNames.WEIGHTED_COST) {
 			((UtilityWeightedCost) utilityfunction).setAlpha(infos);
 		}
@@ -572,7 +591,6 @@ public class Diagnoser {
 		getHighest(meu, results);
 		return meu;
 	}
-
 	
 	/* Get the MEU where the weighting for the probability of the diagnoses is done on the expected utilities.
 	 * The utility is computed per diagnosis per probe.
@@ -707,7 +725,7 @@ public class Diagnoser {
 			str += "Information function: " + this.getInformationfunction().getInformationtype() + "\n";
 		}
 		if (this.getUtilityfunction() != null) {
-			str += "Utility function: " + this.getUtilityfunction().getName() + "\n";
+			str += "Utility function: " + this.getUtilityfunction().settingsToString() + "\n";
 		}
 		if (this.getStrategy() != null) {
 			str += "Strategy: " + this.getStrategy().getName() + "\n";
@@ -776,5 +794,18 @@ public class Diagnoser {
 	    for (int i = 2; i <= n; i++)
 	        result = result.multiply(BigInteger.valueOf(i));
 	    return result;
+	}
+
+	public double getHighestProbeCost() {
+		double highest = Double.NaN;
+		for (Probe p: probes) {
+			if (Double.isNaN(highest)) {
+				highest = p.getCost();
+			}
+			if (p.getCost() > highest) {
+				highest = p.getCost();
+			}
+		}
+		return highest;
 	}
 }

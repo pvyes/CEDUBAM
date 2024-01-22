@@ -3,29 +3,30 @@ package domain;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 
 public class MEUResult {
-	private Collection<UtilityResult> utilityresults;
+	private List<UtilityResult> utilityresults;
 	private Map<Probe, Collection<UtilityResult>> weightedresults;
 	private Map<Probe, Double> sumperprobe;
-	private Collection<UtilityResult> meuresults;
+	private List<UtilityResult> meuresults;
 	private double utility;
 	
 	public MEUResult() {
 		meuresults = new ArrayList<UtilityResult>();	
 	}
 	
-	public MEUResult(Collection<UtilityResult> utilityresults) {
+	public MEUResult(List<UtilityResult> utilityresults) {
 		this.utilityresults = utilityresults;
 		meuresults = new ArrayList<UtilityResult>();
 	}
 
-	public void setUtilityresults(Collection<UtilityResult> utilityresults) {
+	public void setUtilityresults(List<UtilityResult> utilityresults) {
 		this.utilityresults = utilityresults;
 	}
 
-	public  Collection<UtilityResult> getUtilityresults() {
+	public  List<UtilityResult> getUtilityresults() {
 		return utilityresults;
 	}
 

@@ -1,8 +1,8 @@
 package domain;
 
-public class STimer {
-	private double starttime = 0;
-	private double stoptime = 0;
+public class Timer {
+	private long starttime = 0;
+	private long stoptime = 0;
 		
 	public double getStarttime() {
 		return starttime;
@@ -24,8 +24,8 @@ public class STimer {
 		return stoptime - starttime;
 	}
 	
-	public int getElapsedMsTime() {
-		return (int) (stoptime - starttime) / 1000000;
+	public long getElapsedMsTime() {
+		return (stoptime - starttime) / 1000000;
 	}
 	
 	public void reset() {

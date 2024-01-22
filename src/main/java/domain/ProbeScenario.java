@@ -1,6 +1,7 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map.Entry;
 
@@ -9,15 +10,15 @@ import com.bayesserver.State;
 public class ProbeScenario {
 	private Diagnoser diagnoser;
 	private List<ProbeSequence> branches;
-	private STimer timer;
+	private Timer timer;
 	
 	public ProbeScenario(Diagnoser diagnoser) {
 		this.diagnoser = diagnoser;
 		this.branches = new ArrayList<ProbeSequence>();
-		timer = new STimer();
+		timer = new Timer();
 	}
 
-	public STimer getTimer() {
+	public Timer getTimer() {
 		return timer;
 	}
 
@@ -190,7 +191,7 @@ public class ProbeScenario {
 		return str;
 	}
 
-	private String makeSettingsReport() {
+	public String makeSettingsReport() {
 		String str = "";
 		str += "*********************\n";
 		str += "Probe Scenario Report\n";
@@ -204,7 +205,7 @@ public class ProbeScenario {
 			str += "Informationfunction: " + diagnoser.getInformationfunction().getInformationtype() + "\n";
 		}
 		if (diagnoser.getUtilityfunction() != null ) {
-			str += "Utility function: " + diagnoser.getUtilityfunction().getName() + "\n";
+			str += "Utility function: " + diagnoser.getUtilityfunction().settingsToString() + "\n";
 		}
 		if (diagnoser.getStrategy() != null ) {			
 			str += "Strategy: " + diagnoser.getStrategy().getName() + "\n";
@@ -287,6 +288,71 @@ public class ProbeScenario {
 				str += "\tprobe: " + ir.getProbe()+ "; probestate; " + ir.getProbeEvidence() + "; diagnosis: " + ir.getDiagnosis() + "; information: " + ir.getInformation() + "\n";
 			}
 		}
+		return str;
+	}
+	
+	public String getOptimalScenarioReport(UtilityNames type) {
+		String str = "";
+		str += "Summary:\n";
+		str += "*******\n";		
+		str += "Expected cost: " + getExpectedCost() + "\n\n";
+		if (getFinishedBranches().size() > 0) {
+			str += "Finished Branches (" + getFinishedBranches().size() + "):\n";
+			str += "**********************\n";			
+			for (ProbeSequence branch: getFinishedBranches()) {
+				str += "[" + branches.indexOf(branch) + "] ";
+				str += "probe states: ";
+				str += "[";
+				for (State s: branch.getUsedStates()) {
+					str += s.getVariable().getName() + ":" + s.getName() + ", ";
+				}
+				str = str.substring(0, str.length() - 2);
+				str += "]\n";
+				if (type == UtilityNames.WEIGHTED_COST) {
+					str += "\tinfoprevalences: " + getInfoprevalences(branch) + "\n";
+					str += "\talpha-values: " + getUsedAlphaValues(branch) + "\n";
+				}
+				if (type == UtilityNames.LINEAR_UTILITY) {
+					str += "constants: " + branch.getMeuresult().getMeuresults().iterator().next().getConstants() + "\n";
+				}
+			}
+		}
+		str += "\n";
+		return str;
+/*		
+		
+		String str = "";
+		str += makeMinimalSummary();
+		if (diagnoser.getUtilityfunction().getType().equals(UtilityNames.WEIGHTED_COST)) {
+			UtilityWeightedCost uwc = (UtilityWeightedCost) diagnoser.getUtilityfunction();
+			str += "infoprevalences: " + getInfoprevalences();
+			str += "alpha-values: " + getUsedAlphaValuesToString() + "\n";
+		}
+		if (diagnoser.getUtilityfunction().getType().equals(UtilityNames.LINEAR_UTILITY)) {
+			UtilityLinear ul = (UtilityLinear) diagnoser.getUtilityfunction();
+			str += "constants: " + ul.getConstants() + "\n";
+		}
+		return str;*/
+	}
+
+
+	private String getUsedAlphaValues(ProbeSequence branch) {
+		String str = "";
+		Collection<UtilityResult> urs = branch.getMeuresult().getMeuresults();
+		str += "[";
+		for (UtilityResult ur: urs) {
+			str += ur.getConstants().get(UtilityWeightedCost.ALPHA) + ",";
+		}
+		str = str.substring(0, str.length() - 1);
+		return str += "]";
+	}
+	
+	private String getInfoprevalences(ProbeSequence branch) {
+		String str = "";
+		Collection<UtilityResult> urs = branch.getMeuresult().getMeuresults();
+		for (UtilityResult ur: urs) {
+			str += ur.getInfoprevalences() + ",";
+		}			
 		return str;
 	}
 }

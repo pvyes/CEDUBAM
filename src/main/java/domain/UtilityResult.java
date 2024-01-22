@@ -1,8 +1,15 @@
 package domain;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
 public class UtilityResult {
 	private InformationResult informationresult;
 	private double utility;
+	private Map<String, Double> constants;
+	private List<Boolean> infoprevalences;
 	
 	public UtilityResult() {
 		
@@ -36,9 +43,31 @@ public class UtilityResult {
 	public Probe getProbe() {
 		return informationresult.getProbe();
 	}
+	
+	public Map<String, Double> getConstants() {
+		return constants;
+	}
+
+	public void setConstants(Map<String, Double> constants) {
+		Map<String, Double> newmap = new HashMap<String, Double>();
+		for (Entry<String, Double> entry: constants.entrySet()) {
+			newmap.put(entry.getKey(), entry.getValue());
+		}
+		this.constants = newmap;
+	}
+	
+	public void setInfoprevalences(List<Boolean> infoprevalences) {
+		this.infoprevalences = infoprevalences;	
+	}
+
+	public List<Boolean> getInfoprevalences() {
+		return infoprevalences;
+	}
 
 	@Override
 	public String toString() {
 		return "[probe: " + informationresult.getProbe().getTarget() + " " +  informationresult.toString() + ", utility=" + utility + "]";
-	}	
+	}
+
+		
 }

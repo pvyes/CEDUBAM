@@ -318,4 +318,25 @@ public class SetCombinations {
 		}
 		return result;
 	}
+	
+	public static <T> Collection<List<T>> makeCombinationsWithRepetion(List<T> list, int k) {
+		Collection<List<T>> result =  new ArrayList<List<T>>();
+		result.add(new ArrayList<T>());
+		for (int i = 0; i < k; i++) {
+			result = addElement(list, result);			
+		}
+		return result;
+	}
+
+	private static <T> Collection<List<T>> addElement(List<T> list, Collection<List<T>> result) {
+		Collection<List<T>> newresult =  new ArrayList<List<T>>();
+		for (T t: list) {
+			for (List<T> l: result) {
+				ArrayList<T> newlist = new ArrayList<T>(l);
+				newlist.add(t);
+				newresult.add(newlist);
+			}
+		}
+		return newresult;
+	}
 }

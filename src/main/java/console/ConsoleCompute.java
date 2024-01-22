@@ -2,8 +2,10 @@ package console;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import com.bayesserver.State;
 
@@ -63,13 +65,41 @@ public class ConsoleCompute extends Console {
 					return true;				
 				case "probe-scenario":
 					ConsoleInOut.printMessage(getProbeScenario(args, nextarg));
-					return true;				
+					return true;
+				case "optimal":
+					ConsoleInOut.printMessage(getOptimalConstants(args, nextarg));
+					return true;
 				default:
 					ConsoleInOut.printErrormessage("Command not found");
 			}
 			return false;
 		} else {
 			return true;
+		}
+	}
+
+	private String getOptimalConstants(List<String> args, int nextarg) {
+		try {
+			Map<String, String> params = getParameters(args);
+ 			int itlimit = 0;
+			int tlimit = -1;
+			if (params.get("iteration-limit") != null) {
+				String limit = params.get("iteration-limit");
+				itlimit = Integer.parseInt(limit);
+			}
+			if (params.get("time-limit") != null) {
+				String limit = params.get("time-limit");
+				tlimit = Integer.parseInt(limit);
+			}
+			Collection<ProbeScenario> pss = diagnoser.getConstantfinder().getOptimalScenarios(itlimit, tlimit);
+			String msg = "Optimal probescenarios (#="+ pss.size() + "):" + CRLF;
+			var i = 0;
+			for (ProbeScenario ps: pss)  {
+				msg += "[" + i++ + "]: " + ps.getOptimalScenarioReport(diagnoser.getUtilityfunction().getType()) + CRLF;
+			}
+			return msg.substring(0, msg.length() - CRLF.length());
+		} catch (Exception e ) {
+			return "The optimal scenario could not be computed.\n" + e.getMessage();
 		}
 	}
 

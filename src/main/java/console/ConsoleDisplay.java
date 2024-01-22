@@ -36,8 +36,8 @@ public class ConsoleDisplay extends Console {
 	public boolean handleCommand(List<String> args, int nextarg) {
 		String subject = args.get(nextarg++);
 		switch (subject) {
-			case "clear":
-				ConsoleInOut.clear();;
+			case "print":
+				System.out.println(args.get(nextarg));
 				return true;		
 			case "networks":
 				if (args.size() > 2) {

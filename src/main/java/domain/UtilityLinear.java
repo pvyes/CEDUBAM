@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class UtilityLinear implements UtilityFunction {
+	public final static String  A = "a";
+	public final static String  S = "s";
+	
 	private final Double DEFAULT_A = 0.1;
 	private final Double DEFAULT_S = 1.0;
 	
@@ -17,8 +20,8 @@ public final class UtilityLinear implements UtilityFunction {
 	 */
 	public UtilityLinear() {
 		this.constants = new HashMap<String, Double>();
-		constants.put("a", DEFAULT_A);
-		constants.put("s", DEFAULT_S);
+		constants.put(A, DEFAULT_A);
+		constants.put(S, DEFAULT_S);
 		this.name = type.toString();
 		UtilityFunctions.addUtilityfunctions(this);
 	}
@@ -30,8 +33,8 @@ public final class UtilityLinear implements UtilityFunction {
 	 */
 	public UtilityLinear(double a, double s) {
 		this.constants = new HashMap<String, Double>();
-		constants.put("a", a);
-		constants.put("s", s);
+		constants.put(A, a);
+		constants.put(S, s);
 		name = createName();
 		UtilityFunctions.addUtilityfunctions(this);		
 	}
@@ -40,13 +43,14 @@ public final class UtilityLinear implements UtilityFunction {
 	public UtilityResult getUtility(InformationResult inforesult) {
 		UtilityResult ur = new UtilityResult(inforesult);
 		ur.setUtility(computeUtility(inforesult));
+		ur.setConstants(constants);
 		return ur;
 	}
 
 	private double computeUtility(InformationResult ir) {
 		double currentCost = ir.getProbe().getCost();
 		setTotalcost(currentCost);
-		return (-1 * constants.get("a") * currentCost + constants.get("s")) * ir.getInformation();
+		return (-1 * constants.get(A) * currentCost + constants.get(S)) * ir.getInformation();
 	}	
 
 	@Override
@@ -68,9 +72,22 @@ public final class UtilityLinear implements UtilityFunction {
 	public void setTotalcost(double totalcost) {
 		this.totalcost = totalcost;
 	}
+	
+	public Map<String, Double> getConstants() {
+		return constants;
+	}
+	
+	public void setConstants(Map<String, Double> constants) {
+		this.constants = constants;
+	}
+
+	public void setConstants(Double a, Double s) {
+		this.constants.put(A, a);
+		this.constants.put(S, s);
+	}
 
 	public double getA() {
-		return constants.get("a");
+		return constants.get(A);
 	}
 
 	public void setA(double a) {
@@ -78,14 +95,14 @@ public final class UtilityLinear implements UtilityFunction {
 		if (name == type.toString() || name.equals(createName())) {
 			newname = true;
 		}
-		constants.put("a", a);
+		constants.put(A, a);
 		if (newname) {
 			name = createName();
 		}	
 	}
 
 	public double getS() {
-		return constants.get("s");
+		return constants.get(S);
 	}
 
 	public void setS(double s) {
@@ -93,7 +110,7 @@ public final class UtilityLinear implements UtilityFunction {
 		if (name == type.toString() || name.equals(createName())) {
 			newname = true;
 		}
-		constants.put("s", s);
+		constants.put(S, s);
 		if (newname) {
 			name = createName();
 		}
@@ -101,7 +118,7 @@ public final class UtilityLinear implements UtilityFunction {
 	
 	private String createName() {
 		String temp = type.toString();
-		temp = temp.concat("-a:" + constants.get("a") + "-s:" + constants.get("s"));
+		temp = temp.concat("-a:" + constants.get(A) + "-s:" + constants.get(S));
 		return temp;
 	}
 	
@@ -109,8 +126,8 @@ public final class UtilityLinear implements UtilityFunction {
 	public String settingsToString() {
 		String str = "";
 		str += "Name: " + name + ", ";
-		str += "a = " + constants.get("a") + ", ";
-		str += "s = " + constants.get("s");
+		str += "a = " + constants.get(A) + ", ";
+		str += "s = " + constants.get(S);
 		return str;
 	}
 
