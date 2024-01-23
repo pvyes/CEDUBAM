@@ -15,6 +15,7 @@ public class ReportManager {
 	public final String DEFAULT_CSVNAME = "CEDBAM_report.csv";
 	
 	String[] csvkeys = {"filename","pdvs","costvariance","strategy","information","utility","expectedcost"};
+	String[] csvkeysOptimal = {"filename","pdvs","strategy","information","utility","constants","infoprevalences","expectedcost"};
 	
 	public enum Suffixtype {
 		TIME,
@@ -138,6 +139,17 @@ public class ReportManager {
 		List<String> csvrow = makeCsvRow(name, ps);
 		Output.addToCsvfile(folder, csvname, makeList(csvkeys), csvrow);		
 	}
+	
+	public void exportOptimal(ProbeScenario ps) throws Exception {
+		String report = ps.makeOptimalReport(exportdetail);
+		String suffix = getSuffix();
+		String name = filename + "_optimal_"  + suffix + ".txt";
+		Output.saveFile(report, folder, name);
+		//make csv row
+		List<String> csvrow = makeOptimalCsvRow(name, ps);
+		Output.addToCsvfile(folder, csvname + "_optimal.cvs", makeList(csvkeysOptimal), csvrow);		
+	}
+
 
 	private List<String> makeCsvRow(String name, ProbeScenario ps) {
 		List<String> csvrow = new ArrayList<String>();
@@ -146,9 +158,59 @@ public class ReportManager {
 			if (csvkeys[i].equals("pdvs")) csvrow.add(i, diagnoser.getPdvs().toString());
 			if (csvkeys[i].equals("costvariance")) csvrow.add(i, null);
 			if (csvkeys[i].equals("strategy")) csvrow.add(i, diagnoser.getStrategy().getName().toString());
-			if (csvkeys[i].equals("information")) csvrow.add(i, diagnoser.getInformationfunction().getInformationtype().toString());
-			if (csvkeys[i].equals("utility")) csvrow.add(i, diagnoser.getUtilityfunction().settingsToString());
+			if (csvkeys[i].equals("information")) {
+				if (diagnoser.getInformationfunction() != null) {
+					csvrow.add(i, diagnoser.getInformationfunction().getInformationtype().toString());
+				} else {
+					csvrow.add(i, "");
+				}
+			}
+			if (csvkeys[i].equals("utility")) {
+				if (diagnoser.getUtilityfunction() != null) {
+					csvrow.add(i, diagnoser.getUtilityfunction().getType().toString());
+				} else {
+					csvrow.add(i, "");
+				}
+			}
 			if (csvkeys[i].equals("expectedcost")) csvrow.add(i, Double.toString(ps.getExpectedCost()));
+		}
+		return csvrow;
+	}
+	
+	//"filename","pdvs","strategy","information","utility","constants","infoprevalences","expectedcost"
+	private List<String> makeOptimalCsvRow(String name, ProbeScenario ps) {
+		List<String> csvrow = new ArrayList<String>();
+		for (int i = 0; i< csvkeysOptimal.length; i++) {
+			if (csvkeysOptimal[i].equals("filename")) csvrow.add(i, name);
+			if (csvkeysOptimal[i].equals("pdvs")) csvrow.add(i, diagnoser.getPdvs().toString());
+			if (csvkeysOptimal[i].equals("strategy")) csvrow.add(i, diagnoser.getStrategy().getName().toString());
+			if (csvkeysOptimal[i].equals("information")) {
+				if (diagnoser.getInformationfunction() != null) {
+					csvrow.add(i, diagnoser.getInformationfunction().getInformationtype().toString());
+				} else {
+					csvrow.add(i, "");
+				}
+			}
+			if (csvkeysOptimal[i].equals("utility")) {
+				if (diagnoser.getUtilityfunction() != null) {
+					csvrow.add(i, diagnoser.getUtilityfunction().getType().toString());
+				} else {
+					csvrow.add(i, "");
+				}
+			}
+			if (csvkeysOptimal[i].equals("constants")) {
+				for (ProbeSequence branch: ps.getFinishedBranches()) {
+					String str = "";
+					if (diagnoser.getUtilityfunction() != null && diagnoser.getUtilityfunction().getType() == UtilityNames.WEIGHTED_COST) {
+						str += ps.getInfoprevalences(branch);
+					}
+					if (diagnoser.getUtilityfunction() != null && diagnoser.getUtilityfunction().getType() == UtilityNames.LINEAR_UTILITY) {
+						str += branch.getMeuresult().getMeuresults().iterator().next().getConstants();
+					}
+					csvrow.add(i, str);					
+				}
+			}
+			if (csvkeysOptimal[i].equals("expectedcost")) csvrow.add(i, Double.toString(ps.getExpectedCost()));
 		}
 		return csvrow;
 	}
@@ -233,5 +295,7 @@ public class ReportManager {
 	public boolean removeReport(String name) throws IOException {
 		return Output.removeFile(folder, name);
 	}
+	
+
 	
 }

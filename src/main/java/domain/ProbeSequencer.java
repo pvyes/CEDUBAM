@@ -96,7 +96,7 @@ public class ProbeSequencer {
 
 	private Probe getNextprobe(ProbeSequence ps) throws Exception {
 		diagnoser.getStrategy().setProbeSequence(ps);
-		if (diagnoser.getUtilityfunction().getType() == UtilityNames.WEIGHTED_COST) {
+		if (diagnoser.getUtilityfunction() != null && diagnoser.getUtilityfunction().getType() == UtilityNames.WEIGHTED_COST) {
 			((UtilityWeightedCost) diagnoser.getUtilityfunction()).setTreelevel(ps.getUsedStates().size());
 		}
 		Probe nextprobe = diagnoser.getStrategy().getSuggestedProbe();

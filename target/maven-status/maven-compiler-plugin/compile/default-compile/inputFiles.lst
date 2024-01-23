@@ -1,6 +1,7 @@
 D:\Documenten\programmeren\CEDUBAM\src\main\java\console\ConsoleDisplay.java
 D:\Documenten\programmeren\CEDUBAM\src\main\java\console\ConsoleRemove.java
 D:\Documenten\programmeren\CEDUBAM\src\main\java\domain\Experiment.java
+D:\Documenten\programmeren\CEDUBAM\src\main\java\domain\ProbeCombinations.java
 D:\Documenten\programmeren\CEDUBAM\src\main\java\domain\ProbeScenario.java
 D:\Documenten\programmeren\CEDUBAM\src\main\java\domain\GraphFunctions.java
 D:\Documenten\programmeren\CEDUBAM\src\main\java\domain\InformationEntropyDifference.java
@@ -18,6 +19,7 @@ D:\Documenten\programmeren\CEDUBAM\src\main\java\domain\Strategy.java
 D:\Documenten\programmeren\CEDUBAM\src\main\java\domain\UtilityWeightedCost.java
 D:\Documenten\programmeren\CEDUBAM\src\main\java\domain\Timer.java
 D:\Documenten\programmeren\CEDUBAM\src\main\java\domain\Output.java
+D:\Documenten\programmeren\CEDUBAM\src\main\java\domain\StrategyFixed.java
 D:\Documenten\programmeren\CEDUBAM\src\main\java\domain\Diagnosis.java
 D:\Documenten\programmeren\CEDUBAM\src\main\java\domain\Pair.java
 D:\Documenten\programmeren\CEDUBAM\src\main\java\domain\StrategyRandom.java

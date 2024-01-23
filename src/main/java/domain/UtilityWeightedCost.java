@@ -31,6 +31,8 @@ public final class UtilityWeightedCost implements UtilityFunction {
 	private String name;
 	private List<Boolean> infoprevalences;
 	private int treelevel = 0;
+	private Map<String, Pair<Boolean,Double>> usedAlphas;
+	private Pair<Boolean, Double> usedvalues = new Pair<Boolean, Double>();
 	
 	public UtilityWeightedCost() {
 		this.constants = new HashMap<String, Double>();
@@ -54,14 +56,17 @@ public final class UtilityWeightedCost implements UtilityFunction {
 
 	@Override
 	public UtilityResult getUtility(InformationResult inforesult) {
+		usedAlphas = new HashMap<String, Pair<Boolean, Double>>();
 		UtilityResult ur = new UtilityResult(inforesult);
 		ur.setUtility(computeUtility(inforesult));
 		ur.setConstants(constants);
-		ur.setInfoprevalences(infoprevalences);
+		usedAlphas.put(Integer.toString(treelevel).toString(),usedvalues);
+		ur.setInfoprevalences(usedAlphas);
 		return ur;
 	}
 
 	public double setAlpha(Map<Probe, InformationResult> inforesults) {
+		Boolean infopreval = null;
 		if (infoprevalences.size() > treelevel) {
 			double alpha = Double.NaN;
 			// make all combinations of probes
@@ -75,7 +80,7 @@ public final class UtilityWeightedCost implements UtilityFunction {
 			for (List<Entry<Probe, InformationResult>> combi: perms) {
 				double infodiff = Math.abs(combi.get(0).getValue().getInformation() - combi.get(1).getValue().getInformation());
 				double costdiff = combi.get(0).getKey().getCost() - combi.get(1).getKey().getCost();
-				if (costdiff > 0 && infodiff != 0) {
+				if (costdiff > 0 && infodiff > 0) {
 					double ratio = infodiff / costdiff;
 					if (Double.isNaN(alpha)) {
 						alpha = ratio;
@@ -87,6 +92,7 @@ public final class UtilityWeightedCost implements UtilityFunction {
 				}			
 			}
 			//info infopreval: set c just below the alpha, else set c just above
+			infopreval = infoprevalences.get(treelevel);
 			if (infoprevalences.get(treelevel) && !Double.isNaN(alpha)) {
 				constants.put(ALPHA, round(alpha, RoundingMode.DOWN));
 			} else {
@@ -98,6 +104,8 @@ public final class UtilityWeightedCost implements UtilityFunction {
 			}
 			//System.out.println("infoprevalence for alpha level:" + treelevel + " set to " + constants.get(ALPHA));
 		}
+		usedvalues.setFirst(infopreval);
+		usedvalues.setSecond(constants.get(ALPHA));
 		return constants.get(ALPHA);
 	}
 	

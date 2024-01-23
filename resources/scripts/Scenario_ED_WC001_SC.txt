@@ -22,27 +22,9 @@ set probe Plug2 cost:40
 set probe Light2 cost:30
 
 # report settings
-set report displaydetail:0 display:true export:true exportdetail:3 path:"D:\Documenten\OU\Graduation\voorbeeldsysteem\Results\Simplified\alpha settings info" filename:"testexport" suffix:count counter:0
+set report displaydetail:0 display:true export:false exportdetail:3 path:"D:\Documenten\OU\Graduation\voorbeeldsysteem\Results\Simplified\alpha settings info" filename:"testexport" suffix:count counter:0
 
 # compute meu
 
-set utilityfunction weighted_cost alpha:0.0
-# compute probe-scenario confirm:false
-
-set utilityfunction weighted_cost alpha:0.01
-compute probe-scenario confirm:false
-
-set utilityfunction weighted_cost alpha:0.019
-# compute probe-scenario confirm:false
-
-set utilityfunction weighted_cost alpha:0.02
-# compute probe-scenario confirm:false
-
-set utilityfunction weighted_cost alpha:0.021
-# compute probe-scenario confirm:false
-
-set utilityfunction weighted_cost alpha:0.057420715923563
-# compute probe-scenario confirm:false
-
-set utilityfunction weighted_cost alpha:0.057420715923564
-# compute probe-scenario confirm:false
+print "Optimal WC 3"
+compute optimal iteration-limit:3 confirm:false

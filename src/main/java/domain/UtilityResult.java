@@ -9,7 +9,7 @@ public class UtilityResult {
 	private InformationResult informationresult;
 	private double utility;
 	private Map<String, Double> constants;
-	private List<Boolean> infoprevalences;
+	private Map<String, Pair<Boolean, Double>> infoprevalences;
 	
 	public UtilityResult() {
 		
@@ -56,11 +56,11 @@ public class UtilityResult {
 		this.constants = newmap;
 	}
 	
-	public void setInfoprevalences(List<Boolean> infoprevalences) {
-		this.infoprevalences = infoprevalences;	
+	public void setInfoprevalences(Map<String, Pair<Boolean, Double>> usedAlphas) {
+		this.infoprevalences = usedAlphas;	
 	}
 
-	public List<Boolean> getInfoprevalences() {
+	public Map<String, Pair<Boolean, Double>> getInfoprevalences() {
 		return infoprevalences;
 	}
 

@@ -47,7 +47,9 @@ public class ConstantFinderWeightedCost implements ConstantFinder {
 			timer.reset();
 		}
 		//choose the minimal expected cost
-		return getMinExpectedCost(result);
+		List<ProbeScenario> mins = getMinExpectedCost(result);
+		printOptimalScenarios(mins);
+		return mins;
 	}
 
 	private List<ProbeScenario> getMinExpectedCost(List<List<ProbeScenario>> result) {
@@ -69,5 +71,11 @@ public class ConstantFinderWeightedCost implements ConstantFinder {
 			}
 		}
 		return pss;
+	}
+	
+	public void printOptimalScenarios(List<ProbeScenario> optimal) throws Exception {
+		for (ProbeScenario ps: optimal) {
+			diagnoser.getReportManager().exportOptimal(ps);
+		}
 	}
 }

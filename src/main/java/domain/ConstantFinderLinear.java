@@ -7,6 +7,7 @@ import java.util.List;
 
 public class ConstantFinderLinear implements ConstantFinder {
 	private Diagnoser diagnoser;
+	List<ProbeScenario> optimal = new ArrayList<ProbeScenario>();
 	
 	public ConstantFinderLinear(Diagnoser diagnoser) {
 		this.diagnoser= diagnoser;
@@ -42,9 +43,8 @@ public class ConstantFinderLinear implements ConstantFinder {
 		wcl.setA(currentA);
 		ProbeScenario currentps = diagnoser.runProbeSequencer().get(0);
 		scenarios.add(currentps);
-		Comparator<ProbeScenario> sortByA = (ProbeScenario ps1, ProbeScenario ps2) -> Double.compare(getA(ps1), getA(ps2));
-		Comparator<ProbeScenario> sortByEC = (ProbeScenario ps1, ProbeScenario ps2) -> Double.compare(ps1.getExpectedCost(), ps2.getExpectedCost());
-		scenarios.sort(sortByEC);
+		Comparator<ProbeScenario> comp = new SortA_C();
+		scenarios.sort(comp);
 		//iterate
 		for (var i = 0; i < iterationlimit; i++) {
 			timer.start();
@@ -55,9 +55,11 @@ public class ConstantFinderLinear implements ConstantFinder {
 				scenarios.add(diagnoser.runProbeSequencer().get(0));
 				wcl.setA(newA2);
 				scenarios.add(diagnoser.runProbeSequencer().get(0));
-				scenarios.sort(sortByEC);
+				scenarios.sort(comp);
+				System.out.println("[");
 				scenarios.forEach(sc -> System.out.println("a = " + getA(sc) + "; EC = "  + sc.getExpectedCost()));
-				//TODO stop als de eerste drie gelijk zijn
+				System.out.println("]");
+				//Stop if first three habe equal expected costs
 				if (scenarios.get(0).getExpectedCost() == scenarios.get(1).getExpectedCost() && scenarios.get(0).getExpectedCost() == scenarios.get(2).getExpectedCost()) {
 					i = iterationlimit;
 				}
@@ -69,10 +71,28 @@ public class ConstantFinderLinear implements ConstantFinder {
 		//choose the minimal expected cost
 		List<ProbeScenario> optimal = new ArrayList<ProbeScenario>();
 		optimal.add(scenarios.get(0));
+		printOptimalScenarios(optimal);
 		return optimal;
 	}
 	
-	private Double getA(ProbeScenario ps) {
+	protected static Double getA(ProbeScenario ps) {
 		return ps.getBranches().get(0).getMeuresult().getUtilityresults().get(0).getConstants().get(UtilityLinear.A);
+	}
+	
+	public void printOptimalScenarios(List<ProbeScenario> optimal) throws Exception {
+		for (ProbeScenario ps: optimal) {
+			diagnoser.getReportManager().exportOptimal(ps);
+		}
+	}
+}
+
+class SortA_C implements Comparator<ProbeScenario> {
+	@Override
+	public int compare(ProbeScenario o1, ProbeScenario o2) {
+		if (o1.getExpectedCost() == o2.getExpectedCost()) {
+			return Double.compare(ConstantFinderLinear.getA(o1), ConstantFinderLinear.getA(o2)); 
+		} else {
+			return Double.compare(o1.getExpectedCost(), o2.getExpectedCost());
+		}
 	}
 }

@@ -1,0 +1,54 @@
+# cmd: run resources/scripts/ExpHeuristic/expH2L_PL.txt
+
+set network 0
+set healthgroups connection
+set pdvs light1 off
+display diagnoses
+set probes cost:50
+set informationfunction entropy_reversed
+
+set report displaydetail:0 display:true export:true exportdetail:3 path:"D:\Documenten\OU\Graduation\voorbeeldsysteem\Results\Experiment\Heuristic\2L_PL" filename:"L2_H_SC" suffix:time
+
+set costvariance polar min:10 max:90 distribution:random
+display probes
+
+# cheapest
+print "Strategy cheapest"
+set strategy cheapest
+compute probe-scenario confirm:false
+
+set strategy meu
+# Only information
+print "Only information WC"
+set utilityfunction weighted_cost alpha:0.0
+compute probe-scenario confirm:false
+
+print "Only information LU"
+set utilityfunction linear_utility a:0.0 s:90
+compute probe-scenario confirm:false
+
+# Optimal WC
+set utilityfunction weighted_cost alpha:0.0
+print "Optimal WC 1"
+compute optimal iteration-limit:1 confirm:false
+print "Optimal WC 2"
+compute optimal iteration-limit:2 confirm:false
+print "Optimal WC 3"
+compute optimal iteration-limit:3 confirm:false
+print "Optimal WC 4"
+compute optimal iteration-limit:4 confirm:false
+print "Optimal WC 5"
+compute optimal iteration-limit:5 confirm:false
+
+# Optimal LU
+set utilityfunction linear_utility a:0.0 s:90
+print "Optimal LU 1"
+compute optimal iteration-limit:1 confirm:false
+print "Optimal LU 2"
+compute optimal iteration-limit:2 confirm:false
+print "Optimal LU 3"
+compute optimal iteration-limit:3 confirm:false
+print "Optimal LU 4"
+compute optimal iteration-limit:4 confirm:false
+print "Optimal LU 5"
+compute optimal iteration-limit:5 confirm:false

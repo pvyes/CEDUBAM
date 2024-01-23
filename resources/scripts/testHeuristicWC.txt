@@ -17,6 +17,7 @@ set probe plug2 cost:26
 set probe light2 cost:10
 
 # cheapest
+print "cheapest"
 set strategy cheapest
 # compute probe-scenario confirm:false
 
@@ -29,9 +30,15 @@ set informationfunction entropy_reversed
 set utilityfunction weighted_cost alpha:0.0
 
 # compute optimal scenarios
+print "ITERATION 0"
 compute optimal iteration-limit:0 confirm:false
+print "ITERATION 1"
 compute optimal iteration-limit:1 confirm:false
+print "ITERATION 2"
 compute optimal iteration-limit:2 confirm:false
+print "ITERATION 3"
 compute optimal iteration-limit:3 confirm:false
+print "ITERATION 4"
 compute optimal iteration-limit:4 confirm:false
+print "ITERATION 5"
 compute optimal iteration-limit:5 confirm:false

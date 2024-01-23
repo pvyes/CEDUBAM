@@ -17,6 +17,7 @@ domain\Strategies.class
 domain\NamedEvidence.class
 domain\Timer.class
 domain\InformationStateProbability.class
+domain\SortA_C.class
 domain\InformationEntropyReversed.class
 domain\ReportManager.class
 console\ConsoleDisplay.class
@@ -26,6 +27,7 @@ domain\Strategy.class
 domain\Networkfunctions.class
 domain\UtilityLinear.class
 domain\UtilityFunction.class
+domain\ProbeCombinations.class
 domain\Output.class
 domain\StrategyCheapest.class
 console\ConsoleSet.class
@@ -42,6 +44,7 @@ domain\QueryManager.class
 domain\SetCombinations.class
 domain\StrategyMeu.class
 domain\ConstantFinderLinear.class
+domain\StrategyFixed.class
 domain\CostVariance.class
 domain\InformationFunction.class
 console\ConsoleCompute.class

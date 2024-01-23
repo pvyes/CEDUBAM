@@ -8,12 +8,16 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import com.bayesserver.State;
+import com.bayesserver.Variable;
 
 import domain.Diagnoser;
 import domain.InformationResult;
 import domain.MEUResult;
+import domain.Networkfactory;
 import domain.Probe;
+import domain.ProbeCombinations;
 import domain.ProbeScenario;
+import domain.StrategyFixed;
 import domain.UtilityResult;
 import domain.UtilityWeightedCost;
 import domain.UtilityNames;
@@ -69,6 +73,9 @@ public class ConsoleCompute extends Console {
 				case "optimal":
 					ConsoleInOut.printMessage(getOptimalConstants(args, nextarg));
 					return true;
+				case "minimalcost":
+					ConsoleInOut.printMessage(getMinimalCost(args, nextarg));
+					return true;
 				default:
 					ConsoleInOut.printErrormessage("Command not found");
 			}
@@ -76,6 +83,25 @@ public class ConsoleCompute extends Console {
 		} else {
 			return true;
 		}
+	}
+
+	private String getMinimalCost(List<String> args, int nextarg) {
+		try {
+			List<Variable> vars = new ArrayList<Variable>();
+			for (Probe p: diagnoser.getProbes()) {
+				vars.add(p.getTarget());
+			}
+			List<State> coll = new ArrayList<State>();
+			Collection<Collection<State>> combis = ProbeCombinations.getStateProducts(vars, diagnoser.getProbes().size() , coll);
+			//combis.forEach(c -> System.out.println(c));
+			StrategyFixed sf = (StrategyFixed) diagnoser.getStrategy();
+			sf.setProbelist(null);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 
 	private String getOptimalConstants(List<String> args, int nextarg) {

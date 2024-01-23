@@ -291,6 +291,7 @@ public class ProbeScenario {
 		return str;
 	}
 	
+	
 	public String getOptimalScenarioReport(UtilityNames type) {
 		String str = "";
 		str += "Summary:\n";
@@ -335,8 +336,7 @@ public class ProbeScenario {
 		return str;*/
 	}
 
-
-	private String getUsedAlphaValues(ProbeSequence branch) {
+	public String getUsedAlphaValues(ProbeSequence branch) {
 		String str = "";
 		Collection<UtilityResult> urs = branch.getMeuresult().getMeuresults();
 		str += "[";
@@ -347,12 +347,16 @@ public class ProbeScenario {
 		return str += "]";
 	}
 	
-	private String getInfoprevalences(ProbeSequence branch) {
+	public String getInfoprevalences(ProbeSequence branch) {
 		String str = "";
 		Collection<UtilityResult> urs = branch.getMeuresult().getMeuresults();
 		for (UtilityResult ur: urs) {
 			str += ur.getInfoprevalences() + ",";
 		}			
 		return str;
+	}
+
+	public String makeOptimalReport(int exportdetail) {
+		return getOptimalScenarioReport(diagnoser.getUtilityfunction().getType());
 	}
 }
