@@ -1,4 +1,4 @@
-# cmd: run resources/scripts/test3_klad.txt
+# cmd: run resources/scripts/HeuristicCircuitValExp.txt
 
 set network 1
 set healthgroups component
@@ -8,7 +8,7 @@ set probes cost:50
 set informationfunction entropy_reversed
 set utilityfunction information_per_cost
 set strategy meu
-set report displaydetail:0 display:true export:true exportdetail:3 path:"D:\Documenten\OU\Graduation\voorbeeldsysteem\Results\Experiment\value-cost" filename:"L2" suffix:time
+set report displaydetail:0 display:true export:true exportdetail:3 path:"D:\Documenten\OU\Graduation\voorbeeldsysteem\Results\Experiment\Heuristic\CT_VALEXP_WC" filename:"circuit" suffix:time
 
 set probe "present.present.battery" cost:90
 set probe "present.plug.battery" cost:85
@@ -38,5 +38,18 @@ set probe "present.light.lamp 3" cost:20
 set probe "present.input plug.lamp 4" cost:30
 set probe "present.light.lamp 4" cost:20
 
-set utilityfunction Weighted_cost alpha:0
-compute probe-scenario infoprevalence:true confirm:false
+set strategy meu
+
+# information function entropy_reversed
+set informationfunction entropy_reversed
+
+# utility function
+set utilityfunction weighted_cost alpha:0.0
+
+# compute optimal scenarios
+compute optimal iteration-limit:0 confirm:false
+compute optimal iteration-limit:1 confirm:false
+compute optimal iteration-limit:2 confirm:false
+compute optimal iteration-limit:3 confirm:false
+compute optimal iteration-limit:4 confirm:false
+compute optimal iteration-limit:5 confirm:false

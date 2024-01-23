@@ -1,4 +1,4 @@
-# cmd: run resources/scripts/testH_Circuit.txt
+# cmd: run resources/scripts/ExpCircuitValExp.txt
 
 set network 1
 set healthgroups component
