@@ -8,6 +8,7 @@ domain\UtilityInformationPerCost.class
 domain\InformationEntropyDifference.class
 console\ConsoleInOut$Messagetype.class
 domain\CostVariance$CostVarianceType.class
+domain\StrategyGivenScenario.class
 domain\InformationType.class
 domain\EvidenceManager.class
 domain\StrategyRandom.class
@@ -49,6 +50,7 @@ domain\CostVariance.class
 domain\InformationFunction.class
 console\ConsoleCompute.class
 domain\GraphFunctions.class
+domain\MinimalCostCounter.class
 domain\Networkfactory.class
 domain\ProbeSequence.class
 domain\Diagnosis.class

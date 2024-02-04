@@ -7,6 +7,7 @@ D:\Documenten\programmeren\CEDUBAM\src\main\java\domain\GraphFunctions.java
 D:\Documenten\programmeren\CEDUBAM\src\main\java\domain\InformationEntropyDifference.java
 D:\Documenten\programmeren\CEDUBAM\src\main\java\domain\SetCombinations.java
 D:\Documenten\programmeren\CEDUBAM\src\main\java\domain\EvidenceManager.java
+D:\Documenten\programmeren\CEDUBAM\src\main\java\domain\MinimalCostCounter.java
 D:\Documenten\programmeren\CEDUBAM\src\main\java\domain\StrategyCheapest.java
 D:\Documenten\programmeren\CEDUBAM\src\main\java\domain\InformationFunctions.java
 D:\Documenten\programmeren\CEDUBAM\src\main\java\domain\StrategyName.java
@@ -23,6 +24,7 @@ D:\Documenten\programmeren\CEDUBAM\src\main\java\domain\StrategyFixed.java
 D:\Documenten\programmeren\CEDUBAM\src\main\java\domain\Diagnosis.java
 D:\Documenten\programmeren\CEDUBAM\src\main\java\domain\Pair.java
 D:\Documenten\programmeren\CEDUBAM\src\main\java\domain\StrategyRandom.java
+D:\Documenten\programmeren\CEDUBAM\src\main\java\domain\StrategyGivenScenario.java
 D:\Documenten\programmeren\CEDUBAM\src\main\java\domain\UtilityInformationPerCost.java
 D:\Documenten\programmeren\CEDUBAM\src\main\java\domain\UtilityResult.java
 D:\Documenten\programmeren\CEDUBAM\src\main\java\domain\StrategyMeu.java
