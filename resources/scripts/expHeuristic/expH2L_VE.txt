@@ -1,0 +1,58 @@
+# cmd: run resources/scripts/ExpHeuristic/expH2L_VE.txt
+
+set network 0
+set healthgroups connection
+set pdvs light1 off
+display diagnoses
+set probes cost:50
+set informationfunction entropy_reversed
+
+set report displaydetail:0 display:true export:true exportdetail:3 path:"resources\results\experiments\Heuristic\expH2L_VE" filename:"expH2L_VE" csvname:"expH2L_VE" suffix:time
+
+set probe battery cost:90
+set probe trigger1 cost:60
+set probe trigger2 cost:60
+set probe plug1 cost:40
+set probe plug2 cost:40
+set probe light2 cost:10
+
+# cheapest
+print "Strategy cheapest"
+set strategy cheapest
+compute probe-scenario confirm:false
+
+set strategy meu
+# Only information
+print "Only information WC"
+set utilityfunction weighted_cost alpha:0.0
+compute probe-scenario confirm:false
+
+print "Only information LU"
+set utilityfunction linear_utility a:0.0 s:90
+compute probe-scenario confirm:false
+
+# Optimal WC
+set utilityfunction weighted_cost alpha:0.0
+print "Optimal WC 1"
+compute optimal iteration-limit:1 confirm:false
+print "Optimal WC 2"
+compute optimal iteration-limit:2 confirm:false
+print "Optimal WC 3"
+compute optimal iteration-limit:3 confirm:false
+print "Optimal WC 4"
+compute optimal iteration-limit:4 confirm:false
+print "Optimal WC 5"
+compute optimal iteration-limit:5 confirm:false
+
+# Optimal LU
+set utilityfunction linear_utility a:0.0 s:90
+print "Optimal LU 1"
+compute optimal iteration-limit:1 confirm:false
+print "Optimal LU 2"
+compute optimal iteration-limit:2 confirm:false
+print "Optimal LU 3"
+compute optimal iteration-limit:3 confirm:false
+print "Optimal LU 4"
+compute optimal iteration-limit:4 confirm:false
+print "Optimal LU 5"
+compute optimal iteration-limit:5 confirm:false

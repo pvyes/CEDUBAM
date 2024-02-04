@@ -1,0 +1,8 @@
+# cmd: run resources/scripts/expValuableExp/expVE_all.txt
+
+run resources/scripts/expValuableExp/expVE_2L.txt
+run resources/scripts/expValuableExp/expVE_4L.txt
+run resources/scripts/expValuableExp/expVE_AO_S1.txt
+run resources/scripts/expValuableExp/expVE_AO_UN.txt
+run resources/scripts/expValuableExp/expVE_WP_CW.txt
+run resources/scripts/expValuableExp/expVE_WP_NW.txt

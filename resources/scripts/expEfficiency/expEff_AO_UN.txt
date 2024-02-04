@@ -1,0 +1,68 @@
+# cmd: run resources/scripts/expEfficiency/expEff_AO_UN.txt
+
+set network 3
+set healthgroups connection
+set pdvs or2 state_undefined
+set diagnoses
+set probes cost:50
+
+set probe I1 cost:80
+set probe I2 cost:70
+set probe I3 cost:60
+set probe OR1 cost:40
+set probe AND cost:30
+
+set report displaydetail:0 display:true export:true exportdetail:3 path:"resources\results\experiments\expEfficiency\expEff_AO_UN" filename:"expEff_AO_UN.txt" csvname:"expEff_AO_UN.csv" suffix:time
+
+# cheapest
+set strategy cheapest
+compute  probe-scenario confirm:false
+
+# information per cost
+set strategy meu
+set utilityfunction information_per_cost
+set informationfunction entropy_reversed
+compute  probe-scenario confirm:false
+set informationfunction entropy_difference
+compute  probe-scenario confirm:false
+
+# utility weighted cost
+set utilityfunction weighted_cost alpha:0.0
+set informationfunction entropy_reversed
+compute  probe-scenario confirm:false
+set informationfunction entropy_difference
+compute  probe-scenario confirm:false
+
+set informationfunction entropy_reversed
+set experiment infoprevalence:true
+compute  probe-scenario confirm:false
+set experiment infoprevalence:false
+compute  probe-scenario confirm:false
+set experiment infoprevalence:clear
+
+set informationfunction entropy_difference
+set experiment infoprevalence:true
+compute  probe-scenario confirm:false
+set experiment infoprevalence:false
+compute  probe-scenario confirm:false
+set experiment infoprevalence:clear
+
+# linear utility
+
+set utilityfunction linear_utility a:0.0 s:80.0
+set informationfunction entropy_reversed
+compute  probe-scenario confirm:false
+set informationfunction entropy_difference
+compute  probe-scenario confirm:false
+
+set utilityfunction linear_utility a:0.01 s:80.0
+set informationfunction entropy_reversed
+compute  probe-scenario confirm:false
+set informationfunction entropy_difference
+compute  probe-scenario confirm:false
+
+set utilityfunction linear_utility a:0.001 s:1.0
+set informationfunction entropy_reversed
+compute  probe-scenario confirm:false
+set informationfunction entropy_difference
+compute  probe-scenario confirm:false

@@ -1,0 +1,66 @@
+# cmd: run resources/scripts/expValuableExp/expVE_WP_CW.txt
+
+set network 2
+set healthgroups component
+set pdvs Outcome 'cold water'
+set diagnoses
+set probes cost:50
+set informationfunction entropy_reversed
+set utilityfunction information_per_cost
+set strategy meu
+set report displaydetail:0 display:true export:true exportdetail:3 path:"resources\results\experiments\expValuableExp\expVE_WP_CW" filename:"expVE_WP_CW" csvname:"expVE_WP_CW.csv" suffix:time
+
+set probe Water cost:10
+set probe Power cost:30
+set probe PipeColdToWarm cost:90
+set probe Setting cost:90
+set probe PipeWarm cost:90
+set probe PipeCold cost:90
+
+set strategy cheapest
+compute probe-scenario confirm:false
+
+# information per cost
+set strategy meu
+set utilityfunction information_per_cost
+set informationfunction entropy_reversed
+compute probe-scenario confirm:false
+set informationfunction entropy_difference
+compute probe-scenario confirm:false
+
+set utilityfunction weighted_cost alpha:0.0
+set informationfunction entropy_reversed
+compute probe-scenario confirm:false
+set informationfunction entropy_difference
+compute probe-scenario confirm:false
+
+set informationfunction entropy_reversed
+set experiment infoprevalence:true
+compute probe-scenario confirm:false
+set experiment infoprevalence:false
+compute probe-scenario confirm:false
+set experiment infoprevalence:clear
+set informationfunction entropy_difference
+set experiment infoprevalence:true
+compute probe-scenario confirm:false
+set experiment infoprevalence:false
+compute probe-scenario confirm:false
+set experiment infoprevalence:clear
+
+set utilityfunction linear_utility a:0.0 s:90.0
+set informationfunction entropy_reversed
+compute probe-scenario confirm:false
+set informationfunction entropy_difference
+compute probe-scenario confirm:false
+
+set utilityfunction linear_utility a:0.01 s:90.0
+set informationfunction entropy_reversed
+compute probe-scenario confirm:false
+set informationfunction entropy_difference
+compute probe-scenario confirm:false
+
+set utilityfunction linear_utility a:0.001 s:90.0
+set informationfunction entropy_reversed
+compute probe-scenario confirm:false
+set informationfunction entropy_difference
+compute probe-scenario confirm:false

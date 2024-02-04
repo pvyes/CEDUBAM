@@ -1,0 +1,8 @@
+# cmd: run resources/scripts/expEfficiency/expEff_all.txt
+
+run resources/scripts/expEfficiency/expEff_2L.txt
+run resources/scripts/expEfficiency/expEff_4L.txt
+run resources/scripts/expEfficiency/expEff_AO_S1.txt
+run resources/scripts/expEfficiency/expEff_AO_UN.txt
+run resources/scripts/expEfficiency/expEff_WP_CW.txt
+run resources/scripts/expEfficiency/expEff_WP_NW.txt
