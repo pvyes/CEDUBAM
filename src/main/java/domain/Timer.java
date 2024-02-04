@@ -4,7 +4,7 @@ public class Timer {
 	private long starttime = 0;
 	private long stoptime = 0;
 		
-	public double getStarttime() {
+	public long getStarttime() {
 		return starttime;
 	}
 
@@ -12,7 +12,7 @@ public class Timer {
 		starttime = System.nanoTime();
 	}
 
-	public double getStoptime() {
+	public long getStoptime() {
 		return stoptime;
 	}
 
@@ -20,7 +20,7 @@ public class Timer {
 		stoptime = System.nanoTime();
 	}
 
-	public double getElapsedNanoTime() {
+	public long getElapsedNanoTime() {
 		return stoptime - starttime;
 	}
 	
