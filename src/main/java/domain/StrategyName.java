@@ -4,6 +4,6 @@ public enum StrategyName {
 	CHEAPEST,
 	RANDOM,
 	MEU,
-	FIXED,
+	FIXED, 
 	GIVEN_SCENARIO
 }

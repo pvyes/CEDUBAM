@@ -13,6 +13,7 @@ import com.bayesserver.Variable;
 
 import domain.CostVariance.CostVarianceType;
 import domain.Diagnoser;
+import domain.Diagnosis;
 import domain.EvidenceMap;
 import domain.InformationFunction;
 import domain.InformationFunctions;
@@ -46,6 +47,8 @@ public class ConsoleSet extends Console{
 				return setEvidence(args, nextarg);
 			case "defaultcost": 
 				return setDefaultcost(args, nextarg);
+			case "diagnoses": 
+				return setDiagnoses(args, nextarg);
 			case "probes": 
 				return setProbes(args, nextarg);
 			case "probe": 
@@ -486,7 +489,20 @@ public class ConsoleSet extends Console{
 			ConsoleInOut.printErrormessage(e.getMessage());
 			return false;
 		}			
-	}	
+	}
+	
+	private boolean setDiagnoses(List<String> args, int nextarg) {
+		try {
+			List<Diagnosis> dgs = diagnoser.createPossibleDiagnoses();
+			String msg = "Diagnoses created: "+ CRLF;
+			msg += diagnoser.possiblediagnosesToString(dgs);
+			ConsoleInOut.printMessage(msg.substring(0, msg.length() * CRLF.length()));
+			return true;
+		} catch (Exception e) {
+			ConsoleInOut.printErrormessage(e.getMessage());
+			return false;
+		}			
+	}
 	
 	private boolean setProbe(List<String> args, int nextarg) {
 		try {

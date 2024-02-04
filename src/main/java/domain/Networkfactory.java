@@ -29,7 +29,7 @@ public class Networkfactory {
 	}
 
 	public static int getNetworkIndexByName(String name) {
-		for (var i = 0; i < Networkfactory.getAvailableNetworks().size(); i++) {
+		for (int i = 0; i < Networkfactory.getAvailableNetworks().size(); i++) {
 			String nw = Networkfactory.getAvailableNetworks().get(i).toLowerCase();
 			String ln = name.toLowerCase();
 			String regex = ".*"+ln+".*";

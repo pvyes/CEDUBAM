@@ -46,7 +46,7 @@ public class ConstantFinderLinear implements ConstantFinder {
 		Comparator<ProbeScenario> comp = new SortA_C();
 		scenarios.sort(comp);
 		//iterate
-		for (var i = 0; i < iterationlimit; i++) {
+		for (int i = 0; i < iterationlimit; i++) {
 			timer.start();
 			if  (timelimit < 0 || elapsedTime / 1000 < timelimit) {
 				double newA1 = (getA(scenarios.get(0)) + getA(scenarios.get(1))) / 2;

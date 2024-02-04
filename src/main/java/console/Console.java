@@ -58,7 +58,7 @@ public abstract class Console {
 	 */
 	public Map<String, String> getParameters(List<String> args) {
 		Map<String, String> result = new HashMap<String, String>();
-		for (var i = 0; i < args.size(); i++) {
+		for (int i = 0; i < args.size(); i++) {
 			int n = args.get(i).indexOf(":");
 			if (n != -1) {
 				String key = args.get(i).split(":", 2)[0];
@@ -100,7 +100,7 @@ public abstract class Console {
 	public Collection<Variable> getVariablesFromString(String string) {
 		Collection<Variable> result = new ArrayList<Variable>();
 		String[] varnames = string.split(STRING_SEPARATOR);
-		for (var i = 0; i < varnames.length; i++) {
+		for (int i = 0; i < varnames.length; i++) {
 			result.add(getVariable(varnames[i]));
 		}
 		return result;

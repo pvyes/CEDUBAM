@@ -164,7 +164,7 @@ public class Networkfunctions {
 		ArrayList<ArrayList<State>> initList = new ArrayList<ArrayList<State>>();
 		initList.add(new ArrayList<State>());
 		ArrayList<ArrayList<State>> list = buildStateList(vars.get(vars.size() - 1), initList);
-		for (var i = vars.size() - 2; i >= 0; i--) {
+		for (int i = vars.size() - 2; i >= 0; i--) {
 			list = buildStateList(vars.get(i), list);
 		}
 		return list;

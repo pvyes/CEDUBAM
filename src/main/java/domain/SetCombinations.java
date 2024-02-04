@@ -269,9 +269,9 @@ public class SetCombinations {
 
 	public static <T> Collection<Pair<List<T>, List<T>>> divideInTwoSets(List<T> list) {
 		Collection<Pair<List<T>, List<T>>> result = new HashSet<Pair<List<T>, List<T>>>();
-		for (var i = 1; i < list.size(); i++) {
+		for (int i = 1; i < list.size(); i++) {
 			List<List<T>> combis = generateCombinations(list, i);
-			for (var j = 0; j < combis.size(); j ++) {
+			for (int j = 0; j < combis.size(); j ++) {
 				List<T> first = combis.get(j);
 				List<T> second = new ArrayList<T>(list);
 				second.removeAll(first);

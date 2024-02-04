@@ -61,6 +61,7 @@ public class Diagnoser {
 		this.experiment = new Experiment(this);
 		this.healthgroups = new HashSet<NodeGroup>();
 		this.probes = new ArrayList<Probe>();
+		this.possiblediagnoses = new ArrayList<Diagnosis>();
 	}
 	
 	/** Network and variables **/
@@ -93,7 +94,7 @@ public class Diagnoser {
 	}
 	
 	private void clearPossibleDiagnoses() {
-		possiblediagnoses = null;	
+		possiblediagnoses.clear();
 	}
 
 	public Collection<Variable> getPdvs() {
@@ -260,10 +261,12 @@ public class Diagnoser {
 	/** diagnoses **/
 	
 	public List<Diagnosis> getPossibleDiagnoses() {
-		if (possiblediagnoses == null) {
-			Map<Variable, Map<State, Double>> pdvsEvidenceMap = getPdvsEvidence();
-			possiblediagnoses = setPossibleDiagnoses(system, pdvsEvidenceMap);
-		}
+		return possiblediagnoses;
+	}
+	
+	public List<Diagnosis> createPossibleDiagnoses() {
+		Map<Variable, Map<State, Double>> pdvsEvidenceMap = getPdvsEvidence();
+		possiblediagnoses = setPossibleDiagnoses(system, pdvsEvidenceMap);
 		return possiblediagnoses;
 	}
 	
@@ -749,16 +752,25 @@ public class Diagnoser {
 				str += "Probability could not be computed because of an error (" + e.getMessage() + ")." + "\n";
 			}
 		}
-		return str.substring(0, str.length() - 1);
+		if (str.length() > 0) {
+			str = str.substring(0, str.length() - 1);
+		} else {
+			str = "No diagnoses available";
+		}
+		return str;
 	}
 	
 	public String probesToString() {
-		String msg = "";
+		String str = "";
 		for (Probe p: this.getProbes()) {
-			msg += p.toString() + "\n";
+			str += p.toString() + "\n";
 		}
-		msg = msg.substring(0, msg.length() - 1);
-		return msg;
+		if (str.length() > 0) {
+			str = str.substring(0, str.length() - 1);
+		} else {
+			str = "No probes available";
+		}
+		return str;
 	}
 
 	public <T> Collection<Collection<T>> getRandomPolarDivision(Collection<T> els) {

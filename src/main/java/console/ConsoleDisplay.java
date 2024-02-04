@@ -141,7 +141,7 @@ public class ConsoleDisplay extends Console {
 	private String showReports() {
 		List<File> reports = diagnoser.getReports();
 		String str = "";
-		for (var i = 0; i < reports.size(); i++) {
+		for (int i = 0; i < reports.size(); i++) {
 			str += "[" + i + "] " + reports.get(i).getName() + CRLF; 
 		}
 		return str;

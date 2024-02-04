@@ -31,9 +31,9 @@ public class ConstantFinderWeightedCost implements ConstantFinder {
 		booleans.add(false);
 		Collection<List<Boolean>> infoprevalences = new ArrayList<List<Boolean>>();
 		infoprevalences.add(new ArrayList<Boolean>());
-		for (var i = 1; i <= iterationlimit; i++) {
-			infoprevalences.addAll(SetCombinations.makeCombinationsWithRepetion(booleans, i));
-		}
+		//for (int i = 1; i <= iterationlimit; i++) {
+		infoprevalences.addAll(SetCombinations.makeCombinationsWithRepetion(booleans, iterationlimit));
+		//}
 		//compute probescenarios
 		for (List<Boolean> ip: infoprevalences) {
 			timer.start();
@@ -74,8 +74,6 @@ public class ConstantFinderWeightedCost implements ConstantFinder {
 	}
 	
 	public void printOptimalScenarios(List<ProbeScenario> optimal) throws Exception {
-		for (ProbeScenario ps: optimal) {
-			diagnoser.getReportManager().exportOptimal(ps);
-		}
+		diagnoser.getReportManager().exportOptimal(optimal.get(0));
 	}
 }

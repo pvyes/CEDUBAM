@@ -13,11 +13,14 @@ import com.bayesserver.Variable;
 import domain.Diagnoser;
 import domain.InformationResult;
 import domain.MEUResult;
+import domain.MinimalCostCounter;
 import domain.Networkfactory;
 import domain.Probe;
 import domain.ProbeCombinations;
 import domain.ProbeScenario;
+import domain.ProbeSequence;
 import domain.StrategyFixed;
+import domain.StrategyGivenScenario;
 import domain.UtilityResult;
 import domain.UtilityWeightedCost;
 import domain.UtilityNames;
@@ -86,22 +89,48 @@ public class ConsoleCompute extends Console {
 	}
 
 	private String getMinimalCost(List<String> args, int nextarg) {
+		boolean go = true;
 		try {
-			List<Variable> vars = new ArrayList<Variable>();
-			for (Probe p: diagnoser.getProbes()) {
-				vars.add(p.getTarget());
+			Map<String, String> params = getParameters(args);
+			if (params.get("confirm") == null || params.get("confirm").toLowerCase().equals("true")) {
+				go = askConfirmation(CRLF + "This computation can take a while. Continue?");
 			}
-			List<State> coll = new ArrayList<State>();
-			Collection<Collection<State>> combis = ProbeCombinations.getStateProducts(vars, diagnoser.getProbes().size() , coll);
-			//combis.forEach(c -> System.out.println(c));
-			StrategyFixed sf = (StrategyFixed) diagnoser.getStrategy();
-			sf.setProbelist(null);
+			if (go) {
+			List<Probe> original = diagnoser.getProbes();
+			List<List<Probe>> orderedProbes = new ArrayList<List<Probe>>();
+			int i = 0;
+			MinimalCostCounter.clear();
+			for (Probe p: diagnoser.getProbes()) {
+				List<Probe> ordered = new ArrayList<Probe>();
+				if (original.get(i) == p) {
+					ordered.add(p);
+				}
+				for (int j = 0; j < original.size(); j++ ) {
+					if (j != i) {
+						ordered.add(original.get(j));
+					}
+				}
+				orderedProbes.add(ordered);
+				i++;
+			}
+			//Work probe per probe
+			diagnoser.setStrategy(new StrategyGivenScenario(diagnoser));
+			for (List<Probe> ordered: orderedProbes) {
+				List<List<List<State>>> allscenariosresult = new ArrayList<List<List<State>>>();
+				ProbeCombinations.makeAllScenarios(ordered, allscenariosresult, true, diagnoser);
+			}
+			String msg =  CRLF +  "Minimal cost" + CRLF;
+			msg += "*************" + CRLF;
+			msg += "Minimal cost = " + MinimalCostCounter.getMin();
+			msg += " for " + MinimalCostCounter.getNrOfMinProbescenarios() +" scenarios of " + MinimalCostCounter.getNrOfscenarios() + CRLF + CRLF;
+			msg += MinimalCostCounter.getProbeScenario().makeMinimalReport();			
+			return msg;			 
+			} else {
+				return "Command aborted.";
+			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return "The minimal cost could not be od.\n" + e.getMessage();
 		}
-		
-		return null;
 	}
 
 	private String getOptimalConstants(List<String> args, int nextarg) {
@@ -119,7 +148,7 @@ public class ConsoleCompute extends Console {
 			}
 			Collection<ProbeScenario> pss = diagnoser.getConstantfinder().getOptimalScenarios(itlimit, tlimit);
 			String msg = "Optimal probescenarios (#="+ pss.size() + "):" + CRLF;
-			var i = 0;
+			int i = 0;
 			for (ProbeScenario ps: pss)  {
 				msg += "[" + i++ + "]: " + ps.getOptimalScenarioReport(diagnoser.getUtilityfunction().getType()) + CRLF;
 			}

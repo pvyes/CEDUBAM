@@ -72,7 +72,7 @@ public class ConsoleInOut {
 	}
 	
 	private static void printVariables(List<Variable> vars) {
-		for (var i = 0; i < vars.size(); i++) {
+		for (int i = 0; i < vars.size(); i++) {
 			System.out.println("[" +i + "] " + vars.get(i).getName());
 		}
 	}
@@ -127,3 +127,4 @@ public class ConsoleInOut {
 		}
 	}
 }
+

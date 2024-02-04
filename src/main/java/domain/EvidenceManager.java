@@ -145,7 +145,7 @@ public class EvidenceManager {
 	
 	public List<EvidenceMap> getEvidences(boolean active) {
 		List<EvidenceMap> result = new ArrayList<EvidenceMap>();
-		for (var i = 0; i < evidences.size(); i++) {
+		for (int i = 0; i < evidences.size(); i++) {
 			EvidenceMap em = evidences.get(i);
 			if (em.isActivated() == active) {
 				result.add(em);

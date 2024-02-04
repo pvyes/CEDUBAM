@@ -10,9 +10,9 @@ import java.util.Date;
 import java.util.List;
 
 public class ReportManager {
-	public final String DEFAULT_EXPORT_FOLDER = "D:\\Documenten\\OU\\Graduation\\voorbeeldsysteem\\Results";
-	public final String DEFAULT_FILENAME = "CEDBAM_report.txt";
-	public final String DEFAULT_CSVNAME = "CEDBAM_report.csv";
+	public final String DEFAULT_EXPORT_FOLDER = "";
+	public final String DEFAULT_FILENAME = "CEDUBAM_report.txt";
+	public final String DEFAULT_CSVNAME = "CEDUBAM_report.csv";
 	
 	String[] csvkeys = {"filename","pdvs","costvariance","strategy","information","utility","expectedcost"};
 	String[] csvkeysOptimal = {"filename","pdvs","strategy","information","utility","constants","infoprevalences","expectedcost"};
@@ -228,7 +228,7 @@ public class ReportManager {
 	public List<File> getReportList() {
 		List<File> reports = new ArrayList<File>();
 	    File[] files = new File(folder).listFiles();
-	    for (var i = 0; i < files.length; i++) {
+	    for (int i = 0; i < files.length; i++) {
 	    	File f = files[i];
 	    	if (!f.isDirectory()) {
 	    		reports.add(f);
@@ -259,7 +259,7 @@ public class ReportManager {
 			int index = Integer.parseInt(arg);
 			f = list.get(index);
 		} else {
-			for (var i = 0; i < list.size(); i++) {
+			for (int i = 0; i < list.size(); i++) {
 				if (list.get(i).getName().equals(arg)) {
 					f = list.get(i);
 					i = list.size();

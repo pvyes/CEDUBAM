@@ -21,8 +21,6 @@ public class ProbeSequence {
 	}
 
 	private Diagnoser diagnoser;
-	//private Evidence probeEvidence;
-	//private List<SProbe> usedProbes;
 	private State currentstate;
 	private List<State> usedStates;
 	private List<EvidenceMap> baseEvidence;

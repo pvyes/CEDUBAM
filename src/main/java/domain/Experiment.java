@@ -64,7 +64,7 @@ public class Experiment {
 
 	private void runExperiment() throws Exception {
 		if (diagnoser.getCostvariance().getType() == CostVariance.CostVarianceType.EQUAL) {
-			for (var i = 0; i < counter; i++) {
+			for (int i = 0; i < counter; i++) {
 				diagnoser.runProbeSequencer();
 			}
 		}
@@ -77,7 +77,7 @@ public class Experiment {
 		}
 		//if counter is given 
 		if (diagnoser.getCostvariance().getType() == CostVariance.CostVarianceType.SCATTERED && !allCombinations) {
-			for (var i = 0; i < counter; i++) {
+			for (int i = 0; i < counter; i++) {
 				diagnoser.getCostvariance().setRandomScatteredCosts();
 				diagnoser.runProbeSequencer();
 			}
@@ -90,7 +90,7 @@ public class Experiment {
 			}
 		}
 		if (diagnoser.getCostvariance().getType() == CostVariance.CostVarianceType.POLAR  && !allCombinations) {
-			for (var i = 0; i < counter; i++) {
+			for (int i = 0; i < counter; i++) {
 				diagnoser.getCostvariance().setRandomPolarCosts();
 				diagnoser.runProbeSequencer();
 			}
@@ -101,7 +101,7 @@ public class Experiment {
 		String str = "";
 		if (diagnoser.getUtilityfunction().getType() == UtilityNames.WEIGHTED_COST) {
 			str += "InfoProvalences: ";
-			for (var i = 0; i < infoPrevalences.size(); i++) {
+			for (int i = 0; i < infoPrevalences.size(); i++) {
 				str += "[" + i + "] " + infoPrevalences.get(i) + ", ";
 			}
 			str = str.substring(0, str.length() - 2);

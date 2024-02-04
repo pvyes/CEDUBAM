@@ -76,7 +76,7 @@ public class ProbeSequencer {
 			}
 			unfinishedbranches = scenario.getUnfinishedBranches();
 		}
-		return scenario;			
+ 		return scenario;			
 	}
 
 	private Collection<ProbeSequence> getSequenceResult(ProbeSequence ps) throws Exception {

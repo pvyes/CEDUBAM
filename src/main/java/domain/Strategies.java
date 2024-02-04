@@ -10,6 +10,8 @@ public class Strategies {
 		strategies.add(new StrategyMeu(diagnoser));
 		strategies.add(new StrategyCheapest(diagnoser));
 		strategies.add(new StrategyRandom(diagnoser));
+		strategies.add(new StrategyFixed(diagnoser));
+		strategies.add(new StrategyGivenScenario(diagnoser));
 	}
 
 	public static List<Strategy> getStrategies(Diagnoser diagnoser) {

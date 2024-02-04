@@ -41,24 +41,6 @@ public class ProbeCombinations extends SetCombinations {
 	 * Makes a set collections of the states of the given variables, containing nrOfElements states per collection. 
 	 * Of each variable at most one state is included in the collection.
 	 */
-	private static Collection<Collection<State>> getStateProducts(Collection<Variable> vars, int nrOfElements, Collection<Collection<State>> pds) {
-		Collection<Collection<State>> result = new HashSet<Collection<State>>();
-		Collection<Collection<State>> products = getStateProducts(vars, nrOfElements);
-		for (Collection<State> resultlist: products) {
-			result.add(resultlist);
-			for (Collection<State> excList: pds) {
-				if (resultlist.containsAll(excList)) {
-					result.remove(resultlist);
-				}
-			}
-		}
-		return result;
-	}
-	
-	/*
-	 * Makes a set collections of the states of the given variables, containing nrOfElements states per collection. 
-	 * Of each variable at most one state is included in the collection.
-	 */
 	private static Collection<Collection<State>> getStateProducts(Collection<Variable> vars, int nrOfElements) {
 		Collection<Collection<State>> result = new HashSet<Collection<State>>();
 		List<List<State>> product = new ArrayList<List<State>>(); 
@@ -82,15 +64,15 @@ public class ProbeCombinations extends SetCombinations {
 	
 
 	//a scenario holds one possible flow of probes. The elements are particular lists of states 
-	private static List<List<List<State>>> makeAllScenarios(List<Probe> probes, List<List<List<State>>> scenarios, boolean onlyfirstprobe) {
+	public static List<List<List<State>>> makeAllScenarios(List<Probe> probes, List<List<List<State>>> scenarios, boolean onlyfirstprobe, Diagnoser diagnoser) throws Exception {
 		List<List<List<State>>> allscenarios = new ArrayList<List<List<State>>>();
 		int max = probes.size();
 		if (onlyfirstprobe) {
 			max = 1;
 		}		
-		for (var i = 0; i < max; i++) {
+		for (int i = 0; i < max; i++) {
 			Probe p = probes.get(i);
-			System.out.println("Probe = " + p);
+			System.out.println("Computing with first probe = " + p + "\n");
 			//set start of scenario
 			List<List<State>> scenario = new ArrayList<List<State>>();
 			for (State s: p.getTarget().getStates()) {
@@ -101,59 +83,101 @@ public class ProbeCombinations extends SetCombinations {
 			scenarios.add(scenario);
 			List<Probe> tmpprobes = new ArrayList<Probe>(probes);
 			tmpprobes.remove(p);
-			for (var j= 1; j < probes.size(); j++) {
-				//scenarios = makeScenarios(p, scenario, probes, scenarios);
-				System.out.println("i=" + i + "; #scenarios = " + scenarios.size());
+			for (int j= 1; j < probes.size()-1; j++) {
+				scenarios = makeScenarios(p, scenario, probes, scenarios);
 			}
-			allscenarios.addAll(scenarios);
+			for (List<List<State>> sc: scenarios) {
+				List<List<List<State>>> newScenario = makeNewScenario(sc, probes, new ArrayList<List<List<State>>>());
+				StrategyGivenScenario sf = (StrategyGivenScenario) diagnoser.getStrategy();
+				sf.setSequenceScenario(newScenario.get(0));
+				//System.out.println(newScenario.get(0));
+				List<ProbeScenario> result = diagnoser.runProbeSequencer();
+				for (ProbeScenario r: result) {
+					MinimalCostCounter.setMincost(r);
+				}
+			}
+			System.out.println("Result after first probe = " + p + ": minimal cost = " + MinimalCostCounter.getMin() + "for " + MinimalCostCounter.getNrOfMinProbescenarios() + " out of " + MinimalCostCounter.getNrOfscenarios() +  " scenarios.");
+			System.out.println("Probescenario: \n" + MinimalCostCounter.getProbeScenario().makeMinimalReport());
+		}
+		//System.out.println("#scenarios = " + allscenarios.size());
+		return allscenarios;
+	}
+	
+	private static List<List<List<State>>> makeScenarios(Probe probe, List<List<State>> scenario, List<Probe> probes, List<List<List<State>>> scenarios) {
+		List<List<List<State>>> allscenarios = new ArrayList<List<List<State>>>();
+		List<List<List<State>>> tmpscenarios = new ArrayList<List<List<State>>>();
+		tmpscenarios.addAll(scenarios);
+		for (List<List<State>> scene: tmpscenarios) {
+			allscenarios.addAll(makeNewScenario(scene, probes, scenarios));
 		}
 		return allscenarios;
 	}
 	
-	//TODO When choosing the probe?
-/*	private static void makeScenario(Network system, Collection<Variable> probes, Collection<Collection<State>> pds, Map<Variable, Map<State, Double>> baseEvidenceMap, ProbeScenarioSimplified allScenarios, ProbeSequenceSimplified oldseq) {
-		ProbeScenario result = new ProbeScenario();
-		if (oldseq == null) {
-			oldseq = new ProbeSequenceSimplified(system, probes, pds, baseEvidenceMap);
-		}
-		result.getBranches().addAll(makeNewSequences(oldseq).getBranches());
-		
-		List<ProbeSequenceSimplified> newSequences = result.getUnfinishedSequences();
-		if (newSequences.size() > 0) {
-			for (ProbeSequenceSimplified seq: newSequences) {
-				makeScenario(system, seq.getRemainingProbes(), seq.getRemainingDiagnoses(), seq.getEvidenceMap(), allScenarios, seq);
+	private static List<List<List<State>>> makeNewScenario(List<List<State>> scenario, List<Probe> probes, List<List<List<State>>> scenarios) {
+		List<List<List<State>>> allscenarios = new ArrayList<List<List<State>>>();
+		//set start of scenario
+		List<List<State>> result = null;
+		scenarios.clear();
+		boolean lastlist = false;
+		for (int i = 0; i < scenario.size(); i++) {
+			if (i == scenario.size() - 1) {
+				lastlist = true;
 			}
-		}
-		allScenarios.getBranches().addAll(result.getBranches());
-	}
-/*	
-	//a scenario holds one possible flow of probes. The elements are particular lists of states 
-		private static List<List<List<State>>> makeAllScenarios(List<Variable> probes, List<List<List<State>>> scenarios, boolean onlyfirstprobe) {
-			List<List<List<State>>> allscenarios = new ArrayList<List<List<State>>>();
-			int max = probes.size();
-			if (onlyfirstprobe) {
-				max = 1;
-			}		
-			for (var i = 0; i < max; i++) {
-				Variable p = probes.get(i);
-				System.out.println("Probe = " + p);
-				//set start of scenario
-				List<List<State>> scenario = new ArrayList<List<State>>();
-				for (State s: p.getStates()) {
-					List<State> lst = new ArrayList<State>();
-					lst.add(s);
-					scenario.add(lst);
+			List<State> list1 = scenario.get(i);
+			List<List<List<State>>> tmpscenarios = new ArrayList<List<List<State>>>();
+			List<Probe> usedProbes = getUsedProbes(probes, list1);
+			List<Probe> restprobes = new ArrayList<Probe>(probes);
+			restprobes.removeAll(usedProbes);
+			int round = 0;
+			for (Probe p: restprobes) {
+				List<List<State>> newscenario = new ArrayList<List<State>>();
+				List<State> list2 = p.getTarget().getStates();
+				result = SetCombinations.addElementsOfsecondToFirst(list1, list2);
+				newscenario = makeList(result);
+				//first time (= first state) make a scenario for the first state
+				if (i == 0) {
+					tmpscenarios.add(round, new ArrayList<List<State>>());
+					tmpscenarios.get(round).addAll(newscenario);
+				} else {
+					//add this scenarioelement to all existing ones and make newscenarios
+					for (List<List<State>> scene: scenarios) {
+						List<List<State>> newscene = new ArrayList<List<State>>();
+						newscene.addAll(scene);
+						newscene.addAll(newscenario);
+						tmpscenarios.add(newscene);						
+					}
 				}
-				scenarios.add(scenario);
-				List<Variable> tmpprobes = new ArrayList<Variable>(probes);
-				tmpprobes.remove(p);
-				for (var j= 1; j < probes.size(); j++) {
-					scenarios = makeScenarios(p, scenario, probes, scenarios);
-					System.out.println("i=" + i + "; #scenarios = " + scenarios.size());
-				}
+				round++;
+			}			
+			scenarios.clear();
+			scenarios.addAll(tmpscenarios);
+			if (lastlist) {
 				allscenarios.addAll(scenarios);
 			}
-			return allscenarios;
 		}
-		*/
+		System.out.print(".");
+		return allscenarios;
+	}
+	
+	private static List<Probe> getUsedProbes(List<Probe> probes, List<State> scenarioElement) {
+		List<Probe> usedprobes = new ArrayList<Probe>();
+		for (Probe p: probes) {
+			List<State> states = p.getTarget().getStates();
+			for (State s: scenarioElement) {
+				if (states.contains(s)) {
+					usedprobes.add(p);
+				}
+			}
+		}
+		return usedprobes;
+	}
+	
+	private static <T> List<List<T>> makeList(Collection<List<T>> collection) {
+		List<List<T>> tmp = new ArrayList<List<T>>();
+		for (Collection<T> el: collection) {
+			List<T> list = new ArrayList<T>(el);
+			tmp.add(list);
+		}
+		return tmp;
+	}
 }
