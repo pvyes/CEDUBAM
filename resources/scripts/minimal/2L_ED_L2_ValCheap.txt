@@ -3,7 +3,7 @@ set network D:\Documenten\programmeren\CEDUBAM\resources\systems\test.bayes
 set healthgroups connection
 display variables type:health
 set pdvs light2 off
-display diagnoses
+set diagnoses
 set probes cost:50
 
 # costs: most valuable = cheap
