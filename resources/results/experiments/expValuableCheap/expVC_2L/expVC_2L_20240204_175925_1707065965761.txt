@@ -1,0 +1,1206 @@
+*********************
+Probe Scenario Report
+*********************
+
+Settings:
+*********
+System: twolights-redundant
+Problem defining variables: [Light1]
+Problem defining states: {Light1={on=0.0, off=1.0}}
+Informationfunction: ENTROPY_REVERSED
+Utility function: Name: INFORMATION_PER_COST, c = 1.0
+
+Strategy: MEU
+
+Possible diagnoses:
+*******************
+[0] [Health_Light1:broken]
+[1] [Battery:absent]
+[2] [Health_Plug1:broken, Health_Plug2:broken]
+[3] [Health_Plug1:broken, Trigger2:off]
+[4] [Health_Plug2:broken, Trigger1:off]
+[5] [Trigger1:off, Trigger2:off]
+
+Probes:
+*******
+Battery-probe; target: Battery; cost: 10.0; enabled: true
+Trigger1-probe; target: Trigger1; cost: 40.0; enabled: true
+Plug1-probe; target: Plug1; cost: 60.0; enabled: true
+Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true
+Plug2-probe; target: Plug2; cost: 60.0; enabled: true
+Light2-probe; target: Light2; cost: 90.0; enabled: true
+
+Summary:
+*******
+Expected cost: 35.10083916732348
+
+Finished Branches (9):
+**********************
+[0] status: DIAGNOSIS_FOUND; diagnoses found:[[1] [Battery:absent]]
+probe states: [Battery:absent]
+probability: 0.7418053688163568
+
+[1] status: DIAGNOSIS_FOUND; diagnoses found:[[5] [Trigger1:off, Trigger2:off]]
+probe states: [Battery:present, Trigger1:off, Trigger2:off]
+probability: 0.18545134220408926
+
+[2] status: DIAGNOSIS_FOUND; diagnoses found:[[0] [Health_Light1:broken]]
+probe states: [Battery:present, Trigger1:on, Trigger2:on, Plug1:yes]
+probability: 0.017617877509388476
+
+[3] status: DIAGNOSIS_FOUND; diagnoses found:[[0] [Health_Light1:broken]]
+probe states: [Battery:present, Trigger1:on, Trigger2:off, Plug1:yes]
+probability: 0.01761787750938848
+
+[4] status: DIAGNOSIS_FOUND; diagnoses found:[[3] [Health_Plug1:broken, Trigger2:off]]
+probe states: [Battery:present, Trigger1:on, Trigger2:off, Plug1:no]
+probability: 0.009272567110204464
+
+[5] status: DIAGNOSIS_FOUND; diagnoses found:[[0] [Health_Light1:broken]]
+probe states: [Battery:present, Trigger1:off, Trigger2:on, Plug2:yes]
+probability: 0.01761787750938848
+
+[6] status: DIAGNOSIS_FOUND; diagnoses found:[[4] [Health_Plug2:broken, Trigger1:off]]
+probe states: [Battery:present, Trigger1:off, Trigger2:on, Plug2:no]
+probability: 0.009272567110204464
+
+[7] status: DIAGNOSIS_FOUND; diagnoses found:[[0] [Health_Light1:broken]]
+probe states: [Battery:present, Trigger1:on, Trigger2:on, Plug1:no, Plug2:yes]
+probability: 8.80893875469424E-4
+
+[8] status: DIAGNOSIS_FOUND; diagnoses found:[[2] [Health_Plug1:broken, Health_Plug2:broken]]
+probe states: [Battery:present, Trigger1:on, Trigger2:on, Plug1:no, Plug2:no]
+probability: 4.636283555102232E-4
+
+
+
+***************************
+Details of the calculations
+***************************
+
+
+Branch 0
+***********
+[0] status: DIAGNOSIS_FOUND; diagnoses found:[[1] [Battery:absent]]
+probe states: [Battery:absent]
+probability: 0.7418053688163568
+
+Maximum expected utility
+MEU = 0.04349486222447117 for probe(s) [Battery-probe; target: Battery; cost: 10.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Trigger1-probe: 0.005939728377490619
+	Light2-probe: 0.0016487403278477798
+	Plug2-probe: 0.0025403993413636887
+	Trigger2-probe: 0.005939728377490619
+	Battery-probe: 0.04349486222447117
+	Plug1-probe: 0.0025403993413636887
+
+Utilityresults for the MEU probe(s):
+	probe: Battery; probestate; null; diagnosis: null; expected information: 0.43494862224471176
+	diagnosis probability: 0.0, expected utility: 0.04349486222447117
+
+	probe: Battery; probestate; null; diagnosis: null; expected information: 0.43494862224471176
+	diagnosis probability: 0.0, expected utility: 0.04349486222447117
+
+Informationresults:
+	probe: Trigger1-probe; target: Trigger1; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.23758913509962473
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.1483866295063002
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.15242396048182133
+	probe: Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.23758913509962473
+	probe: Battery-probe; target: Battery; cost: 10.0; enabled: true; probestate; null; diagnosis: null; information: 0.43494862224471176
+	probe: Plug1-probe; target: Plug1; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.15242396048182133
+
+
+History of the MEUs
+-------------------
+
+[0] MEU History
+Maximum expected utility
+MEU = 0.04349486222447117 for probe(s) [Battery-probe; target: Battery; cost: 10.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Trigger1-probe: 0.005939728377490619
+	Light2-probe: 0.0016487403278477798
+	Plug2-probe: 0.0025403993413636887
+	Trigger2-probe: 0.005939728377490619
+	Battery-probe: 0.04349486222447117
+	Plug1-probe: 0.0025403993413636887
+
+Utilityresults for the MEU probe(s):
+	probe: Battery; probestate; null; diagnosis: null; expected information: 0.43494862224471176
+	diagnosis probability: 0.0, expected utility: 0.04349486222447117
+
+	probe: Battery; probestate; null; diagnosis: null; expected information: 0.43494862224471176
+	diagnosis probability: 0.0, expected utility: 0.04349486222447117
+
+Informationresults:
+	probe: Trigger1-probe; target: Trigger1; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.23758913509962473
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.1483866295063002
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.15242396048182133
+	probe: Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.23758913509962473
+	probe: Battery-probe; target: Battery; cost: 10.0; enabled: true; probestate; null; diagnosis: null; information: 0.43494862224471176
+	probe: Plug1-probe; target: Plug1; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.15242396048182133
+
+
+Branch 1
+***********
+[1] status: DIAGNOSIS_FOUND; diagnoses found:[[5] [Trigger1:off, Trigger2:off]]
+probe states: [Battery:present, Trigger1:off, Trigger2:off]
+probability: 0.18545134220408926
+
+Maximum expected utility
+MEU = 0.003715490612325131 for probe(s) [Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Light2-probe: 6.590976896649348E-4
+	Plug2-probe: 0.0010100916061621735
+	Trigger2-probe: 0.003715490612325131
+
+Utilityresults for the MEU probe(s):
+	probe: Trigger2; probestate; null; diagnosis: null; expected information: 0.14861962449300523
+	diagnosis probability: 0.0, expected utility: 0.003715490612325131
+
+	probe: Trigger2; probestate; null; diagnosis: null; expected information: 0.14861962449300523
+	diagnosis probability: 0.0, expected utility: 0.003715490612325131
+
+Informationresults:
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.05931879206984413
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.060605496369730415
+	probe: Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.14861962449300523
+
+
+History of the MEUs
+-------------------
+
+[0] MEU History
+Maximum expected utility
+MEU = 0.04349486222447117 for probe(s) [Battery-probe; target: Battery; cost: 10.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Trigger1-probe: 0.005939728377490619
+	Light2-probe: 0.0016487403278477798
+	Plug2-probe: 0.0025403993413636887
+	Trigger2-probe: 0.005939728377490619
+	Battery-probe: 0.04349486222447117
+	Plug1-probe: 0.0025403993413636887
+
+Utilityresults for the MEU probe(s):
+	probe: Battery; probestate; null; diagnosis: null; expected information: 0.43494862224471176
+	diagnosis probability: 0.0, expected utility: 0.04349486222447117
+
+	probe: Battery; probestate; null; diagnosis: null; expected information: 0.43494862224471176
+	diagnosis probability: 0.0, expected utility: 0.04349486222447117
+
+Informationresults:
+	probe: Trigger1-probe; target: Trigger1; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.23758913509962473
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.1483866295063002
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.15242396048182133
+	probe: Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.23758913509962473
+	probe: Battery-probe; target: Battery; cost: 10.0; enabled: true; probestate; null; diagnosis: null; information: 0.43494862224471176
+	probe: Plug1-probe; target: Plug1; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.15242396048182133
+
+
+[1] MEU History
+Maximum expected utility
+MEU = 0.003715490612325131 for probe(s) [Trigger1-probe; target: Trigger1; cost: 40.0; enabled: true, Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Trigger1-probe: 0.003715490612325131
+	Light2-probe: 6.590976896649348E-4
+	Plug2-probe: 0.0010100916061621735
+	Trigger2-probe: 0.003715490612325131
+	Plug1-probe: 0.0010100916061621735
+
+Utilityresults for the MEU probe(s):
+	probe: Trigger1; probestate; null; diagnosis: null; expected information: 0.14861962449300523
+	diagnosis probability: 0.0, expected utility: 0.003715490612325131
+
+	probe: Trigger1; probestate; null; diagnosis: null; expected information: 0.14861962449300523
+	diagnosis probability: 0.0, expected utility: 0.003715490612325131
+
+	probe: Trigger2; probestate; null; diagnosis: null; expected information: 0.14861962449300523
+	diagnosis probability: 0.0, expected utility: 0.003715490612325131
+
+Informationresults:
+	probe: Trigger1-probe; target: Trigger1; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.14861962449300523
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.05931879206984413
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.060605496369730415
+	probe: Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.14861962449300523
+	probe: Plug1-probe; target: Plug1; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.060605496369730415
+
+
+[2] MEU History
+Maximum expected utility
+MEU = 0.003715490612325131 for probe(s) [Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Light2-probe: 6.590976896649348E-4
+	Plug2-probe: 0.0010100916061621735
+	Trigger2-probe: 0.003715490612325131
+
+Utilityresults for the MEU probe(s):
+	probe: Trigger2; probestate; null; diagnosis: null; expected information: 0.14861962449300523
+	diagnosis probability: 0.0, expected utility: 0.003715490612325131
+
+	probe: Trigger2; probestate; null; diagnosis: null; expected information: 0.14861962449300523
+	diagnosis probability: 0.0, expected utility: 0.003715490612325131
+
+Informationresults:
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.05931879206984413
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.060605496369730415
+	probe: Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.14861962449300523
+
+
+Branch 2
+***********
+[2] status: DIAGNOSIS_FOUND; diagnoses found:[[0] [Health_Light1:broken]]
+probe states: [Battery:present, Trigger1:on, Trigger2:on, Plug1:yes]
+probability: 0.017617877509388476
+
+Maximum expected utility
+MEU = 6.354417181742865E-4 for probe(s) [Plug2-probe; target: Plug2; cost: 60.0; enabled: true, Plug1-probe; target: Plug1; cost: 60.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Light2-probe: 4.147008422253381E-4
+	Plug2-probe: 6.354417181742865E-4
+	Plug1-probe: 6.354417181742865E-4
+
+Utilityresults for the MEU probe(s):
+	probe: Plug2; probestate; null; diagnosis: null; expected information: 0.03812650309045719
+	diagnosis probability: 0.0, expected utility: 6.354417181742865E-4
+
+	probe: Plug2; probestate; null; diagnosis: null; expected information: 0.03812650309045719
+	diagnosis probability: 0.0, expected utility: 6.354417181742865E-4
+
+	probe: Plug1; probestate; null; diagnosis: null; expected information: 0.03812650309045719
+	diagnosis probability: 0.0, expected utility: 6.354417181742865E-4
+
+Informationresults:
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.03732307580028043
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.03812650309045719
+	probe: Plug1-probe; target: Plug1; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.03812650309045719
+
+
+History of the MEUs
+-------------------
+
+[0] MEU History
+Maximum expected utility
+MEU = 0.04349486222447117 for probe(s) [Battery-probe; target: Battery; cost: 10.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Trigger1-probe: 0.005939728377490619
+	Light2-probe: 0.0016487403278477798
+	Plug2-probe: 0.0025403993413636887
+	Trigger2-probe: 0.005939728377490619
+	Battery-probe: 0.04349486222447117
+	Plug1-probe: 0.0025403993413636887
+
+Utilityresults for the MEU probe(s):
+	probe: Battery; probestate; null; diagnosis: null; expected information: 0.43494862224471176
+	diagnosis probability: 0.0, expected utility: 0.04349486222447117
+
+	probe: Battery; probestate; null; diagnosis: null; expected information: 0.43494862224471176
+	diagnosis probability: 0.0, expected utility: 0.04349486222447117
+
+Informationresults:
+	probe: Trigger1-probe; target: Trigger1; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.23758913509962473
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.1483866295063002
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.15242396048182133
+	probe: Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.23758913509962473
+	probe: Battery-probe; target: Battery; cost: 10.0; enabled: true; probestate; null; diagnosis: null; information: 0.43494862224471176
+	probe: Plug1-probe; target: Plug1; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.15242396048182133
+
+
+[1] MEU History
+Maximum expected utility
+MEU = 0.003715490612325131 for probe(s) [Trigger1-probe; target: Trigger1; cost: 40.0; enabled: true, Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Trigger1-probe: 0.003715490612325131
+	Light2-probe: 6.590976896649348E-4
+	Plug2-probe: 0.0010100916061621735
+	Trigger2-probe: 0.003715490612325131
+	Plug1-probe: 0.0010100916061621735
+
+Utilityresults for the MEU probe(s):
+	probe: Trigger1; probestate; null; diagnosis: null; expected information: 0.14861962449300523
+	diagnosis probability: 0.0, expected utility: 0.003715490612325131
+
+	probe: Trigger1; probestate; null; diagnosis: null; expected information: 0.14861962449300523
+	diagnosis probability: 0.0, expected utility: 0.003715490612325131
+
+	probe: Trigger2; probestate; null; diagnosis: null; expected information: 0.14861962449300523
+	diagnosis probability: 0.0, expected utility: 0.003715490612325131
+
+Informationresults:
+	probe: Trigger1-probe; target: Trigger1; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.14861962449300523
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.05931879206984413
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.060605496369730415
+	probe: Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.14861962449300523
+	probe: Plug1-probe; target: Plug1; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.060605496369730415
+
+
+[2] MEU History
+Maximum expected utility
+MEU = 0.0011586853393701314 for probe(s) [Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Light2-probe: 4.910393548849531E-4
+	Plug2-probe: 7.506761388108118E-4
+	Trigger2-probe: 0.0011586853393701314
+	Plug1-probe: 7.441848699614811E-4
+
+Utilityresults for the MEU probe(s):
+	probe: Trigger2; probestate; null; diagnosis: null; expected information: 0.046347413574805256
+	diagnosis probability: 0.0, expected utility: 0.0011586853393701314
+
+	probe: Trigger2; probestate; null; diagnosis: null; expected information: 0.046347413574805256
+	diagnosis probability: 0.0, expected utility: 0.0011586853393701314
+
+Informationresults:
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.04419354193964578
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.04504056832864871
+	probe: Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.046347413574805256
+	probe: Plug1-probe; target: Plug1; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.04465109219768886
+
+
+[3] MEU History
+Maximum expected utility
+MEU = 6.354417181742865E-4 for probe(s) [Plug2-probe; target: Plug2; cost: 60.0; enabled: true, Plug1-probe; target: Plug1; cost: 60.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Light2-probe: 4.147008422253381E-4
+	Plug2-probe: 6.354417181742865E-4
+	Plug1-probe: 6.354417181742865E-4
+
+Utilityresults for the MEU probe(s):
+	probe: Plug2; probestate; null; diagnosis: null; expected information: 0.03812650309045719
+	diagnosis probability: 0.0, expected utility: 6.354417181742865E-4
+
+	probe: Plug2; probestate; null; diagnosis: null; expected information: 0.03812650309045719
+	diagnosis probability: 0.0, expected utility: 6.354417181742865E-4
+
+	probe: Plug1; probestate; null; diagnosis: null; expected information: 0.03812650309045719
+	diagnosis probability: 0.0, expected utility: 6.354417181742865E-4
+
+Informationresults:
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.03732307580028043
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.03812650309045719
+	probe: Plug1-probe; target: Plug1; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.03812650309045719
+
+
+Branch 3
+***********
+[3] status: DIAGNOSIS_FOUND; diagnoses found:[[0] [Health_Light1:broken]]
+probe states: [Battery:present, Trigger1:on, Trigger2:off, Plug1:yes]
+probability: 0.01761787750938848
+
+Maximum expected utility
+MEU = 7.441848699614811E-4 for probe(s) [Plug1-probe; target: Plug1; cost: 60.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Plug1-probe: 7.441848699614811E-4
+
+Utilityresults for the MEU probe(s):
+	probe: Plug1; probestate; null; diagnosis: null; expected information: 0.04465109219768886
+	diagnosis probability: 0.0, expected utility: 7.441848699614811E-4
+
+	probe: Plug1; probestate; null; diagnosis: null; expected information: 0.04465109219768886
+	diagnosis probability: 0.0, expected utility: 7.441848699614811E-4
+
+Informationresults:
+	probe: Plug1-probe; target: Plug1; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.04465109219768886
+
+
+History of the MEUs
+-------------------
+
+[0] MEU History
+Maximum expected utility
+MEU = 0.04349486222447117 for probe(s) [Battery-probe; target: Battery; cost: 10.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Trigger1-probe: 0.005939728377490619
+	Light2-probe: 0.0016487403278477798
+	Plug2-probe: 0.0025403993413636887
+	Trigger2-probe: 0.005939728377490619
+	Battery-probe: 0.04349486222447117
+	Plug1-probe: 0.0025403993413636887
+
+Utilityresults for the MEU probe(s):
+	probe: Battery; probestate; null; diagnosis: null; expected information: 0.43494862224471176
+	diagnosis probability: 0.0, expected utility: 0.04349486222447117
+
+	probe: Battery; probestate; null; diagnosis: null; expected information: 0.43494862224471176
+	diagnosis probability: 0.0, expected utility: 0.04349486222447117
+
+Informationresults:
+	probe: Trigger1-probe; target: Trigger1; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.23758913509962473
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.1483866295063002
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.15242396048182133
+	probe: Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.23758913509962473
+	probe: Battery-probe; target: Battery; cost: 10.0; enabled: true; probestate; null; diagnosis: null; information: 0.43494862224471176
+	probe: Plug1-probe; target: Plug1; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.15242396048182133
+
+
+[1] MEU History
+Maximum expected utility
+MEU = 0.003715490612325131 for probe(s) [Trigger1-probe; target: Trigger1; cost: 40.0; enabled: true, Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Trigger1-probe: 0.003715490612325131
+	Light2-probe: 6.590976896649348E-4
+	Plug2-probe: 0.0010100916061621735
+	Trigger2-probe: 0.003715490612325131
+	Plug1-probe: 0.0010100916061621735
+
+Utilityresults for the MEU probe(s):
+	probe: Trigger1; probestate; null; diagnosis: null; expected information: 0.14861962449300523
+	diagnosis probability: 0.0, expected utility: 0.003715490612325131
+
+	probe: Trigger1; probestate; null; diagnosis: null; expected information: 0.14861962449300523
+	diagnosis probability: 0.0, expected utility: 0.003715490612325131
+
+	probe: Trigger2; probestate; null; diagnosis: null; expected information: 0.14861962449300523
+	diagnosis probability: 0.0, expected utility: 0.003715490612325131
+
+Informationresults:
+	probe: Trigger1-probe; target: Trigger1; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.14861962449300523
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.05931879206984413
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.060605496369730415
+	probe: Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.14861962449300523
+	probe: Plug1-probe; target: Plug1; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.060605496369730415
+
+
+[2] MEU History
+Maximum expected utility
+MEU = 0.0011586853393701314 for probe(s) [Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Light2-probe: 4.910393548849531E-4
+	Plug2-probe: 7.506761388108118E-4
+	Trigger2-probe: 0.0011586853393701314
+	Plug1-probe: 7.441848699614811E-4
+
+Utilityresults for the MEU probe(s):
+	probe: Trigger2; probestate; null; diagnosis: null; expected information: 0.046347413574805256
+	diagnosis probability: 0.0, expected utility: 0.0011586853393701314
+
+	probe: Trigger2; probestate; null; diagnosis: null; expected information: 0.046347413574805256
+	diagnosis probability: 0.0, expected utility: 0.0011586853393701314
+
+Informationresults:
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.04419354193964578
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.04504056832864871
+	probe: Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.046347413574805256
+	probe: Plug1-probe; target: Plug1; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.04465109219768886
+
+
+[3] MEU History
+Maximum expected utility
+MEU = 7.441848699614811E-4 for probe(s) [Plug1-probe; target: Plug1; cost: 60.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Plug1-probe: 7.441848699614811E-4
+
+Utilityresults for the MEU probe(s):
+	probe: Plug1; probestate; null; diagnosis: null; expected information: 0.04465109219768886
+	diagnosis probability: 0.0, expected utility: 7.441848699614811E-4
+
+	probe: Plug1; probestate; null; diagnosis: null; expected information: 0.04465109219768886
+	diagnosis probability: 0.0, expected utility: 7.441848699614811E-4
+
+Informationresults:
+	probe: Plug1-probe; target: Plug1; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.04465109219768886
+
+
+Branch 4
+***********
+[4] status: DIAGNOSIS_FOUND; diagnoses found:[[3] [Health_Plug1:broken, Trigger2:off]]
+probe states: [Battery:present, Trigger1:on, Trigger2:off, Plug1:no]
+probability: 0.009272567110204464
+
+Maximum expected utility
+MEU = 7.441848699614811E-4 for probe(s) [Plug1-probe; target: Plug1; cost: 60.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Plug1-probe: 7.441848699614811E-4
+
+Utilityresults for the MEU probe(s):
+	probe: Plug1; probestate; null; diagnosis: null; expected information: 0.04465109219768886
+	diagnosis probability: 0.0, expected utility: 7.441848699614811E-4
+
+	probe: Plug1; probestate; null; diagnosis: null; expected information: 0.04465109219768886
+	diagnosis probability: 0.0, expected utility: 7.441848699614811E-4
+
+Informationresults:
+	probe: Plug1-probe; target: Plug1; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.04465109219768886
+
+
+History of the MEUs
+-------------------
+
+[0] MEU History
+Maximum expected utility
+MEU = 0.04349486222447117 for probe(s) [Battery-probe; target: Battery; cost: 10.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Trigger1-probe: 0.005939728377490619
+	Light2-probe: 0.0016487403278477798
+	Plug2-probe: 0.0025403993413636887
+	Trigger2-probe: 0.005939728377490619
+	Battery-probe: 0.04349486222447117
+	Plug1-probe: 0.0025403993413636887
+
+Utilityresults for the MEU probe(s):
+	probe: Battery; probestate; null; diagnosis: null; expected information: 0.43494862224471176
+	diagnosis probability: 0.0, expected utility: 0.04349486222447117
+
+	probe: Battery; probestate; null; diagnosis: null; expected information: 0.43494862224471176
+	diagnosis probability: 0.0, expected utility: 0.04349486222447117
+
+Informationresults:
+	probe: Trigger1-probe; target: Trigger1; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.23758913509962473
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.1483866295063002
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.15242396048182133
+	probe: Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.23758913509962473
+	probe: Battery-probe; target: Battery; cost: 10.0; enabled: true; probestate; null; diagnosis: null; information: 0.43494862224471176
+	probe: Plug1-probe; target: Plug1; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.15242396048182133
+
+
+[1] MEU History
+Maximum expected utility
+MEU = 0.003715490612325131 for probe(s) [Trigger1-probe; target: Trigger1; cost: 40.0; enabled: true, Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Trigger1-probe: 0.003715490612325131
+	Light2-probe: 6.590976896649348E-4
+	Plug2-probe: 0.0010100916061621735
+	Trigger2-probe: 0.003715490612325131
+	Plug1-probe: 0.0010100916061621735
+
+Utilityresults for the MEU probe(s):
+	probe: Trigger1; probestate; null; diagnosis: null; expected information: 0.14861962449300523
+	diagnosis probability: 0.0, expected utility: 0.003715490612325131
+
+	probe: Trigger1; probestate; null; diagnosis: null; expected information: 0.14861962449300523
+	diagnosis probability: 0.0, expected utility: 0.003715490612325131
+
+	probe: Trigger2; probestate; null; diagnosis: null; expected information: 0.14861962449300523
+	diagnosis probability: 0.0, expected utility: 0.003715490612325131
+
+Informationresults:
+	probe: Trigger1-probe; target: Trigger1; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.14861962449300523
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.05931879206984413
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.060605496369730415
+	probe: Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.14861962449300523
+	probe: Plug1-probe; target: Plug1; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.060605496369730415
+
+
+[2] MEU History
+Maximum expected utility
+MEU = 0.0011586853393701314 for probe(s) [Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Light2-probe: 4.910393548849531E-4
+	Plug2-probe: 7.506761388108118E-4
+	Trigger2-probe: 0.0011586853393701314
+	Plug1-probe: 7.441848699614811E-4
+
+Utilityresults for the MEU probe(s):
+	probe: Trigger2; probestate; null; diagnosis: null; expected information: 0.046347413574805256
+	diagnosis probability: 0.0, expected utility: 0.0011586853393701314
+
+	probe: Trigger2; probestate; null; diagnosis: null; expected information: 0.046347413574805256
+	diagnosis probability: 0.0, expected utility: 0.0011586853393701314
+
+Informationresults:
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.04419354193964578
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.04504056832864871
+	probe: Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.046347413574805256
+	probe: Plug1-probe; target: Plug1; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.04465109219768886
+
+
+[3] MEU History
+Maximum expected utility
+MEU = 7.441848699614811E-4 for probe(s) [Plug1-probe; target: Plug1; cost: 60.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Plug1-probe: 7.441848699614811E-4
+
+Utilityresults for the MEU probe(s):
+	probe: Plug1; probestate; null; diagnosis: null; expected information: 0.04465109219768886
+	diagnosis probability: 0.0, expected utility: 7.441848699614811E-4
+
+	probe: Plug1; probestate; null; diagnosis: null; expected information: 0.04465109219768886
+	diagnosis probability: 0.0, expected utility: 7.441848699614811E-4
+
+Informationresults:
+	probe: Plug1-probe; target: Plug1; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.04465109219768886
+
+
+Branch 5
+***********
+[5] status: DIAGNOSIS_FOUND; diagnoses found:[[0] [Health_Light1:broken]]
+probe states: [Battery:present, Trigger1:off, Trigger2:on, Plug2:yes]
+probability: 0.01761787750938848
+
+Maximum expected utility
+MEU = 7.441848699614812E-4 for probe(s) [Plug2-probe; target: Plug2; cost: 60.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Light2-probe: 4.87156373417249E-4
+	Plug2-probe: 7.441848699614812E-4
+
+Utilityresults for the MEU probe(s):
+	probe: Plug2; probestate; null; diagnosis: null; expected information: 0.04465109219768887
+	diagnosis probability: 0.0, expected utility: 7.441848699614812E-4
+
+	probe: Plug2; probestate; null; diagnosis: null; expected information: 0.04465109219768887
+	diagnosis probability: 0.0, expected utility: 7.441848699614812E-4
+
+Informationresults:
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.04384407360755241
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.04465109219768887
+
+
+History of the MEUs
+-------------------
+
+[0] MEU History
+Maximum expected utility
+MEU = 0.04349486222447117 for probe(s) [Battery-probe; target: Battery; cost: 10.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Trigger1-probe: 0.005939728377490619
+	Light2-probe: 0.0016487403278477798
+	Plug2-probe: 0.0025403993413636887
+	Trigger2-probe: 0.005939728377490619
+	Battery-probe: 0.04349486222447117
+	Plug1-probe: 0.0025403993413636887
+
+Utilityresults for the MEU probe(s):
+	probe: Battery; probestate; null; diagnosis: null; expected information: 0.43494862224471176
+	diagnosis probability: 0.0, expected utility: 0.04349486222447117
+
+	probe: Battery; probestate; null; diagnosis: null; expected information: 0.43494862224471176
+	diagnosis probability: 0.0, expected utility: 0.04349486222447117
+
+Informationresults:
+	probe: Trigger1-probe; target: Trigger1; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.23758913509962473
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.1483866295063002
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.15242396048182133
+	probe: Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.23758913509962473
+	probe: Battery-probe; target: Battery; cost: 10.0; enabled: true; probestate; null; diagnosis: null; information: 0.43494862224471176
+	probe: Plug1-probe; target: Plug1; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.15242396048182133
+
+
+[1] MEU History
+Maximum expected utility
+MEU = 0.003715490612325131 for probe(s) [Trigger1-probe; target: Trigger1; cost: 40.0; enabled: true, Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Trigger1-probe: 0.003715490612325131
+	Light2-probe: 6.590976896649348E-4
+	Plug2-probe: 0.0010100916061621735
+	Trigger2-probe: 0.003715490612325131
+	Plug1-probe: 0.0010100916061621735
+
+Utilityresults for the MEU probe(s):
+	probe: Trigger1; probestate; null; diagnosis: null; expected information: 0.14861962449300523
+	diagnosis probability: 0.0, expected utility: 0.003715490612325131
+
+	probe: Trigger1; probestate; null; diagnosis: null; expected information: 0.14861962449300523
+	diagnosis probability: 0.0, expected utility: 0.003715490612325131
+
+	probe: Trigger2; probestate; null; diagnosis: null; expected information: 0.14861962449300523
+	diagnosis probability: 0.0, expected utility: 0.003715490612325131
+
+Informationresults:
+	probe: Trigger1-probe; target: Trigger1; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.14861962449300523
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.05931879206984413
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.060605496369730415
+	probe: Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.14861962449300523
+	probe: Plug1-probe; target: Plug1; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.060605496369730415
+
+
+[2] MEU History
+Maximum expected utility
+MEU = 0.003715490612325131 for probe(s) [Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Light2-probe: 6.590976896649348E-4
+	Plug2-probe: 0.0010100916061621735
+	Trigger2-probe: 0.003715490612325131
+
+Utilityresults for the MEU probe(s):
+	probe: Trigger2; probestate; null; diagnosis: null; expected information: 0.14861962449300523
+	diagnosis probability: 0.0, expected utility: 0.003715490612325131
+
+	probe: Trigger2; probestate; null; diagnosis: null; expected information: 0.14861962449300523
+	diagnosis probability: 0.0, expected utility: 0.003715490612325131
+
+Informationresults:
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.05931879206984413
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.060605496369730415
+	probe: Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.14861962449300523
+
+
+[3] MEU History
+Maximum expected utility
+MEU = 7.441848699614812E-4 for probe(s) [Plug2-probe; target: Plug2; cost: 60.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Light2-probe: 4.87156373417249E-4
+	Plug2-probe: 7.441848699614812E-4
+
+Utilityresults for the MEU probe(s):
+	probe: Plug2; probestate; null; diagnosis: null; expected information: 0.04465109219768887
+	diagnosis probability: 0.0, expected utility: 7.441848699614812E-4
+
+	probe: Plug2; probestate; null; diagnosis: null; expected information: 0.04465109219768887
+	diagnosis probability: 0.0, expected utility: 7.441848699614812E-4
+
+Informationresults:
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.04384407360755241
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.04465109219768887
+
+
+Branch 6
+***********
+[6] status: DIAGNOSIS_FOUND; diagnoses found:[[4] [Health_Plug2:broken, Trigger1:off]]
+probe states: [Battery:present, Trigger1:off, Trigger2:on, Plug2:no]
+probability: 0.009272567110204464
+
+Maximum expected utility
+MEU = 7.441848699614812E-4 for probe(s) [Plug2-probe; target: Plug2; cost: 60.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Light2-probe: 4.87156373417249E-4
+	Plug2-probe: 7.441848699614812E-4
+
+Utilityresults for the MEU probe(s):
+	probe: Plug2; probestate; null; diagnosis: null; expected information: 0.04465109219768887
+	diagnosis probability: 0.0, expected utility: 7.441848699614812E-4
+
+	probe: Plug2; probestate; null; diagnosis: null; expected information: 0.04465109219768887
+	diagnosis probability: 0.0, expected utility: 7.441848699614812E-4
+
+Informationresults:
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.04384407360755241
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.04465109219768887
+
+
+History of the MEUs
+-------------------
+
+[0] MEU History
+Maximum expected utility
+MEU = 0.04349486222447117 for probe(s) [Battery-probe; target: Battery; cost: 10.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Trigger1-probe: 0.005939728377490619
+	Light2-probe: 0.0016487403278477798
+	Plug2-probe: 0.0025403993413636887
+	Trigger2-probe: 0.005939728377490619
+	Battery-probe: 0.04349486222447117
+	Plug1-probe: 0.0025403993413636887
+
+Utilityresults for the MEU probe(s):
+	probe: Battery; probestate; null; diagnosis: null; expected information: 0.43494862224471176
+	diagnosis probability: 0.0, expected utility: 0.04349486222447117
+
+	probe: Battery; probestate; null; diagnosis: null; expected information: 0.43494862224471176
+	diagnosis probability: 0.0, expected utility: 0.04349486222447117
+
+Informationresults:
+	probe: Trigger1-probe; target: Trigger1; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.23758913509962473
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.1483866295063002
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.15242396048182133
+	probe: Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.23758913509962473
+	probe: Battery-probe; target: Battery; cost: 10.0; enabled: true; probestate; null; diagnosis: null; information: 0.43494862224471176
+	probe: Plug1-probe; target: Plug1; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.15242396048182133
+
+
+[1] MEU History
+Maximum expected utility
+MEU = 0.003715490612325131 for probe(s) [Trigger1-probe; target: Trigger1; cost: 40.0; enabled: true, Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Trigger1-probe: 0.003715490612325131
+	Light2-probe: 6.590976896649348E-4
+	Plug2-probe: 0.0010100916061621735
+	Trigger2-probe: 0.003715490612325131
+	Plug1-probe: 0.0010100916061621735
+
+Utilityresults for the MEU probe(s):
+	probe: Trigger1; probestate; null; diagnosis: null; expected information: 0.14861962449300523
+	diagnosis probability: 0.0, expected utility: 0.003715490612325131
+
+	probe: Trigger1; probestate; null; diagnosis: null; expected information: 0.14861962449300523
+	diagnosis probability: 0.0, expected utility: 0.003715490612325131
+
+	probe: Trigger2; probestate; null; diagnosis: null; expected information: 0.14861962449300523
+	diagnosis probability: 0.0, expected utility: 0.003715490612325131
+
+Informationresults:
+	probe: Trigger1-probe; target: Trigger1; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.14861962449300523
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.05931879206984413
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.060605496369730415
+	probe: Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.14861962449300523
+	probe: Plug1-probe; target: Plug1; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.060605496369730415
+
+
+[2] MEU History
+Maximum expected utility
+MEU = 0.003715490612325131 for probe(s) [Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Light2-probe: 6.590976896649348E-4
+	Plug2-probe: 0.0010100916061621735
+	Trigger2-probe: 0.003715490612325131
+
+Utilityresults for the MEU probe(s):
+	probe: Trigger2; probestate; null; diagnosis: null; expected information: 0.14861962449300523
+	diagnosis probability: 0.0, expected utility: 0.003715490612325131
+
+	probe: Trigger2; probestate; null; diagnosis: null; expected information: 0.14861962449300523
+	diagnosis probability: 0.0, expected utility: 0.003715490612325131
+
+Informationresults:
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.05931879206984413
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.060605496369730415
+	probe: Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.14861962449300523
+
+
+[3] MEU History
+Maximum expected utility
+MEU = 7.441848699614812E-4 for probe(s) [Plug2-probe; target: Plug2; cost: 60.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Light2-probe: 4.87156373417249E-4
+	Plug2-probe: 7.441848699614812E-4
+
+Utilityresults for the MEU probe(s):
+	probe: Plug2; probestate; null; diagnosis: null; expected information: 0.04465109219768887
+	diagnosis probability: 0.0, expected utility: 7.441848699614812E-4
+
+	probe: Plug2; probestate; null; diagnosis: null; expected information: 0.04465109219768887
+	diagnosis probability: 0.0, expected utility: 7.441848699614812E-4
+
+Informationresults:
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.04384407360755241
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.04465109219768887
+
+
+Branch 7
+***********
+[7] status: DIAGNOSIS_FOUND; diagnoses found:[[0] [Health_Light1:broken]]
+probe states: [Battery:present, Trigger1:on, Trigger2:on, Plug1:no, Plug2:yes]
+probability: 8.80893875469424E-4
+
+Maximum expected utility
+MEU = 6.354417181742865E-4 for probe(s) [Plug2-probe; target: Plug2; cost: 60.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Light2-probe: 4.147008422253381E-4
+	Plug2-probe: 6.354417181742865E-4
+
+Utilityresults for the MEU probe(s):
+	probe: Plug2; probestate; null; diagnosis: null; expected information: 0.03812650309045719
+	diagnosis probability: 0.0, expected utility: 6.354417181742865E-4
+
+	probe: Plug2; probestate; null; diagnosis: null; expected information: 0.03812650309045719
+	diagnosis probability: 0.0, expected utility: 6.354417181742865E-4
+
+Informationresults:
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.03732307580028043
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.03812650309045719
+
+
+History of the MEUs
+-------------------
+
+[0] MEU History
+Maximum expected utility
+MEU = 0.04349486222447117 for probe(s) [Battery-probe; target: Battery; cost: 10.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Trigger1-probe: 0.005939728377490619
+	Light2-probe: 0.0016487403278477798
+	Plug2-probe: 0.0025403993413636887
+	Trigger2-probe: 0.005939728377490619
+	Battery-probe: 0.04349486222447117
+	Plug1-probe: 0.0025403993413636887
+
+Utilityresults for the MEU probe(s):
+	probe: Battery; probestate; null; diagnosis: null; expected information: 0.43494862224471176
+	diagnosis probability: 0.0, expected utility: 0.04349486222447117
+
+	probe: Battery; probestate; null; diagnosis: null; expected information: 0.43494862224471176
+	diagnosis probability: 0.0, expected utility: 0.04349486222447117
+
+Informationresults:
+	probe: Trigger1-probe; target: Trigger1; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.23758913509962473
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.1483866295063002
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.15242396048182133
+	probe: Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.23758913509962473
+	probe: Battery-probe; target: Battery; cost: 10.0; enabled: true; probestate; null; diagnosis: null; information: 0.43494862224471176
+	probe: Plug1-probe; target: Plug1; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.15242396048182133
+
+
+[1] MEU History
+Maximum expected utility
+MEU = 0.003715490612325131 for probe(s) [Trigger1-probe; target: Trigger1; cost: 40.0; enabled: true, Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Trigger1-probe: 0.003715490612325131
+	Light2-probe: 6.590976896649348E-4
+	Plug2-probe: 0.0010100916061621735
+	Trigger2-probe: 0.003715490612325131
+	Plug1-probe: 0.0010100916061621735
+
+Utilityresults for the MEU probe(s):
+	probe: Trigger1; probestate; null; diagnosis: null; expected information: 0.14861962449300523
+	diagnosis probability: 0.0, expected utility: 0.003715490612325131
+
+	probe: Trigger1; probestate; null; diagnosis: null; expected information: 0.14861962449300523
+	diagnosis probability: 0.0, expected utility: 0.003715490612325131
+
+	probe: Trigger2; probestate; null; diagnosis: null; expected information: 0.14861962449300523
+	diagnosis probability: 0.0, expected utility: 0.003715490612325131
+
+Informationresults:
+	probe: Trigger1-probe; target: Trigger1; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.14861962449300523
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.05931879206984413
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.060605496369730415
+	probe: Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.14861962449300523
+	probe: Plug1-probe; target: Plug1; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.060605496369730415
+
+
+[2] MEU History
+Maximum expected utility
+MEU = 0.0011586853393701314 for probe(s) [Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Light2-probe: 4.910393548849531E-4
+	Plug2-probe: 7.506761388108118E-4
+	Trigger2-probe: 0.0011586853393701314
+	Plug1-probe: 7.441848699614811E-4
+
+Utilityresults for the MEU probe(s):
+	probe: Trigger2; probestate; null; diagnosis: null; expected information: 0.046347413574805256
+	diagnosis probability: 0.0, expected utility: 0.0011586853393701314
+
+	probe: Trigger2; probestate; null; diagnosis: null; expected information: 0.046347413574805256
+	diagnosis probability: 0.0, expected utility: 0.0011586853393701314
+
+Informationresults:
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.04419354193964578
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.04504056832864871
+	probe: Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.046347413574805256
+	probe: Plug1-probe; target: Plug1; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.04465109219768886
+
+
+[3] MEU History
+Maximum expected utility
+MEU = 6.354417181742865E-4 for probe(s) [Plug2-probe; target: Plug2; cost: 60.0; enabled: true, Plug1-probe; target: Plug1; cost: 60.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Light2-probe: 4.147008422253381E-4
+	Plug2-probe: 6.354417181742865E-4
+	Plug1-probe: 6.354417181742865E-4
+
+Utilityresults for the MEU probe(s):
+	probe: Plug2; probestate; null; diagnosis: null; expected information: 0.03812650309045719
+	diagnosis probability: 0.0, expected utility: 6.354417181742865E-4
+
+	probe: Plug2; probestate; null; diagnosis: null; expected information: 0.03812650309045719
+	diagnosis probability: 0.0, expected utility: 6.354417181742865E-4
+
+	probe: Plug1; probestate; null; diagnosis: null; expected information: 0.03812650309045719
+	diagnosis probability: 0.0, expected utility: 6.354417181742865E-4
+
+Informationresults:
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.03732307580028043
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.03812650309045719
+	probe: Plug1-probe; target: Plug1; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.03812650309045719
+
+
+[4] MEU History
+Maximum expected utility
+MEU = 6.354417181742865E-4 for probe(s) [Plug2-probe; target: Plug2; cost: 60.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Light2-probe: 4.147008422253381E-4
+	Plug2-probe: 6.354417181742865E-4
+
+Utilityresults for the MEU probe(s):
+	probe: Plug2; probestate; null; diagnosis: null; expected information: 0.03812650309045719
+	diagnosis probability: 0.0, expected utility: 6.354417181742865E-4
+
+	probe: Plug2; probestate; null; diagnosis: null; expected information: 0.03812650309045719
+	diagnosis probability: 0.0, expected utility: 6.354417181742865E-4
+
+Informationresults:
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.03732307580028043
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.03812650309045719
+
+
+Branch 8
+***********
+[8] status: DIAGNOSIS_FOUND; diagnoses found:[[2] [Health_Plug1:broken, Health_Plug2:broken]]
+probe states: [Battery:present, Trigger1:on, Trigger2:on, Plug1:no, Plug2:no]
+probability: 4.636283555102232E-4
+
+Maximum expected utility
+MEU = 6.354417181742865E-4 for probe(s) [Plug2-probe; target: Plug2; cost: 60.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Light2-probe: 4.147008422253381E-4
+	Plug2-probe: 6.354417181742865E-4
+
+Utilityresults for the MEU probe(s):
+	probe: Plug2; probestate; null; diagnosis: null; expected information: 0.03812650309045719
+	diagnosis probability: 0.0, expected utility: 6.354417181742865E-4
+
+	probe: Plug2; probestate; null; diagnosis: null; expected information: 0.03812650309045719
+	diagnosis probability: 0.0, expected utility: 6.354417181742865E-4
+
+Informationresults:
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.03732307580028043
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.03812650309045719
+
+
+History of the MEUs
+-------------------
+
+[0] MEU History
+Maximum expected utility
+MEU = 0.04349486222447117 for probe(s) [Battery-probe; target: Battery; cost: 10.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Trigger1-probe: 0.005939728377490619
+	Light2-probe: 0.0016487403278477798
+	Plug2-probe: 0.0025403993413636887
+	Trigger2-probe: 0.005939728377490619
+	Battery-probe: 0.04349486222447117
+	Plug1-probe: 0.0025403993413636887
+
+Utilityresults for the MEU probe(s):
+	probe: Battery; probestate; null; diagnosis: null; expected information: 0.43494862224471176
+	diagnosis probability: 0.0, expected utility: 0.04349486222447117
+
+	probe: Battery; probestate; null; diagnosis: null; expected information: 0.43494862224471176
+	diagnosis probability: 0.0, expected utility: 0.04349486222447117
+
+Informationresults:
+	probe: Trigger1-probe; target: Trigger1; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.23758913509962473
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.1483866295063002
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.15242396048182133
+	probe: Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.23758913509962473
+	probe: Battery-probe; target: Battery; cost: 10.0; enabled: true; probestate; null; diagnosis: null; information: 0.43494862224471176
+	probe: Plug1-probe; target: Plug1; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.15242396048182133
+
+
+[1] MEU History
+Maximum expected utility
+MEU = 0.003715490612325131 for probe(s) [Trigger1-probe; target: Trigger1; cost: 40.0; enabled: true, Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Trigger1-probe: 0.003715490612325131
+	Light2-probe: 6.590976896649348E-4
+	Plug2-probe: 0.0010100916061621735
+	Trigger2-probe: 0.003715490612325131
+	Plug1-probe: 0.0010100916061621735
+
+Utilityresults for the MEU probe(s):
+	probe: Trigger1; probestate; null; diagnosis: null; expected information: 0.14861962449300523
+	diagnosis probability: 0.0, expected utility: 0.003715490612325131
+
+	probe: Trigger1; probestate; null; diagnosis: null; expected information: 0.14861962449300523
+	diagnosis probability: 0.0, expected utility: 0.003715490612325131
+
+	probe: Trigger2; probestate; null; diagnosis: null; expected information: 0.14861962449300523
+	diagnosis probability: 0.0, expected utility: 0.003715490612325131
+
+Informationresults:
+	probe: Trigger1-probe; target: Trigger1; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.14861962449300523
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.05931879206984413
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.060605496369730415
+	probe: Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.14861962449300523
+	probe: Plug1-probe; target: Plug1; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.060605496369730415
+
+
+[2] MEU History
+Maximum expected utility
+MEU = 0.0011586853393701314 for probe(s) [Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Light2-probe: 4.910393548849531E-4
+	Plug2-probe: 7.506761388108118E-4
+	Trigger2-probe: 0.0011586853393701314
+	Plug1-probe: 7.441848699614811E-4
+
+Utilityresults for the MEU probe(s):
+	probe: Trigger2; probestate; null; diagnosis: null; expected information: 0.046347413574805256
+	diagnosis probability: 0.0, expected utility: 0.0011586853393701314
+
+	probe: Trigger2; probestate; null; diagnosis: null; expected information: 0.046347413574805256
+	diagnosis probability: 0.0, expected utility: 0.0011586853393701314
+
+Informationresults:
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.04419354193964578
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.04504056832864871
+	probe: Trigger2-probe; target: Trigger2; cost: 40.0; enabled: true; probestate; null; diagnosis: null; information: 0.046347413574805256
+	probe: Plug1-probe; target: Plug1; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.04465109219768886
+
+
+[3] MEU History
+Maximum expected utility
+MEU = 6.354417181742865E-4 for probe(s) [Plug2-probe; target: Plug2; cost: 60.0; enabled: true, Plug1-probe; target: Plug1; cost: 60.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Light2-probe: 4.147008422253381E-4
+	Plug2-probe: 6.354417181742865E-4
+	Plug1-probe: 6.354417181742865E-4
+
+Utilityresults for the MEU probe(s):
+	probe: Plug2; probestate; null; diagnosis: null; expected information: 0.03812650309045719
+	diagnosis probability: 0.0, expected utility: 6.354417181742865E-4
+
+	probe: Plug2; probestate; null; diagnosis: null; expected information: 0.03812650309045719
+	diagnosis probability: 0.0, expected utility: 6.354417181742865E-4
+
+	probe: Plug1; probestate; null; diagnosis: null; expected information: 0.03812650309045719
+	diagnosis probability: 0.0, expected utility: 6.354417181742865E-4
+
+Informationresults:
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.03732307580028043
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.03812650309045719
+	probe: Plug1-probe; target: Plug1; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.03812650309045719
+
+
+[4] MEU History
+Maximum expected utility
+MEU = 6.354417181742865E-4 for probe(s) [Plug2-probe; target: Plug2; cost: 60.0; enabled: true]
+
+Weighted sum expected utility per probe
+	Light2-probe: 4.147008422253381E-4
+	Plug2-probe: 6.354417181742865E-4
+
+Utilityresults for the MEU probe(s):
+	probe: Plug2; probestate; null; diagnosis: null; expected information: 0.03812650309045719
+	diagnosis probability: 0.0, expected utility: 6.354417181742865E-4
+
+	probe: Plug2; probestate; null; diagnosis: null; expected information: 0.03812650309045719
+	diagnosis probability: 0.0, expected utility: 6.354417181742865E-4
+
+Informationresults:
+	probe: Light2-probe; target: Light2; cost: 90.0; enabled: true; probestate; null; diagnosis: null; information: 0.03732307580028043
+	probe: Plug2-probe; target: Plug2; cost: 60.0; enabled: true; probestate; null; diagnosis: null; information: 0.03812650309045719
+
+
+Computing time: 477ms

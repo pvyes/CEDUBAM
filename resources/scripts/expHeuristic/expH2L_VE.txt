@@ -3,7 +3,7 @@
 set network 0
 set healthgroups connection
 set pdvs light1 off
-display diagnoses
+set diagnoses
 set probes cost:50
 set informationfunction entropy_reversed
 

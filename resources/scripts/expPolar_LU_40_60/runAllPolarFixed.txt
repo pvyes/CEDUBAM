@@ -1,6 +1,0 @@
-# cmd: run resources/scripts/expPolar_LU_40_60/runAllPolarFixed.txt
-
-run resources/scripts/expPolar_LU_40_60/exp_pl_f00.txt
-run resources/scripts/expPolar_LU_40_60/exp_pl_f01.txt
-run resources/scripts/expPolar_LU_40_60/exp_pl_f05.txt
-run resources/scripts/expPolar_LU_40_60/exp_pl_f09.txt

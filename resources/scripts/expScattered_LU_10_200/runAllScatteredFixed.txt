@@ -1,6 +1,0 @@
-# cmd: run resources/scripts/expScattered_LU_10_200/runAllScatteredFixed.txt
-
-run resources/scripts/expScattered_LU_10_200/exp_sc_f00.txt
-run resources/scripts/expScattered_LU_10_200/exp_sc_f01.txt
-run resources/scripts/expScattered_LU_10_200/exp_sc_f05.txt
-run resources/scripts/expScattered_LU_10_200/exp_sc_f09.txt
