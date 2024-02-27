@@ -1,0 +1,14 @@
+# cmd run resources/scripts/minimal/allrandom.txt
+
+run resources/scripts/minimal/AO_S1_ch.txt
+ run resources/scripts/minimal/AO_S1_ch.txt
+run resources/scripts/minimal/AO_UN_ch.txt
+run resources/scripts/minimal/AO_UN_exp.txt
+run resources/scripts/minimal/WP_CW_ch.txt
+run resources/scripts/minimal/WP_CW_exp.txt
+run resources/scripts/minimal/WP_NW_ch.txt
+run resources/scripts/minimal/WP_NW_exp.txt
+run resources/scripts/minimal/Random2L_ch.txt
+run resources/scripts/minimal/Random2L_exp.txt
+run resources/scripts/minimal/Random4L_ch.txt
+run resources/scripts/minimal/Random4L_exp.txt

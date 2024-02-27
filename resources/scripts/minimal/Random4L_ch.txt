@@ -1,0 +1,60 @@
+# cmd: run resources/scripts/minimal/Random4L_ch.txt
+set network 1
+set healthgroups component
+set pdvs 32 no
+set diagnoses
+set probes cost:50
+
+# costs: most valuable = cheap
+set probe "present.present.battery" cost:10
+set probe "present.plug.battery" cost:15
+set probe "present.input plug.joint 1" cost:20
+set probe "present.output plug 1.joint 1" cost:20
+set probe "present.output plug 2.joint 1" cost:20
+set probe "present.input plug.joint 2" cost:30
+set probe "present.output plug 1.joint 2" cost:30
+set probe "present.output plug 2.joint 2" cost:30 
+set probe "present.input plug.joint 3" cost:25
+set probe "present.output plug 1.joint 3" cost:25
+set probe "present.output plug 2.joint 3" cost:25
+set probe "present.input plug.switch 1" cost:35
+set probe "present.output plug.switch 1" cost:95
+set probe "fired.button.switch 1" cost:10
+set probe "present.input plug.switch 2" cost:35
+set probe "present.output plug.switch 2" cost:50
+set probe "present.input plug.switch 3" cost:35
+set probe "present.output plug.switch 3" cost:50
+set probe "present.input plug.switch 4" cost:35
+set probe "present.output plug.switch 4" cost:47
+set probe "present.input plug.lamp 1" cost:100
+set probe "present.input plug.lamp 2" cost:75
+set probe "present.light.lamp 2" cost:85
+set probe "present.input plug.lamp 3" cost:80
+set probe "present.light.lamp 3" cost:90
+set probe "present.input plug.lamp 4" cost:80
+set probe "present.light.lamp 4" cost:90
+
+set informationfunction entropy_reversed
+display settings
+
+set report displaydetail:0 display:true export:true exportdetail:3 path:"resources\results\minimal\Random4L_ch" filename:"Random4L_ch" csvname:"Random4L_ch" suffix:time
+
+#random
+set strategy random
+set experiment count:10000
+run experiment
+
+# optimal
+set report path:"resources\results\minimal\Random4L_ch\optimalwc"
+set informationfunction entropy_reversed
+set utilityfunction weighted_cost
+set strategy meu
+compute optimal iteration-limit:1 confirm:false
+compute optimal iteration-limit:3 confirm:false
+compute optimal iteration-limit:5 confirm:false
+
+set report path:"resources\results\minimal\Random4L_ch\optimallu"
+set utilityfunction linear_utility
+compute optimal iteration-limit:1 confirm:false
+compute optimal iteration-limit:3 confirm:false
+compute optimal iteration-limit:5 confirm:false

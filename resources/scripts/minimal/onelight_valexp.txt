@@ -1,0 +1,30 @@
+# cmd: run resources/scripts/minimal/onelight_valexp.txt
+set network D:\Documenten\programmeren\CEDUBAM\resources\systems\onelight.bayes
+set healthgroups connection
+display variables type:health
+set pdvs light2 off
+set diagnoses
+set probes cost:50
+
+# costs: most valuable = exp
+set probe battery cost:90
+set probe trigger2 cost:60
+set probe plug1 cost:40
+set probe plug2 cost:40
+
+set informationfunction entropy_reversed
+display settings
+
+set report displaydetail:0 display:false export:false exportdetail:3 path:"resources\results\Experiment\value-cost" filename:"WPNWValCheap" suffix:time
+
+# minimal
+compute minimalcost confirm:false
+
+# optimal
+set informationfunction entropy_reversed
+set utilityfunction weighted_cost
+set strategy meu
+compute optimal iteration-limit:3 confirm:false
+
+set utilityfunction linear_utility
+compute optimal iteration-limit:3 confirm:false

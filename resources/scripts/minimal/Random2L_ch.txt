@@ -1,0 +1,39 @@
+# cmd: run resources/scripts/minimal/Random2L_ch.txt
+set network 0
+set healthgroups connection
+set pdvs light1 off
+set diagnoses
+set probes cost:50
+
+# costs: most valuable = cheap
+set probe battery cost:10
+set probe trigger1 cost:40
+set probe trigger2 cost:40
+set probe plug1 cost:60
+set probe plug2 cost:60
+set probe light2 cost:90
+
+set informationfunction entropy_reversed
+display settings
+
+set report displaydetail:0 display:true export:true exportdetail:3 path:"resources\results\minimal\Random2L_ch" filename:"Random2L_ch" csvname:"Random2L_ch" suffix:time
+
+#random
+set strategy random
+set experiment count:10000
+run experiment
+
+# optimal
+set report path:"resources\results\minimal\Random2L_ch\optimalwc"
+set informationfunction entropy_reversed
+set utilityfunction weighted_cost
+set strategy meu
+compute optimal iteration-limit:1 confirm:false
+compute optimal iteration-limit:3 confirm:false
+compute optimal iteration-limit:5 confirm:false
+
+set report path:"resources\results\minimal\Random2L_ch\optimallu"
+set utilityfunction linear_utility
+compute optimal iteration-limit:1 confirm:false
+compute optimal iteration-limit:3 confirm:false
+compute optimal iteration-limit:5 confirm:false

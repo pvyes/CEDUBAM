@@ -1,0 +1,38 @@
+# cmd: run resources/scripts/minimal/AO_S1_exp.txt
+set network 3
+set healthgroups component
+set pdvs Or2 state_1
+set diagnoses
+set probes cost:50
+
+# costs: most valuable = cheap
+set probe I1 cost:90
+set probe I2 cost:90
+set probe I3 cost:90
+set probe OR1 cost:10
+set probe plug2 cost:10
+
+set informationfunction entropy_reversed
+display settings
+
+set report displaydetail:0 display:true export:true exportdetail:3 path:"resources\results\minimal\AO_S1_exp" filename:"AO_S1_exp" csvname:"AO_S1_exp" suffix:time
+
+#random
+set strategy random
+set experiment count:10000
+run experiment
+
+# optimal
+set report path:"resources\results\minimal\AO_S1_exp\optimalwc"
+set informationfunction entropy_reversed
+set utilityfunction weighted_cost
+set strategy meu
+compute optimal iteration-limit:1 confirm:false
+compute optimal iteration-limit:3 confirm:false
+compute optimal iteration-limit:5 confirm:false
+
+set report path:"resources\results\minimal\AO_S1_exp\optimallu"
+set utilityfunction linear_utility
+compute optimal iteration-limit:1 confirm:false
+compute optimal iteration-limit:3 confirm:false
+compute optimal iteration-limit:5 confirm:false

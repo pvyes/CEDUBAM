@@ -99,7 +99,7 @@ public class Experiment {
 	
 	public String getSettings() {
 		String str = "";
-		if (diagnoser.getUtilityfunction().getType() == UtilityNames.WEIGHTED_COST) {
+		if (diagnoser.getUtilityfunction() != null && diagnoser.getUtilityfunction().getType() == UtilityNames.WEIGHTED_COST) {
 			str += "InfoProvalences: ";
 			for (int i = 0; i < infoPrevalences.size(); i++) {
 				str += "[" + i + "] " + infoPrevalences.get(i) + ", ";

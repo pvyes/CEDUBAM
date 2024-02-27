@@ -107,7 +107,11 @@ public class ReportManager {
 	}
 
 	public void setCsvname(String csvname) {
-		this.csvname = csvname;
+		if (csvname.matches(".*\\.ccf$")) {
+			this.csvname = csvname;
+		} else {
+			this.csvname = csvname + ".csv";
+		}
 	}
 
 	public Suffixtype getSuffixtype() {
@@ -147,7 +151,7 @@ public class ReportManager {
 		Output.saveFile(report, folder, name);
 		//make csv row
 		List<String> csvrow = makeOptimalCsvRow(name, ps);
-		Output.addToCsvfile(folder, csvname + "_optimal.cvs", makeList(csvkeysOptimal), csvrow);		
+		Output.addToCsvfile(folder, csvname + "_optimal.csv", makeList(csvkeysOptimal), csvrow);		
 	}
 
 

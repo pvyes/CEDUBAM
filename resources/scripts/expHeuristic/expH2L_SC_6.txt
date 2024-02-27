@@ -1,4 +1,4 @@
-# cmd: run resources/scripts/ExpHeuristic/expH2L_PL.txt
+# cmd: run resources/scripts/ExpHeuristic/expH2L_SC_6.txt
 
 set network 0
 set healthgroups connection
@@ -7,51 +7,51 @@ set diagnoses
 set probes cost:50
 set informationfunction entropy_reversed
 
-set report displaydetail:0 display:true export:true exportdetail:3 path:"resources\results\Experiment\Heuristic\2L_PL\random" filename:"L2_H_SC" suffix:time
-
-set costvariance polar min:10 max:90 distribution:random
+set costvariance scattered min:10 max:90 distribution:random
 display probes
+
+set report displaydetail:0 display:true export:true exportdetail:3 path:"resources\results\Experiment\Heuristic\2L_SC_6\random" filename:"L2_H_SC" suffix:time
 
 #random
 set strategy random
 set experiment count:10000
-# run experiment
+run experiment
 
-set strategy meu
 set utilityfunction weighted_cost alpha:0.0
-
-set report displaydetail:0 display:true export:true exportdetail:3 path:"resources\results\Experiment\Heuristic\2L_PL\iterationWC1" filename:"L2_H_SC" suffix:time
+set report displaydetail:0 display:true export:true exportdetail:3 path:"resources\results\Experiment\Heuristic\2L_SC_6\iterationWC1" filename:"L2_H_SC" suffix:time
 print "Optimal WC 1"
 compute optimal iteration-limit:1 confirm:false
 
-set report displaydetail:0 display:true export:true exportdetail:3 path:"resources\results\Experiment\Heuristic\2L_PL\iterationWC3" filename:"L2_H_SC" suffix:time
+set report displaydetail:0 display:true export:true exportdetail:3 path:"resources\results\Experiment\Heuristic\2L_SC_6\iterationWC3" filename:"L2_H_SC" suffix:time
 print "Optimal WC 3"
 compute optimal iteration-limit:3 confirm:false
 
-set report displaydetail:0 display:true export:true exportdetail:3 path:"resources\results\Experiment\Heuristic\2L_PL\iterationWC6" filename:"L2_H_SC" suffix:time
+set report displaydetail:0 display:true export:true exportdetail:3 path:"resources\results\Experiment\Heuristic\2L_SC_6\iterationWC6" filename:"L2_H_SC" suffix:time
 print "Optimal WC 6"
 compute optimal iteration-limit:6 confirm:false
 
-set report displaydetail:0 display:true export:true exportdetail:3 path:"resources\results\Experiment\Heuristic\2L_PL\iterationLU1" filename:"L2_H_SC" suffix:time
 set utilityfunction linear_utility a:0.0 s:90
-
-print "Optimal WC 1"
+set report displaydetail:0 display:true export:true exportdetail:3 path:"resources\results\Experiment\Heuristic\2L_SC_6\iterationLU1" filename:"L2_H_SC" suffix:time
+print "Optimal LU 1"
 compute optimal iteration-limit:1 confirm:false
 
-set report displaydetail:0 display:true export:true exportdetail:3 path:"resources\results\Experiment\Heuristic\2L_PL\iterationLU5" filename:"L2_H_SC" suffix:time
-
-print "Optimal WC 5"
+set report displaydetail:0 display:true export:true exportdetail:3 path:"resources\results\Experiment\Heuristic\2L_SC_6\iterationLU5" filename:"L2_H_SC" suffix:time
+print "Optimal LU 10"
 compute optimal iteration-limit:5 confirm:false
 
-set report displaydetail:0 display:true export:true exportdetail:3 path:"resources\results\Experiment\Heuristic\2L_PL\iterationLU10" filename:"L2_H_SC" suffix:time
-
+set report displaydetail:0 display:true export:true exportdetail:3 path:"resources\results\Experiment\Heuristic\2L_SC_6\iterationLU10" filename:"L2_H_SC" suffix:time
 print "Optimal LU 10"
 compute optimal iteration-limit:10 confirm:false
 
-set report displaydetail:0 display:true export:true exportdetail:3 path:"resources\results\Experiment\Heuristic\2L_PL\iterationLU20" filename:"L2_H_SC" suffix:time
+set report displaydetail:0 display:true export:true exportdetail:3 path:"resources\results\Experiment\Heuristic\2L_SC_6\iterationLU20" filename:"L2_H_SC" suffix:time
 set utilityfunction linear_utility a:0.0 s:90
 print "Optimal LU 20"
 compute optimal iteration-limit:20 confirm:false
+
+set report displaydetail:0 display:true export:true exportdetail:3 path:"resources\results\Experiment\Heuristic\2L_SC_6_bis" filename:"L2_H_SC" suffix:time
+
+set costvariance scattered min:10 max:90 distribution:random
+display probes
 
 # cheapest
 print "Strategy cheapest"

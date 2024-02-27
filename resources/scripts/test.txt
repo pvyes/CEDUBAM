@@ -1,0 +1,74 @@
+# cmd: run resources/scripts/test.txt
+set network 0
+set healthgroups connection
+set pdvs light1 off
+set diagnoses
+set probes cost:50
+set informationfunction entropy_reversed
+
+set report displaydetail:0 display:true export:true exportdetail:3 path:"D:\Documenten\OU\Graduation\voorbeeldsysteem\Results\Experiment\Heuristic\2L_PL_0\random" filename:"L2_H_SC" suffix:time
+
+set probe battery cost:10
+set probe trigger1 cost:90
+set probe plug1 cost:90
+set probe trigger2 cost:90
+set probe plug2 cost:10
+set probe light2 cost:10
+display probes
+
+#random
+set strategy random
+set experiment count:10000
+# run experiment
+
+set strategy meu
+set utilityfunction weighted_cost alpha:0.0
+
+set report displaydetail:0 display:true export:true exportdetail:3 path:"D:\Documenten\OU\Graduation\voorbeeldsysteem\Results\Experiment\Heuristic\2L_PL_0\iterationWC1" filename:"L2_H_SC" suffix:time
+print "Optimal WC 1"
+compute optimal iteration-limit:1 confirm:false
+
+set report displaydetail:0 display:true export:true exportdetail:3 path:"D:\Documenten\OU\Graduation\voorbeeldsysteem\Results\Experiment\Heuristic\2L_PL_0\iterationWC3" filename:"L2_H_SC" suffix:time
+print "Optimal WC 3"
+compute optimal iteration-limit:3 confirm:false
+
+set report displaydetail:0 display:true export:true exportdetail:3 path:"D:\Documenten\OU\Graduation\voorbeeldsysteem\Results\Experiment\Heuristic\2L_PL_0\iterationWC6" filename:"L2_H_SC" suffix:time
+print "Optimal WC 6"
+compute optimal iteration-limit:6 confirm:false
+
+set report displaydetail:0 display:true export:true exportdetail:3 path:"D:\Documenten\OU\Graduation\voorbeeldsysteem\Results\Experiment\Heuristic\2L_PL_0\iterationLU1" filename:"L2_H_SC" suffix:time
+set utilityfunction linear_utility a:0.0 s:90
+
+print "Optimal WC 1"
+compute optimal iteration-limit:1 confirm:false
+
+set report displaydetail:0 display:true export:true exportdetail:3 path:"D:\Documenten\OU\Graduation\voorbeeldsysteem\Results\Experiment\Heuristic\2L_PL_0\iterationLU5" filename:"L2_H_SC" suffix:time
+
+print "Optimal WC 5"
+compute optimal iteration-limit:5 confirm:false
+
+set report displaydetail:0 display:true export:true exportdetail:3 path:"D:\Documenten\OU\Graduation\voorbeeldsysteem\Results\Experiment\Heuristic\2L_PL_0\iterationLU10" filename:"L2_H_SC" suffix:time
+
+print "Optimal LU 10"
+compute optimal iteration-limit:10 confirm:false
+
+set report displaydetail:0 display:true export:true exportdetail:3 path:"D:\Documenten\OU\Graduation\voorbeeldsysteem\Results\Experiment\Heuristic\2L_PL_0\iterationLU20" filename:"L2_H_SC" suffix:time
+
+print "Optimal LU 20"
+compute optimal iteration-limit:20 confirm:false
+
+# cheapest
+set report displaydetail:0 display:true export:true exportdetail:3 path:"D:\Documenten\OU\Graduation\voorbeeldsysteem\Results\Experiment\Heuristic\2L_PL_0" filename:"L2_H_SC" suffix:time
+print "Strategy cheapest"
+set strategy cheapest
+compute probe-scenario confirm:false
+
+set strategy meu
+# Only information
+print "Only information WC"
+set utilityfunction weighted_cost alpha:0.0
+compute probe-scenario confirm:false
+
+print "Only information LU"
+set utilityfunction linear_utility a:0.0 s:90
+compute probe-scenario confirm:false

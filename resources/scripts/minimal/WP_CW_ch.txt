@@ -1,0 +1,39 @@
+# cmd: run resources/scripts/minimal/WP_CW_ch.txt
+set network 2
+set healthgroups component
+set pdvs outcome "cold water"
+set diagnoses
+set probes cost:50
+
+# costs: most valuable = cheap
+set probe Water cost:10
+set probe Power cost:30
+set probe PipeColdToWarm cost:90
+set probe Setting cost:90
+set probe PipeWarm cost:90
+set probe PipeCold cost:90
+
+set informationfunction entropy_reversed
+display settings
+
+set report displaydetail:0 display:true export:true exportdetail:3 path:"resources\results\minimal\WP_CW_ch" filename:"WP_CW_ch" csvname:"WP_CW_ch" suffix:time
+
+#random
+set strategy random
+set experiment count:10000
+run experiment
+
+# optimal
+set report path:"resources\results\minimal\WP_CW_ch\optimalwc"
+set informationfunction entropy_reversed
+set utilityfunction weighted_cost
+set strategy meu
+compute optimal iteration-limit:1 confirm:false
+compute optimal iteration-limit:3 confirm:false
+compute optimal iteration-limit:5 confirm:false
+
+set report path:"resources\results\minimal\WP_CW_ch\optimallu"
+set utilityfunction linear_utility
+compute optimal iteration-limit:1 confirm:false
+compute optimal iteration-limit:3 confirm:false
+compute optimal iteration-limit:5 confirm:false
