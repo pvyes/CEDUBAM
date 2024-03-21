@@ -17,6 +17,8 @@ set strategy random
 set experiment count:10000
 run experiment
 
+
+set strategy meu
 set utilityfunction weighted_cost alpha:0.0
 
 set report displaydetail:0 display:true export:true exportdetail:3 path:"resources\results\Experiment\Heuristic\2L_PL_4\iterationWC1" filename:"L2_H_SC" suffix:time

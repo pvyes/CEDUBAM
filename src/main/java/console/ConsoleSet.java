@@ -258,10 +258,6 @@ public class ConsoleSet extends Console{
 		}
 		if (params.get("export") != null) {
 			diagnoser.getReportManager().setExport(params.get("export").toLowerCase().equals("true"));
-			ConsoleInOut.printMessage("Report export set to " + diagnoser.getReportManager().isDisplay() + ".");
-		}
-		if (params.get("exportfile") != null) {
-			diagnoser.getReportManager().setExport(params.get("exportfile").toLowerCase().equals("true"));
 			ConsoleInOut.printMessage("Report export set to " + diagnoser.getReportManager().isExport() + ".");
 		}
 		if (params.get("path") != null) {

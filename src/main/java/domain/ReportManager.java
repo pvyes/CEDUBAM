@@ -135,23 +135,27 @@ public class ReportManager {
 	}
 
 	public void export(ProbeScenario ps) throws Exception {
-		String report = ps.makeReport(exportdetail);
-		String suffix = getSuffix();
-		String name = filename + "_" + suffix + ".txt";
-		Output.saveFile(report, folder, name);
-		//make csv row
-		List<String> csvrow = makeCsvRow(name, ps);
-		Output.addToCsvfile(folder, csvname, makeList(csvkeys), csvrow);		
+		if (export) {
+			String report = ps.makeReport(exportdetail);
+			String suffix = getSuffix();
+			String name = filename + "_" + suffix + ".txt";
+			Output.saveFile(report, folder, name);
+			//make csv row
+			List<String> csvrow = makeCsvRow(name, ps);
+			Output.addToCsvfile(folder, csvname, makeList(csvkeys), csvrow);
+		}
 	}
 	
 	public void exportOptimal(ProbeScenario ps) throws Exception {
-		String report = ps.makeOptimalReport(exportdetail);
-		String suffix = getSuffix();
-		String name = filename + "_optimal_"  + suffix + ".txt";
-		Output.saveFile(report, folder, name);
-		//make csv row
-		List<String> csvrow = makeOptimalCsvRow(name, ps);
-		Output.addToCsvfile(folder, csvname + "_optimal.csv", makeList(csvkeysOptimal), csvrow);		
+		if (export) {
+			String report = ps.makeOptimalReport(exportdetail);
+			String suffix = getSuffix();
+			String name = filename + "_optimal_"  + suffix + ".txt";
+			Output.saveFile(report, folder, name);
+			//make csv row
+			List<String> csvrow = makeOptimalCsvRow(name, ps);
+			Output.addToCsvfile(folder, csvname + "_optimal.csv", makeList(csvkeysOptimal), csvrow);
+		}
 	}
 
 
@@ -299,7 +303,4 @@ public class ReportManager {
 	public boolean removeReport(String name) throws IOException {
 		return Output.removeFile(folder, name);
 	}
-	
-
-	
 }
